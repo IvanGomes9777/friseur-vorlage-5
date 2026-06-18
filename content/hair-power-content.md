@@ -11,13 +11,13 @@
   „Einfache, natürliche, frische und elegante Schönheit" ·
   „Die fachliche Kunst des Schneidens, Färbens und Verwöhnens" · „den Kopf frei bekommen"
 
-## Team
-| Name | Rolle | Foto |
-|---|---|---|
-| Katja Schaffeld | Friseurmeisterin & Inhaberin (15+ Jahre) | ⚠️ Zuordnung zu bestätigen |
-| Melanie Köhler | Top Hairstylistin | ⚠️ Zuordnung zu bestätigen |
-| Heike | Leiterin Service | ⚠️ Zuordnung zu bestätigen |
-| Lars Tembrink | Hairstylist | ✅ Mann m. Brille, schwarzes Polo |
+## Team (Foto-Zuordnung vom Kunden bestätigt ✅)
+| Name | Rolle | Foto | Geplanter Dateiname |
+|---|---|---|---|
+| Katja Schaffeld | Friseurmeisterin & Inhaberin (15+ Jahre) | Foto C – schwarzes Kleid, blonder Bob, freigestellt | `public/team/katja.jpg` |
+| Melanie Köhler | Hairstylistin | Foto B – grauer Blazer, Brille, helle Jeans | `public/team/melanie.jpg` |
+| Heike | Leiterin Service | Foto A – olivgrüne Bomberjacke, Schal | `public/team/heike.jpg` |
+| Lars Tembrink | Hairstylist | Mann m. Brille, schwarzes Polo | `public/team/lars.jpg` |
 
 ## Kontakt / Standort
 - Grevener Str. 63, 48149 Münster (York Center, Kreuzviertel); Eingang Catharina-Müller-Straße
