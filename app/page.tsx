@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Leistungen from "@/components/Leistungen";
 import Team from "@/components/Team";
 import Bewertungen from "@/components/Bewertungen";
+import Galerie from "@/components/Galerie";
 import Kontakt from "@/components/Kontakt";
 import Footer from "@/components/Footer";
 
@@ -14,15 +15,7 @@ export default function Home() {
       <Leistungen />
       <Team />
       <Bewertungen />
-
-      {/* Galerie folgt als nächste Sektion */}
-      <section
-        id="galerie"
-        className="grid min-h-[60svh] scroll-mt-28 place-items-center bg-cream text-inkSoft"
-      >
-        Galerie – folgt als nächste Sektion
-      </section>
-
+      <Galerie />
       <Kontakt />
       <Footer />
     </main>
