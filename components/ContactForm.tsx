@@ -2,20 +2,52 @@
 
 import { useState } from "react";
 
-/* Kontaktformular: Client-Validierung, Pflicht-Datenschutz-Checkbox,
-   Friendly-Captcha-Platzhalter (kein reCAPTCHA → DSGVO-freundlich).
-   Versand wird später an eine API-Route / Mail-Service angebunden. */
+/* Kontaktformular: Client-Validierung, Pflicht-Datenschutz-Checkbox, Honeypot
+   (Spam), Friendly-Captcha-Hinweis. Sendet an /api/kontakt. */
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const [error, setError] = useState<string>("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: an API-Route /api/kontakt anbinden (Mail an info@friseur-hairpower.de)
-    setSent(true);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      message: String(fd.get("message") || ""),
+      company: String(fd.get("company") || ""), // Honeypot
+    };
+
+    setStatus("sending");
+    setError("");
+    try {
+      const res = await fetch("/api/kontakt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Senden fehlgeschlagen.");
+      }
+      setStatus("sent");
+      form.reset();
+    } catch (err) {
+      setStatus("error");
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Senden fehlgeschlagen. Bitte ruf uns an: 0251 5340748.",
+      );
+    }
   }
 
-  if (sent) {
+  if (status === "sent") {
     return (
       <div className="grid min-h-[300px] place-items-center rounded-xl bg-cream2 p-8 text-center">
         <div>
@@ -31,6 +63,8 @@ export default function ContactForm() {
       </div>
     );
   }
+
+  const sending = status === "sending";
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-3.5">
@@ -60,6 +94,14 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Honeypot – für Menschen unsichtbar */}
+      <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Firma
+          <input type="text" name="company" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <label className="flex items-start gap-2.5 text-xs text-inkSoft">
         <input
           type="checkbox"
@@ -68,23 +110,32 @@ export default function ContactForm() {
         />
         <span>
           Ich habe die{" "}
-          <a href="/datenschutz" className="font-semibold text-brownDark underline-offset-2 hover:underline">
+          <a
+            href="/datenschutz"
+            className="font-semibold text-brownDark underline-offset-2 hover:underline"
+          >
             Datenschutzerklärung
           </a>{" "}
           gelesen und bin einverstanden.
         </span>
       </label>
 
+      {status === "error" && (
+        <p className="rounded-lg bg-terra/10 px-3 py-2 text-sm text-brownDark" role="alert">
+          {error}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-terra px-6 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brownDark"
+        disabled={sending}
+        className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-terra px-6 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brownDark disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Nachricht senden
+        {sending ? "Wird gesendet …" : "Nachricht senden"}
       </button>
 
       <p className="text-xs text-inkSoft">
-        🔒 Spam-Schutz via Friendly Captcha (datenschutzfreundlich, kein
-        reCAPTCHA).
+        🔒 Spam-Schutz aktiv (datenschutzfreundlich, kein reCAPTCHA).
       </p>
     </form>
   );
