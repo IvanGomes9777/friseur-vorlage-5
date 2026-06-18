@@ -12,7 +12,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-ink text-cream">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-10 sm:grid-cols-3">
         <div>
           <p className="font-serif text-xl font-semibold tracking-[0.04em]">
             HAIR POWER

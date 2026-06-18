@@ -46,7 +46,7 @@ export default function Leistungen() {
     }`;
 
   return (
-    <section id="leistungen" className="scroll-mt-28 bg-cream2 px-6 py-20 sm:py-28">
+    <section id="leistungen" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20">
       <div ref={ref} className="mx-auto max-w-4xl">
         {/* Kopf */}
         <div className={reveal()}>
@@ -119,7 +119,7 @@ export default function Leistungen() {
 
         {/* Anlässe / Hochzeit */}
         <div
-          className={`mt-14 overflow-hidden rounded-2xl bg-gradient-to-br from-brown to-brownDark p-7 text-cream sm:p-10 ${reveal()}`}
+          className={`mt-10 overflow-hidden rounded-2xl bg-gradient-to-br from-brown to-brownDark p-7 text-cream sm:p-9 ${reveal()}`}
           style={{ transitionDelay: "120ms" }}
         >
           <div className="grid items-center gap-7 sm:grid-cols-[1.4fr_1fr]">

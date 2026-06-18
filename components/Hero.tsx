@@ -53,7 +53,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative grid min-h-[88svh] place-items-center overflow-hidden px-6 py-24 text-center text-cream">
+    <section className="relative grid min-h-[78svh] place-items-center overflow-hidden px-6 py-20 text-center text-cream">
       {/* Hintergrund: echtes Salon-Foto + Verdunkelung */}
       <div className="absolute inset-0 -z-10">
         <Image
