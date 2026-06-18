@@ -44,13 +44,13 @@ export default function Team() {
           {...reveal(80)}
           className={`${reveal(80).className} mt-8 grid gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.85fr_1.15fr] sm:items-center`}
         >
-          <div className="group relative aspect-square overflow-hidden sm:aspect-auto sm:h-full">
+          <div className="group relative aspect-square overflow-hidden">
             <Image
               src={TEAM_LEAD.image}
               alt={TEAM_LEAD.alt}
               fill
               sizes="(max-width: 640px) 100vw, 45vw"
-              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <Shine />
           </div>
