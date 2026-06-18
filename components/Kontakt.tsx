@@ -105,7 +105,10 @@ function InfoRow({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-white/12 text-base">
+      <span
+        aria-hidden="true"
+        className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-white/12 text-base"
+      >
         {icon}
       </span>
       <div className="leading-snug">{children}</div>

@@ -6,11 +6,17 @@
 
 export type PriceItem = { name: string; price: string; note?: string };
 export type ServiceGroup = { title?: string; items: PriceItem[] };
+export type InfoBox = {
+  title: string;
+  items: { heading: string; text: string }[];
+};
+
 export type ServiceCategory = {
   id: string;
   label: string;
   intro?: string;
   groups: ServiceGroup[];
+  infoBox?: InfoBox;
 };
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -19,6 +25,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     label: "Damen",
     intro:
       "Individuell und modebewusst – traditionelle Technik in Schnitt und Farbe, kombiniert mit aktuellen Trends.",
+    infoBox: {
+      title: "Damenhaar aus Meisterhand",
+      items: [
+        {
+          heading: "Schnitt & Styling",
+          text: "Waschen, Schneiden, Föhnen – individuell auf Haarstruktur, Gesichtsform und deinen Stil abgestimmt, inklusive Pflegeberatung.",
+        },
+        {
+          heading: "Farbe, Strähnen & Balayage",
+          text: "Grauabdeckung, Aufhellung oder natürliche Highlights – Wurzelfarbe, Balayage, Ombré. Auf Hautton & Haartyp abgestimmt, auf Wunsch ammoniakfrei.",
+        },
+      ],
+    },
     groups: [
       {
         title: "Schnitt & Styling",

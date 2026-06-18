@@ -25,6 +25,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [status, setStatus] = useState<Status | null>(null);
+  const [activeId, setActiveId] = useState<string>("");
 
   // Status erst nach Mount setzen → keine Hydration-Mismatches
   useEffect(() => {
@@ -48,6 +49,24 @@ export default function Navbar() {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // Scroll-Spy: aktive Sektion im Menü hervorheben
+  useEffect(() => {
+    const sections = LINKS.map((l) => document.getElementById(l.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
   }, []);
 
   return (
@@ -87,7 +106,7 @@ export default function Navbar() {
           {/* Links (nur Desktop) */}
           <div className="hidden items-center gap-7 lg:flex">
             {LINKS.slice(0, 3).map((l) => (
-              <NavLink key={l.href} {...l} />
+              <NavLink key={l.href} {...l} active={activeId === l.href.slice(1)} />
             ))}
           </div>
 
@@ -100,7 +119,7 @@ export default function Navbar() {
           <div className="flex items-center justify-end gap-5 lg:col-start-3">
             <div className="hidden items-center gap-7 lg:flex">
               {LINKS.slice(3).map((l) => (
-                <NavLink key={l.href} {...l} />
+                <NavLink key={l.href} {...l} active={activeId === l.href.slice(1)} />
               ))}
             </div>
             <a
@@ -125,7 +144,11 @@ export default function Navbar() {
       </nav>
 
       {/* ---------- Mobile Fullscreen-Overlay ---------- */}
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        activeId={activeId}
+      />
     </header>
   );
 }
@@ -149,14 +172,29 @@ function Wordmark({ scrolled }: { scrolled: boolean }) {
   );
 }
 
-function NavLink({ label, href }: { label: string; href: string }) {
+function NavLink({
+  label,
+  href,
+  active = false,
+}: {
+  label: string;
+  href: string;
+  active?: boolean;
+}) {
   return (
     <a
       href={href}
-      className="group relative py-1 text-[0.95rem] font-medium text-ink"
+      aria-current={active ? "true" : undefined}
+      className={`group relative py-1 text-[0.95rem] font-medium transition-colors ${
+        active ? "text-ink" : "text-ink/70 hover:text-ink"
+      }`}
     >
       {label}
-      <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-terra transition-all duration-300 group-hover:w-full" />
+      <span
+        className={`absolute -bottom-0.5 left-0 h-0.5 bg-terra transition-all duration-300 ${
+          active ? "w-full" : "w-0 group-hover:w-full"
+        }`}
+      />
     </a>
   );
 }
@@ -210,9 +248,11 @@ function StatusLabel({ status }: { status: Status | null }) {
 function MobileMenu({
   open,
   onClose,
+  activeId,
 }: {
   open: boolean;
   onClose: () => void;
+  activeId: string;
 }) {
   return (
     <div
@@ -228,7 +268,10 @@ function MobileMenu({
             key={l.href}
             href={l.href}
             onClick={onClose}
-            className="flex items-baseline gap-4 py-2 font-serif text-[clamp(1.6rem,1rem+4vw,2.4rem)] text-cream transition-all duration-500 hover:text-orange"
+            aria-current={activeId === l.href.slice(1) ? "true" : undefined}
+            className={`flex items-baseline gap-4 py-2 font-serif text-[clamp(1.6rem,1rem+4vw,2.4rem)] transition-all duration-500 hover:text-orange ${
+              activeId === l.href.slice(1) ? "text-orange" : "text-cream"
+            }`}
             style={{
               transitionDelay: open ? `${0.08 + i * 0.06}s` : "0s",
               transform: open ? "translateX(0)" : "translateX(-18px)",
