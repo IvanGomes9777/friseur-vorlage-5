@@ -126,6 +126,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     label: "Kinder",
     intro:
       "Kinderfriseur für junge Leute – trendig, modern, selbstbewusst. Altersgerecht, individuell und zeitgemäß. New Style, Top Style & Pflege bis 14 Jahre.",
+    infoBox: {
+      title: "Kinderfriseur mit Spielecke",
+      items: [
+        {
+          heading: "Eigener Wartebereich mit Spielecke",
+          text: "Bei uns wird der Friseurbesuch entspannt: eigene Spielecke und die neuesten Trends – damit die Kleinen chic und cool aus dem York Center gehen.",
+        },
+        {
+          heading: "Beratung & Pflege",
+          text: "Altersgerechter, individueller Schnitt mit klasse Beratung. Wir zeigen, wie ihr die Frisur zuhause am besten pflegt und kämmt.",
+        },
+      ],
+    },
     groups: [
       {
         items: [
