@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hair Power · 5 Leistungen-Optionen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F9F6F2;--cream2:#F2ECE3;--ink:#2A211B;--ink-soft:#6B5D50;
+    --brown:#8B6F47;--brown-d:#6E5535;--terra:#CC7755;--sage:#B5B5A0;--orange:#F4A460;
+    --line:rgba(42,33,27,.14);--serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,sans-serif;
+    --shadow:0 18px 50px -22px rgba(42,33,27,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#E7DFD4;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+  .page-head{max-width:1100px;margin:0 auto;padding:48px 24px 8px}
+  .page-head .kicker{font:600 .8rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+  .page-head h1{font:600 clamp(1.8rem,1.2rem+2.8vw,3rem)/1.05 var(--serif)}
+  .page-head p{max-width:62ch;margin-top:14px;color:var(--ink-soft)}
+  .demo{max-width:1100px;margin:34px auto;padding:0 24px}
+  .label{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .label .num{font:600 .85rem/1 var(--sans);background:var(--ink);color:var(--cream);padding:7px 12px;border-radius:999px}
+  .label h2{font:600 1.35rem/1.1 var(--serif)}
+  .label .tag{font-size:.86rem;color:var(--ink-soft)}
+  .frame{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6);background:var(--cream);position:relative}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.06s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.22s}.reveal.d4{transition-delay:.30s}
+  .sec-kick{font:600 .76rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+  .sec-h{font:500 clamp(1.6rem,1rem+2.4vw,2.4rem)/1.05 var(--serif);margin-top:10px}
+  .price{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* ===== OPTION 1 — Tabbed Preisliste (Leader-Dots) ===== */
+  .o1{padding:clamp(26px,3vw,46px)}
+  .o1 .tabs{display:inline-flex;gap:6px;background:var(--cream2);padding:5px;border-radius:999px;margin:18px 0 22px}
+  .o1 .tabs button{border:none;background:none;cursor:pointer;font:600 .9rem var(--sans);color:var(--ink-soft);padding:9px 18px;border-radius:999px;min-height:40px;transition:.2s}
+  .o1 .tabs button.active{background:#fff;color:var(--ink);box-shadow:0 4px 14px -8px rgba(42,33,27,.5)}
+  .o1 .list{display:grid;gap:2px}
+  .o1 .row{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .o1 .row .n{font-weight:500}
+  .o1 .row .leader{flex:1;border-bottom:1px dotted rgba(42,33,27,.25);transform:translateY(-4px)}
+  .o1 .row .p{color:var(--brown-d);font-weight:600}
+  .o1 .pane{display:none}.o1 .pane.show{display:block;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* ===== OPTION 2 — Service Cards Grid ===== */
+  .o2{padding:clamp(26px,3vw,46px)}
+  .o2 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin-top:22px}
+  .o2 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+  .o2 .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .o2 .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(204,119,85,.14);font-size:1.3rem;margin-bottom:14px}
+  .o2 .card h3{font:500 1.2rem var(--serif)}
+  .o2 .card p{color:var(--ink-soft);font-size:.9rem;margin:6px 0 14px}
+  .o2 .card .p{font-weight:700;color:var(--brown-d)}
+  .o2 .card .p small{font-weight:500;color:var(--ink-soft)}
+
+  /* ===== OPTION 3 — Split Feature + List ===== */
+  .o3{display:grid;grid-template-columns:.8fr 1.2fr}
+  .o3 .feat{position:relative;background:var(--brown);color:#fff;padding:clamp(26px,3vw,44px);display:flex;flex-direction:column;justify-content:center}
+  .o3 .feat .sec-kick{color:var(--orange)}
+  .o3 .feat h2{font:500 clamp(1.8rem,1rem+3vw,2.8rem)/1.03 var(--serif);margin:10px 0 12px}
+  .o3 .feat p{color:rgba(255,255,255,.82);max-width:34ch}
+  .o3 .feat .hl{margin-top:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 16px}
+  .o3 .feat .hl b{display:block;font:500 1.05rem var(--serif)}
+  .o3 .feat .hl span{font-size:.85rem;color:rgba(255,255,255,.8)}
+  .o3 .list{padding:clamp(22px,3vw,40px);background:var(--cream)}
+  .o3 .row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .o3 .row .n{font-weight:500}.o3 .row .d{font-size:.82rem;color:var(--ink-soft)}
+  .o3 .row .p{color:var(--brown-d);font-weight:600}
+
+  /* ===== OPTION 4 — Accordion Kategorien ===== */
+  .o4{padding:clamp(26px,3vw,46px)}
+  .o4 .acc{margin-top:20px;border-top:1px solid var(--line)}
+  .o4 .item{border-bottom:1px solid var(--line)}
+  .o4 .head{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 2px;font:500 1.15rem var(--serif);color:var(--ink);text-align:left;min-height:44px}
+  .o4 .head .meta{font:500 .82rem var(--sans);color:var(--ink-soft)}
+  .o4 .chev{transition:transform .3s;color:var(--terra)}
+  .o4 .item.open .chev{transform:rotate(45deg)}
+  .o4 .body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .o4 .item.open .body{max-height:420px}
+  .o4 .row{display:flex;justify-content:space-between;padding:9px 0;border-top:1px dashed var(--line);font-size:.92rem}
+  .o4 .row:first-child{border-top:none}
+  .o4 .row .p{font-weight:600;color:var(--brown-d)}
+  .o4 .pad{padding:0 0 16px}
+
+  /* ===== OPTION 5 — Magazine Price-Menu ===== */
+  .o5{padding:clamp(26px,3.4vw,52px);background:radial-gradient(120% 80% at 50% 0,var(--cream) 0,var(--cream2) 100%)}
+  .o5 .top{text-align:center}
+  .o5 .rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:14px 0 26px;color:var(--terra)}
+  .o5 .rule::before,.o5 .rule::after{content:"";height:1px;width:60px;background:var(--terra);opacity:.5}
+  .o5 .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .o5 .cat{font:500 italic 1.3rem var(--serif);color:var(--brown-d);margin-bottom:8px}
+  .o5 .row{display:flex;align-items:baseline;gap:8px;padding:7px 0}
+  .o5 .row .n{font-family:var(--serif);font-size:1.02rem}
+  .o5 .row .leader{flex:1;border-bottom:1px dotted rgba(42,33,27,.3);transform:translateY(-4px)}
+  .o5 .row .p{font-weight:600;color:var(--ink)}
+  .o5 .star{display:inline-block;margin-left:6px;color:var(--orange)}
+
+  @media (max-width:760px){ .o3{grid-template-columns:1fr} .o5 .cols{grid-template-columns:1fr;gap:22px} }
+  .footnote{max-width:1100px;margin:6px auto 70px;padding:0 24px;color:var(--ink-soft);font-size:.85rem}
+</style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="kicker">Hair Power · Sektion 3 / Leistungen & Preise</div>
+    <h1>5 Optionen für die Leistungs- & Preisliste</h1>
+    <p>Alle mit deinen echten Preisen. Scrolle für die Reveal-Animationen; bei Option 1 die Tabs, bei Option 4 die Kategorien klicken.</p>
+  </header>
+
+  <!-- OPTION 1 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 1</span><h2>Tabbed Preisliste</h2><span class="tag">Umschalter Damen/Herren · Leader-Dots · sehr übersichtlich</span></div>
+    <div class="frame"><div class="o1" data-anim>
+      <span class="sec-kick reveal">Unsere Leistungen</span>
+      <h2 class="sec-h reveal d1">Klare Preise, ehrlich kalkuliert.</h2>
+      <div class="tabs reveal d2"><button class="active" data-t="d">Damen</button><button data-t="h">Herren</button></div>
+      <div class="pane show" data-p="d">
+        <div class="list">
+          <div class="row"><span class="n">Waschen · Schneiden · Föhnen</span><span class="leader"></span><span class="p">37,50 €</span></div>
+          <div class="row"><span class="n">Anfeuchten · Schneiden</span><span class="leader"></span><span class="p">26,50 €</span></div>
+          <div class="row"><span class="n">Haarfärbung (Neu)</span><span class="leader"></span><span class="p">ab 39,50 €</span></div>
+          <div class="row"><span class="n">Foliensträhnen (ganzer Kopf)</span><span class="leader"></span><span class="p">ab 55,50 €</span></div>
+          <div class="row"><span class="n">Balayage</span><span class="leader"></span><span class="p">ab 135,00 €</span></div>
+          <div class="row"><span class="n">Hochsteckfrisur (n. Aufwand)</span><span class="leader"></span><span class="p">ab 45,00 €</span></div>
+        </div>
+      </div>
+      <div class="pane" data-p="h">
+        <div class="list">
+          <div class="row"><span class="n">Waschen · Schneiden · Föhnen</span><span class="leader"></span><span class="p">26,50 €</span></div>
+          <div class="row"><span class="n">Anfeuchten · Schneiden</span><span class="leader"></span><span class="p">19,50 €</span></div>
+          <div class="row"><span class="n">Kompletter Maschinenschnitt</span><span class="leader"></span><span class="p">16,00 €</span></div>
+          <div class="row"><span class="n">Bart schneiden</span><span class="leader"></span><span class="p">8,00 €</span></div>
+          <div class="row"><span class="n">Haarfärbung</span><span class="leader"></span><span class="p">ab 35,50 €</span></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 2 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 2</span><h2>Service-Cards</h2><span class="tag">Kacheln mit Icon + „ab"-Preis · Hover-Lift</span></div>
+    <div class="frame"><div class="o2" data-anim>
+      <span class="sec-kick reveal">Was wir für Dich tun</span>
+      <h2 class="sec-h reveal d1">Services auf einen Blick</h2>
+      <div class="grid">
+        <div class="card reveal d1"><div class="ic">✂️</div><h3>Schnitt</h3><p>Waschen, Schneiden, Föhnen – typgerecht.</p><div class="p">ab 26,50 €</div></div>
+        <div class="card reveal d2"><div class="ic">🎨</div><h3>Farbe & Tönung</h3><p>Natürliche Farben, die deinen Ton treffen.</p><div class="p">ab 39,50 €</div></div>
+        <div class="card reveal d3"><div class="ic">✨</div><h3>Balayage & Strähnen</h3><p>Sanfte Übergänge, strahlende Tiefe.</p><div class="p">ab 45,50 €</div></div>
+        <div class="card reveal d1"><div class="ic">💈</div><h3>Herren</h3><p>Business-Cuts, Konturen & Bartpflege.</p><div class="p">ab 16,00 €</div></div>
+        <div class="card reveal d2"><div class="ic">🧒</div><h3>Kinder</h3><p>Altersgerecht & entspannt.</p><div class="p"><small>auf Anfrage</small></div></div>
+        <div class="card reveal d3"><div class="ic">💍</div><h3>Anlass & Hochzeit</h3><p>Hochsteckfrisuren für deinen großen Tag.</p><div class="p">ab 45,00 €</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 3 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 3</span><h2>Split Feature + Liste</h2><span class="tag">Signature-Service hervorgehoben · Liste daneben</span></div>
+    <div class="frame"><div class="o3" data-anim>
+      <div class="feat">
+        <span class="sec-kick reveal">Signature</span>
+        <h2 class="reveal d1">Balayage & Farbe.</h2>
+        <p class="reveal d2">Unsere Spezialität: natürliche Farbverläufe und strahlende Tiefe – individuell auf dich abgestimmt.</p>
+        <div class="hl reveal d3"><b>Balayage ab 135 €</b><span>inkl. Beratung & Finish</span></div>
+      </div>
+      <div class="list">
+        <div class="row reveal"><div><div class="n">Waschen · Schneiden · Föhnen</div><div class="d">Damen</div></div><span class="p">37,50 €</span></div>
+        <div class="row reveal d1"><div><div class="n">Haarfärbung (Neu)</div><div class="d">inkl. Ansatz ab 35,50 €</div></div><span class="p">ab 39,50 €</span></div>
+        <div class="row reveal d2"><div><div class="n">Foliensträhnen</div><div class="d">Oberkopf bis lang</div></div><span class="p">45,50–61 €</span></div>
+        <div class="row reveal d3"><div><div class="n">Dauerwelle</div><div class="d">inkl. Pflege</div></div><span class="p">ab 49,50 €</span></div>
+        <div class="row reveal d4"><div><div class="n">Herren-Schnitt</div><div class="d">Waschen · Schneiden · Föhnen</div></div><span class="p">26,50 €</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 4 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 4</span><h2>Accordion-Kategorien</h2><span class="tag">Aufklappbare Kategorien · kompakt · viele Positionen</span></div>
+    <div class="frame"><div class="o4" data-anim>
+      <span class="sec-kick reveal">Preise im Detail</span>
+      <h2 class="sec-h reveal d1">Alles übersichtlich aufgeklappt</h2>
+      <div class="acc reveal d2">
+        <div class="item open"><button class="head">Damen · Schnitt & Styling <span class="meta">5 Positionen <span class="chev">＋</span></span></button>
+          <div class="body"><div class="pad">
+            <div class="row"><span>Waschen · Schneiden · Föhnen</span><span class="p">37,50 €</span></div>
+            <div class="row"><span>Anfeuchten · Schneiden</span><span class="p">26,50 €</span></div>
+            <div class="row"><span>Pony schneiden</span><span class="p">7,00 €</span></div>
+            <div class="row"><span>Hochsteckfrisur</span><span class="p">ab 45,00 €</span></div>
+            <div class="row"><span>Glätten (extra)</span><span class="p">ab 15,00 €</span></div>
+          </div></div>
+        </div>
+        <div class="item"><button class="head">Farbe · Strähnen · Balayage <span class="meta">4 Positionen <span class="chev">＋</span></span></button>
+          <div class="body"><div class="pad">
+            <div class="row"><span>Haarfärbung (Neu)</span><span class="p">ab 39,50 €</span></div>
+            <div class="row"><span>Tönung</span><span class="p">ab 26,50 €</span></div>
+            <div class="row"><span>Foliensträhnen</span><span class="p">45,50–61 €</span></div>
+            <div class="row"><span>Balayage</span><span class="p">ab 135,00 €</span></div>
+          </div></div>
+        </div>
+        <div class="item"><button class="head">Herren <span class="meta">5 Positionen <span class="chev">＋</span></span></button>
+          <div class="body"><div class="pad">
+            <div class="row"><span>Waschen · Schneiden · Föhnen</span><span class="p">26,50 €</span></div>
+            <div class="row"><span>Maschinenschnitt</span><span class="p">16,00 €</span></div>
+            <div class="row"><span>Konturenschnitt</span><span class="p">15,00 €</span></div>
+            <div class="row"><span>Bart schneiden</span><span class="p">8,00 €</span></div>
+            <div class="row"><span>Haarfärbung</span><span class="p">ab 35,50 €</span></div>
+          </div></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 5 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 5</span><h2>Magazine Price-Menu</h2><span class="tag">Edle „Karten"-Anmutung · Serif · zwei Spalten · Signature ★</span></div>
+    <div class="frame"><div class="o5" data-anim>
+      <div class="top">
+        <span class="sec-kick reveal">Preisliste</span>
+        <h2 class="sec-h reveal d1" style="margin-top:6px">The Art of Hair Power</h2>
+      </div>
+      <div class="rule reveal d2">✦</div>
+      <div class="cols">
+        <div class="reveal d2">
+          <div class="cat">Damen</div>
+          <div class="row"><span class="n">Waschen · Schneiden · Föhnen</span><span class="leader"></span><span class="p">37,50</span></div>
+          <div class="row"><span class="n">Haarfärbung (Neu)</span><span class="leader"></span><span class="p">39,50</span></div>
+          <div class="row"><span class="n">Foliensträhnen</span><span class="leader"></span><span class="p">45,50</span></div>
+          <div class="row"><span class="n">Balayage <span class="star">★</span></span><span class="leader"></span><span class="p">135,00</span></div>
+          <div class="row"><span class="n">Dauerwelle</span><span class="leader"></span><span class="p">49,50</span></div>
+        </div>
+        <div class="reveal d3">
+          <div class="cat">Herren & Kids</div>
+          <div class="row"><span class="n">Waschen · Schneiden · Föhnen</span><span class="leader"></span><span class="p">26,50</span></div>
+          <div class="row"><span class="n">Maschinenschnitt</span><span class="leader"></span><span class="p">16,00</span></div>
+          <div class="row"><span class="n">Konturenschnitt</span><span class="leader"></span><span class="p">15,00</span></div>
+          <div class="row"><span class="n">Bart schneiden</span><span class="leader"></span><span class="p">8,00</span></div>
+          <div class="row"><span class="n">Kinderschnitt</span><span class="leader"></span><span class="p">a. A.</span></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <p class="footnote">Preise wörtlich aus deinen bestehenden Listen. Alle „Karten/Tabs/Akkordeons" werden in Next.js als wiederverwendbare Komponenten gebaut (datengetrieben aus einer Preis-Datei – Änderungen an einer Stelle).</p>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.reveal').forEach(x=>x.classList.add('in'));}})},{threshold:.25});
+  document.querySelectorAll('[data-anim]').forEach(el=>io.observe(el));
+  // Option 1 tabs
+  document.querySelectorAll('.o1 .tabs button').forEach(b=>b.addEventListener('click',()=>{
+    const root=b.closest('.o1');root.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    root.querySelectorAll('.pane').forEach(p=>p.classList.toggle('show',p.dataset.p===b.dataset.t));
+  }));
+  // Option 4 accordion
+  document.querySelectorAll('.o4 .head').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+</script>
+</body>
+</html>
