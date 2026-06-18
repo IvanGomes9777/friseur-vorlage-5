@@ -11,13 +11,15 @@
   „Einfache, natürliche, frische und elegante Schönheit" ·
   „Die fachliche Kunst des Schneidens, Färbens und Verwöhnens" · „den Kopf frei bekommen"
 
-## Team (Foto-Zuordnung vom Kunden bestätigt ✅)
-| Name | Rolle | Foto | Geplanter Dateiname |
-|---|---|---|---|
-| Katja Schaffeld | Friseurmeisterin & Inhaberin (15+ Jahre) | Foto C – schwarzes Kleid, blonder Bob, freigestellt | `public/team/katja.jpg` |
-| Melanie Köhler | Hairstylistin | Foto B – grauer Blazer, Brille, helle Jeans | `public/team/melanie.jpg` |
-| Heike | Leiterin Service | Foto A – olivgrüne Bomberjacke, Schal | `public/team/heike.jpg` |
-| Lars Tembrink | Hairstylist | Mann m. Brille, schwarzes Polo | `public/team/lars.jpg` |
+## Team (Foto-Zuordnung vom Kunden bestätigt ✅ · Dateien im Repo)
+| Name | Rolle | Datei |
+|---|---|---|
+| Katja Schaffeld | Friseurmeisterin & Inhaberin (15+ Jahre) | `public/team/katja.png` (formell, freigestellt) · `public/team/katja-casual.png` (lockeres Rundporträt) |
+| Melanie Köhler | Hairstylistin | `public/team/melanie.png` |
+| Heike | Leiterin Service | `public/team/heike.png` |
+| Lars Tembrink | Hairstylist | `public/team/lars.png` |
+
+**Weitere Assets:** Logo `public/brand/hair-power-logo.png` · Salon-Außenaufnahme (Efeu-Fassade) `public/salon/salon-facade.png`
 
 ## Kontakt / Standort
 - Grevener Str. 63, 48149 Münster (York Center, Kreuzviertel); Eingang Catharina-Müller-Straße
