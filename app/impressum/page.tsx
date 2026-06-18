@@ -42,7 +42,7 @@ export default function ImpressumPage() {
           Berufsbezeichnung: Friseurmeisterin (verliehen in Deutschland)
           <br />
           Zuständige Kammer: Handwerkskammer Münster, Bismarckallee 1, 48151
-          Münster <span className="text-inkSoft">[bitte bestätigen]</span>
+          Münster
           <br />
           Es gelten die berufsrechtlichen Regelungen der Handwerksordnung (HwO),
           einsehbar unter{" "}
