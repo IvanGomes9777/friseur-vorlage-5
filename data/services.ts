@@ -1,0 +1,118 @@
+/* ---------------------------------------------------------------------------
+   Hair Power · Leistungen & Preise — zentrale Datenquelle
+   Preise wörtlich aus den Listen des Salons (Grevener Str. / York Center).
+   Änderungen NUR hier pflegen – Komponenten lesen automatisch daraus.
+--------------------------------------------------------------------------- */
+
+export type PriceItem = { name: string; price: string; note?: string };
+export type ServiceGroup = { title?: string; items: PriceItem[] };
+export type ServiceCategory = {
+  id: string;
+  label: string;
+  intro?: string;
+  groups: ServiceGroup[];
+};
+
+export const SERVICE_CATEGORIES: ServiceCategory[] = [
+  {
+    id: "damen",
+    label: "Damen",
+    intro:
+      "Individuell und modebewusst – traditionelle Technik in Schnitt und Farbe, kombiniert mit aktuellen Trends.",
+    groups: [
+      {
+        title: "Schnitt & Styling",
+        items: [
+          { name: "Waschen · Schneiden · Föhnen / Legen", price: "37,50 €" },
+          { name: "Waschen · Schneiden / selber Föhnen", price: "32,50 €" },
+          { name: "Anfeuchten · Schneiden", price: "26,50 €" },
+          { name: "Waschen · Föhnen / Legen", price: "ab 24,50 €" },
+          { name: "Pony schneiden", price: "7,00 €" },
+          { name: "Permanent Styling", price: "ab 37,50 €", note: "bis Haarlänge 10 cm" },
+          { name: "Dauerwelle", price: "ab 49,50 €" },
+          { name: "Hochsteckfrisur", price: "ab 45,00 €", note: "nach Aufwand" },
+          { name: "Haarpflege · Kur (Intensiv)", price: "9,00 €" },
+          { name: "Glätten", price: "ab 15,00 €", note: "extra" },
+        ],
+      },
+      {
+        title: "Farbe & Tönung",
+        items: [
+          { name: "Haarfärbung (Neu)", price: "ab 39,50 €" },
+          { name: "Haarfärbung (Ansatz)", price: "ab 35,50 €", note: "bis 2 cm" },
+          { name: "Tönung (Normal / Intensiv)", price: "ab 26,50 €" },
+          { name: "Balayage", price: "ab 135,00 €", note: "unsere Spezialität" },
+          { name: "Pastelltoncoloration", price: "ab 25,00 €" },
+        ],
+      },
+      {
+        title: "Strähnen",
+        items: [
+          { name: "Foliensträhnen (Oberkopf)", price: "ab 45,50 €" },
+          { name: "Foliensträhnen (Ganzer Kopf)", price: "ab 55,50 €" },
+          { name: "Foliensträhnen lang", price: "ab 61,00 €" },
+        ],
+      },
+      {
+        title: "Augenbrauen & Wimpern",
+        items: [
+          { name: "Augenbrauen zupfen", price: "10,00 €" },
+          { name: "Augenbrauen färben", price: "11,00 €" },
+          { name: "Wimpern färben", price: "11,00 €" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "herren",
+    label: "Herren",
+    intro:
+      "Typgerechte, pflegeleichte Business-Frisuren für die City – Schnitt, Pflege, Strähnen, Tönen und Grauhaarabdeckung.",
+    groups: [
+      {
+        title: "Schnitt & Bart",
+        items: [
+          { name: "Anfeuchten · Schneiden", price: "19,50 €" },
+          { name: "Waschen · Schneiden · Föhnen", price: "26,50 €" },
+          { name: "Kompletter Maschinenschnitt", price: "16,00 €" },
+          { name: "Konturenschnitt", price: "15,00 €" },
+          { name: "Bart schneiden", price: "8,00 €" },
+        ],
+      },
+      {
+        title: "Farbe & Strähnen",
+        items: [
+          { name: "Haarfärbung", price: "ab 35,50 €" },
+          { name: "Strähnen (Lichtreflexe / Spitzen / Hauben)", price: "ab 21,00 €" },
+          { name: "Foliensträhnen", price: "ab 45,50 €" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "kinder",
+    label: "Kinder",
+    intro:
+      "Kinderfriseur für junge Leute – trendig, modern, selbstbewusst. Altersgerecht, individuell und zeitgemäß. New Style, Top Style & Pflege bis 14 Jahre.",
+    groups: [
+      {
+        items: [
+          { name: "Haarschnitt bis 14 Jahre", price: "17,50 €" },
+          { name: "Waschen · Schneiden · Föhnen", price: "ab 24,50 €" },
+        ],
+      },
+    ],
+  },
+];
+
+/** Eigener Block für besondere Anlässe / Hochzeit (beschreibend statt Preisliste). */
+export const OCCASIONS = {
+  kicker: "Besondere Anlässe",
+  title: "Frisuren für Deinen schönsten Tag",
+  paragraphs: [
+    "Hochzeits-Frisuren: Ob Hochsteckfrisur, offene Haare schön verziert oder eine geflochtene Frisur – je nach Art der Hochzeit und passend zum Kleid kreieren wir Deinen perfekten Look.",
+    "Theater oder Business: klassisch, romantische Flechtfrisuren oder ein moderner Schnitt mit Blumen oder Perlen. Wir finden, was zu Dir und Deinem Anlass passt.",
+    "Übrigens auch für Weihnachtsfeiern, Geburtstage oder Abschlussfeiern.",
+  ],
+  priceHint: "Hochsteckfrisur ab 45 € · nach Aufwand",
+};

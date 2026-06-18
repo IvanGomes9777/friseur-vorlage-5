@@ -41,8 +41,12 @@ Anfeuchten-Schneiden 19,50 € · Waschen-Schneiden-Föhnen 26,50 € · Maschin
 Konturenschnitt 15 € · Bart 8 € · Färbung ab 35,50 € · Strähnen ab 21 € · Foliensträhnen ab 45,50 €
 → „typgerechte, pflegeleichte Business-Frisuren für die City"
 
-## Spezial
-Kinderfrisuren (altersgerecht) · Hochzeits- & Theaterfrisuren · Grauhaarabdeckung
+## Preise – Kinder (bis 14 Jahre)
+Haarschnitt bis 14 Jahre 17,50 € · Waschen-Schneiden-Föhnen ab 24,50 €
+→ Kinderfriseur „junge Leute": trendig, modern, selbstbewusst, altersgerecht, individuell, zeitgemäß (Keywords: young/new Style, Top Style, Pflege, Uppenberg)
+
+## Spezial / Besondere Anlässe
+Hochzeits-Frisuren (Hochsteckfrisur, offene Haare verziert, Flechtfrisur – passend zum Kleid) · Theater & Business · Weihnachtsfeiern, Geburtstage, Abschlussfeiern · Grauhaarabdeckung. Hochsteckfrisur ab 45 € (nach Aufwand).
 
 ## Google-Bewertungen
 - **Gesamt: 4,3 ★ · 254 Rezensionen** (Google – „Friseur Hair Power Münster York Center")
