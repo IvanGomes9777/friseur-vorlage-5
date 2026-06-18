@@ -87,6 +87,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     label: "Herren",
     intro:
       "Typgerechte, pflegeleichte Business-Frisuren für die City – Schnitt, Pflege, Strähnen, Tönen und Grauhaarabdeckung.",
+    infoBox: {
+      title: "Dein Gentleman-Barbier im Kreuzviertel",
+      items: [
+        {
+          heading: "Individuell für den Herrn",
+          text: "Ob Business oder Freizeit – typgerechte, pflegeleichte Schnitte samt Waschen, Föhnen und Bartpflege. Personalisierung & Beratung sind unser Markenzeichen.",
+        },
+        {
+          heading: "Farbe & mehr",
+          text: "Strähnen, Tönen und Grauhaarabdeckung – dezent und natürlich, abgestimmt auf deinen Typ.",
+        },
+      ],
+    },
     groups: [
       {
         title: "Schnitt & Bart",
