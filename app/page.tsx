@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Leistungen from "@/components/Leistungen";
 import Team from "@/components/Team";
 import Bewertungen from "@/components/Bewertungen";
+import Kontakt from "@/components/Kontakt";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -13,21 +15,16 @@ export default function Home() {
       <Team />
       <Bewertungen />
 
-      {/* Anker-Platzhalter für die folgenden Sektionen */}
-      {[
-        ["galerie", "Galerie"],
-        ["kontakt", "Kontakt"],
-      ].map(([id, label], i) => (
-        <section
-          key={id}
-          id={id}
-          className={`grid min-h-[60svh] scroll-mt-28 place-items-center text-inkSoft ${
-            i % 2 ? "bg-cream2" : "bg-cream"
-          }`}
-        >
-          {label} – folgt als nächste Sektion
-        </section>
-      ))}
+      {/* Galerie folgt als nächste Sektion */}
+      <section
+        id="galerie"
+        className="grid min-h-[60svh] scroll-mt-28 place-items-center bg-cream text-inkSoft"
+      >
+        Galerie – folgt als nächste Sektion
+      </section>
+
+      <Kontakt />
+      <Footer />
     </main>
   );
 }
