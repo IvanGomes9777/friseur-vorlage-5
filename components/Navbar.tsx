@@ -12,9 +12,9 @@ import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 --------------------------------------------------------------------------- */
 
 const LINKS = [
+  { label: "Über uns", href: "#ueber" },
   { label: "Leistungen", href: "#leistungen" },
   { label: "Team", href: "#team" },
-  { label: "Galerie", href: "#galerie" },
   { label: "Bewertungen", href: "#bewertungen" },
   { label: "Kontakt", href: "#kontakt" },
 ];
@@ -74,6 +74,7 @@ export default function Navbar() {
 
       {/* ---------- Hauptnavigation ---------- */}
       <nav
+        aria-label="Hauptnavigation"
         className={`bg-cream/90 backdrop-blur-md transition-shadow duration-300 ${
           scrolled ? "shadow-[0_8px_30px_-16px_rgba(42,33,27,0.45)]" : ""
         }`}

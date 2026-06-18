@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE } from "@/data/site";
 
 const NAV = [
+  { label: "Über uns", href: "/#ueber" },
   { label: "Leistungen", href: "/#leistungen" },
   { label: "Team", href: "/#team" },
   { label: "Bewertungen", href: "/#bewertungen" },
