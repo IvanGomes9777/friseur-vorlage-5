@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hair Power · 5 Hero-Optionen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F9F6F2;--cream2:#F2ECE3;--ink:#2A211B;--ink-soft:#6B5D50;
+    --brown:#8B6F47;--brown-d:#6E5535;--terra:#CC7755;--sage:#B5B5A0;--orange:#F4A460;
+    --line:rgba(42,33,27,.12);--serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,sans-serif;
+    --shadow:0 18px 50px -20px rgba(42,33,27,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#E7DFD4;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+  .page-head{max-width:1100px;margin:0 auto;padding:48px 24px 8px}
+  .page-head .kicker{font:600 .8rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+  .page-head h1{font:600 clamp(1.8rem,1.2rem+2.8vw,3rem)/1.05 var(--serif);letter-spacing:-.01em}
+  .page-head p{max-width:62ch;margin-top:14px;color:var(--ink-soft)}
+  .demo{max-width:1100px;margin:34px auto;padding:0 24px}
+  .label{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .label .num{font:600 .85rem/1 var(--sans);background:var(--ink);color:var(--cream);padding:7px 12px;border-radius:999px}
+  .label h2{font:600 1.35rem/1.1 var(--serif)}
+  .label .tag{font-size:.86rem;color:var(--ink-soft)}
+  .frame{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6);background:var(--cream);position:relative}
+
+  /* shared bits */
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;padding:7px 13px;border-radius:999px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#3FA060}
+  .dot.live{animation:ring 2s infinite}
+  @keyframes ring{0%{box-shadow:0 0 0 0 rgba(63,160,96,.6)}70%{box-shadow:0 0 0 7px rgba(63,160,96,0)}100%{box-shadow:0 0 0 0 rgba(63,160,96,0)}}
+  .btn{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:0 22px;border-radius:13px;font-weight:600;font-size:.92rem;text-decoration:none;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .25s,color .25s}
+  .btn-dark{background:var(--ink);color:var(--cream)}.btn-dark:hover{background:var(--terra);transform:translateY(-2px)}
+  .btn-terra{background:var(--terra);color:#fff}.btn-terra:hover{background:var(--brown-d);transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .stars{color:var(--orange);letter-spacing:2px}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.18s}.reveal.d3{transition-delay:.28s}.reveal.d4{transition-delay:.38s}
+
+  /* ====== OPTION 1 — Cinematic Full-Bleed + Overlay ====== */
+  .o1{position:relative;min-height:520px;display:grid;align-items:center;color:#fff;padding:40px}
+  .o1 .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=70') center/cover;transform:scale(1.08);transition:transform 8s ease}
+  .o1.in .bg{transform:scale(1)}
+  .o1 .scrim{position:absolute;inset:0;background:linear-gradient(105deg,rgba(20,15,12,.82) 0%,rgba(20,15,12,.45) 55%,rgba(20,15,12,.2) 100%)}
+  .o1 .inner{position:relative;max-width:600px}
+  .o1 .chip{background:rgba(255,255,255,.14);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .o1 h1{font:500 clamp(2rem,1.2rem+4vw,3.6rem)/1.04 var(--serif);letter-spacing:-.01em;margin:18px 0 14px}
+  .o1 h1 em{font-style:italic;color:var(--orange)}
+  .o1 p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:46ch;margin-bottom:26px}
+  .o1 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ====== OPTION 2 — Split Editorial ====== */
+  .o2{display:grid;grid-template-columns:1.05fr .95fr;min-height:520px}
+  .o2 .text{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
+  .o2 .kick{font:600 .78rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+  .o2 h1{font:500 clamp(1.9rem,1rem+3.4vw,3.2rem)/1.05 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+  .o2 h1 em{font-style:italic;color:var(--terra)}
+  .o2 p{margin:16px 0 24px;color:var(--ink-soft);max-width:42ch}
+  .o2 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .o2 .trust{display:flex;align-items:center;gap:12px;font-size:.86rem;color:var(--ink-soft)}
+  .o2 .img{position:relative;overflow:hidden}
+  .o2 .img img{width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 100%);transition:clip-path 1s cubic-bezier(.77,0,.18,1) .2s}
+  .o2.in .img img{clip-path:inset(0 0 0 0)}
+
+  /* ====== OPTION 3 — Centered Minimal ====== */
+  .o3{min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 28px;background:radial-gradient(120% 90% at 50% 0%,var(--cream) 0%,var(--cream2) 100%)}
+  .o3 .kick{font:600 .76rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--terra)}
+  .o3 .divider{width:0;height:2px;background:var(--terra);margin:22px 0;transition:width .9s ease .3s}
+  .o3.in .divider{width:90px}
+  .o3 h1{font:500 clamp(2rem,1.1rem+4.2vw,3.6rem)/1.06 var(--serif);letter-spacing:-.015em;max-width:16ch;color:var(--ink)}
+  .o3 p{margin:18px auto 28px;color:var(--ink-soft);max-width:44ch}
+  .o3 .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .o3 .frameimg{margin-top:34px;width:min(560px,90%);aspect-ratio:21/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .o3 .frameimg img{width:100%;height:100%;object-fit:cover}
+
+  /* ====== OPTION 4 — Warm Kiez Magazine ====== */
+  .o4{position:relative;min-height:520px;background:var(--cream2);overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px;padding:clamp(26px,3vw,48px)}
+  .o4 .blob{position:absolute;right:-6%;top:-10%;width:60%;height:120%;background:radial-gradient(circle at 50% 50%,var(--terra),var(--orange));opacity:.16;border-radius:46% 54% 60% 40%/50% 40% 60% 50%;filter:blur(8px);animation:morph 14s ease-in-out infinite}
+  @keyframes morph{0%,100%{border-radius:46% 54% 60% 40%/50% 40% 60% 50%}50%{border-radius:60% 40% 40% 60%/40% 60% 50% 50%}}
+  .o4 .text{position:relative}
+  .o4 .hello{font:500 italic 1.15rem/1 var(--serif);color:var(--terra)}
+  .o4 h1{font:500 clamp(1.9rem,1rem+3.6vw,3.2rem)/1.04 var(--serif);letter-spacing:-.01em;margin:10px 0 14px;color:var(--ink)}
+  .o4 p{color:var(--ink-soft);max-width:40ch;margin-bottom:22px}
+  .o4 .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .o4 .arrow{font:500 italic .95rem/1 var(--serif);color:var(--brown)}
+  .o4 .photo{position:relative;justify-self:center}
+  .o4 .photo img{width:min(280px,40vw);aspect-ratio:3/4;object-fit:cover;border-radius:200px 200px 18px 18px;box-shadow:var(--shadow)}
+  .o4 .badge{position:absolute;bottom:14px;left:-18px;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:var(--shadow);font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:8px}
+
+  /* ====== OPTION 5 — Bold Statement Type ====== */
+  .o5{position:relative;min-height:520px;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,4vw,56px);overflow:hidden}
+  .o5 .photo{position:absolute;right:0;top:0;height:100%;width:42%;object-fit:cover;opacity:.9;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%);mask-image:linear-gradient(90deg,transparent,#000 38%)}
+  .o5 .kick{font:600 .76rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--orange);position:relative}
+  .o5 h1{position:relative;font:600 clamp(2.4rem,1rem+7vw,5.2rem)/.95 var(--serif);letter-spacing:-.02em;margin:14px 0;text-transform:uppercase}
+  .o5 h1 .line{display:block;overflow:hidden}
+  .o5 h1 .line span{display:block;transform:translateY(105%);transition:transform .8s cubic-bezier(.22,1,.36,1)}
+  .o5.in h1 .line span{transform:none}
+  .o5 h1 .line:nth-child(2) span{transition-delay:.12s}
+  .o5 h1 em{font-style:italic;color:var(--orange);text-transform:none}
+  .o5 p{position:relative;color:rgba(249,246,242,.72);max-width:40ch;margin-bottom:26px}
+  .o5 .cta-row{position:relative;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .o5 .btn-ghost{border-color:rgba(249,246,242,.5);color:var(--cream)}.o5 .btn-ghost:hover{background:var(--cream);color:var(--ink)}
+
+  @media (max-width:760px){
+    .o2,.o4{grid-template-columns:1fr}
+    .o2 .img{min-height:240px}
+    .o4 .photo{display:none}
+    .o5 .photo{width:100%;opacity:.25;-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%);mask-image:linear-gradient(180deg,transparent,#000 60%)}
+  }
+  .footnote{max-width:1100px;margin:6px auto 70px;padding:0 24px;color:var(--ink-soft);font-size:.85rem}
+</style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="kicker">Hair Power · Sektion 2 / Hero</div>
+    <h1>5 Hero-Optionen zur Auswahl</h1>
+    <p>Alle in der warm‑modern‑cleanen DNA, mit echten Hair‑Power‑Inhalten (Claim, „ohne Termin", 4,3★ · 254 Bewertungen). Bilder sind Unsplash‑Platzhalter – dein Efeu‑Fassaden‑Foto ersetzt sie später. Scrolle langsam: jede Hero hat ihre eigene Reveal‑Animation.</p>
+  </header>
+
+  <!-- OPTION 1 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 1</span><h2>Cinematic Full‑Bleed</h2><span class="tag">Großes Salon‑Foto · Slow‑Zoom · Text‑Overlay · Live‑Status</span></div>
+    <div class="frame"><div class="o1" data-anim>
+      <div class="bg"></div><div class="scrim"></div>
+      <div class="inner">
+        <span class="pill chip reveal"><span class="dot live"></span> Jetzt geöffnet · bis 18:00</span>
+        <h1 class="reveal d1">Dein Look. <em>Dein Moment.</em><br>Mitten im Kreuzviertel.</h1>
+        <p class="reveal d2">Friseurmeisterbetrieb seit über 15 Jahren – Damen, Herren & Kinder. Komm einfach vorbei, ganz ohne Termin.</p>
+        <div class="cta-row reveal d3"><a class="btn btn-terra">Termin buchen</a><a class="btn btn-ghost" style="border-color:rgba(255,255,255,.5);color:#fff">Leistungen ansehen</a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 2 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 2</span><h2>Split Editorial</h2><span class="tag">Text links · Bild‑Reveal rechts (Clip‑Wipe) · Trust‑Zeile</span></div>
+    <div class="frame"><div class="o2" data-anim>
+      <div class="text">
+        <span class="kick reveal">The Art of Hair Power</span>
+        <h1 class="reveal d1">Frisuren für Dich – <em>ehrlich & typgerecht.</em></h1>
+        <p class="reveal d2">Die fachliche Kunst des Schneidens, Färbens und Verwöhnens. Natürliche, frische, elegante Schönheit für Alltag und besondere Anlässe.</p>
+        <div class="cta-row reveal d3"><a class="btn btn-dark">Termin buchen</a><a class="btn btn-ghost">Ohne Termin vorbeikommen</a></div>
+        <div class="trust reveal d4"><span class="stars">★★★★☆</span> <b>4,3</b> · 254 Google‑Bewertungen</div>
+      </div>
+      <div class="img"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=70" alt="Salon"></div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 3 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 3</span><h2>Centered Minimal</h2><span class="tag">Maximal ruhig · zentriert · Terracotta‑Divider · Bild‑Streifen</span></div>
+    <div class="frame"><div class="o3" data-anim>
+      <span class="kick reveal">Friseur Münster · Kreuzviertel · ohne Termin</span>
+      <div class="divider"></div>
+      <h1 class="reveal d1">Style zu Mensch.<br>Passender Look. Zufriedenheit.</h1>
+      <p class="reveal d2">Ein Meisterbetrieb, der zuhört. Einfach, natürlich, elegant – für jeden Tag.</p>
+      <div class="cta-row reveal d3"><a class="btn btn-dark">Termin buchen</a><a class="btn btn-ghost">Unser Team</a></div>
+      <div class="frameimg reveal d4"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1100&q=70" alt="Salon"></div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 4 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 4</span><h2>Warm Kiez‑Magazine</h2><span class="tag">Organische Form · Portrait‑Card · handschriftliche Akzente · Badge</span></div>
+    <div class="frame"><div class="o4" data-anim>
+      <div class="blob"></div>
+      <div class="text">
+        <span class="hello reveal">Willkommen bei Hair Power 👋</span>
+        <h1 class="reveal d1">Dein Lieblings‑Friseur im Kreuzviertel.</h1>
+        <p class="reveal d2">Ohne Stress, ohne Termin – auch mit dem Fahrrad. Bei uns bekommst du den Kopf frei.</p>
+        <div class="cta-row reveal d3"><a class="btn btn-terra">Termin buchen</a><span class="arrow">↳ oder einfach reinkommen!</span></div>
+      </div>
+      <div class="photo reveal d2">
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=700&q=70" alt="Friseurin">
+        <div class="badge"><span class="stars">★</span> 4,3 · 254 Bewertungen</div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 5 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 5</span><h2>Bold Statement Type</h2><span class="tag">Übergroße Typo · Zeilen‑Reveal · Foto seitlich maskiert · dunkel</span></div>
+    <div class="frame"><div class="o5" data-anim>
+      <img class="photo" src="https://images.unsplash.com/photo-1599387737838-626c8f6deba0?auto=format&fit=crop&w=900&q=70" alt="Haarschnitt">
+      <span class="kick">Hair Power · Münster</span>
+      <h1><span class="line"><span>Frisuren</span></span><span class="line"><span>für <em>Dich.</em></span></span></h1>
+      <p>Meisterhandwerk im Kreuzviertel. Schnitt, Farbe, Balayage – ganz ohne Termin.</p>
+      <div class="cta-row"><a class="btn btn-terra">Termin buchen</a><a class="btn btn-ghost">Leistungen & Preise</a></div>
+    </div></div>
+  </section>
+
+  <p class="footnote">Bilder: Unsplash‑Platzhalter (legal, lizenzfrei). In der echten Seite via <code>next/image</code> optimiert (WebP/AVIF, lazy‑load) – dein Salon‑/Team‑Foto ersetzt die Platzhalter.</p>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{
+    if(e.isIntersecting){const r=e.target;r.classList.add('in');r.querySelectorAll('.reveal').forEach(x=>x.classList.add('in'));}
+  })},{threshold:.35});
+  document.querySelectorAll('[data-anim]').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
