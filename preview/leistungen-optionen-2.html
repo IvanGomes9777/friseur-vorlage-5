@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hair Power · Leistungen 6–10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F9F6F2;--cream2:#F2ECE3;--ink:#2A211B;--ink-soft:#6B5D50;
+    --brown:#8B6F47;--brown-d:#6E5535;--terra:#CC7755;--sage:#B5B5A0;--orange:#F4A460;
+    --line:rgba(42,33,27,.14);--serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,sans-serif;
+    --shadow:0 18px 50px -22px rgba(42,33,27,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#E7DFD4;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+  .page-head{max-width:1100px;margin:0 auto;padding:48px 24px 8px}
+  .page-head .kicker{font:600 .8rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+  .page-head h1{font:600 clamp(1.8rem,1.2rem+2.8vw,3rem)/1.05 var(--serif)}
+  .page-head p{max-width:62ch;margin-top:14px;color:var(--ink-soft)}
+  .demo{max-width:1100px;margin:34px auto;padding:0 24px}
+  .label{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .label .num{font:600 .85rem/1 var(--sans);background:var(--ink);color:var(--cream);padding:7px 12px;border-radius:999px}
+  .label h2{font:600 1.35rem/1.1 var(--serif)}
+  .label .tag{font-size:.86rem;color:var(--ink-soft)}
+  .frame{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6);background:var(--cream);position:relative}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.06s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.22s}.reveal.d4{transition-delay:.30s}
+  .sec-kick{font:600 .76rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+  .sec-h{font:500 clamp(1.6rem,1rem+2.4vw,2.4rem)/1.05 var(--serif);margin-top:10px}
+
+  /* ===== OPTION 6 — Horizontal Snap-Carousel ===== */
+  .o6{padding:clamp(26px,3vw,44px) 0 clamp(26px,3vw,44px) clamp(26px,3vw,44px)}
+  .o6 .head{padding-right:clamp(26px,3vw,44px)}
+  .o6 .track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:22px 44px 14px 0;-webkit-overflow-scrolling:touch}
+  .o6 .track::-webkit-scrollbar{height:8px}.o6 .track::-webkit-scrollbar-thumb{background:rgba(42,33,27,.2);border-radius:8px}
+  .o6 .c{scroll-snap-align:start;flex:0 0 240px;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .3s}
+  .o6 .c:hover{transform:translateY(-5px)}
+  .o6 .c .img{height:130px;background-size:cover;background-position:center}
+  .o6 .c .b{padding:16px 18px}
+  .o6 .c h3{font:500 1.15rem var(--serif)}
+  .o6 .c p{font-size:.85rem;color:var(--ink-soft);margin:5px 0 10px}
+  .o6 .c .p{font-weight:700;color:var(--brown-d)}
+  .o6 .hint{padding-right:44px;margin-top:6px;font-size:.8rem;color:var(--ink-soft)}
+
+  /* ===== OPTION 7 — Vertikale Kategorie-Navigation ===== */
+  .o7{display:grid;grid-template-columns:.42fr .58fr;min-height:360px}
+  .o7 .nav{background:var(--cream2);padding:clamp(22px,3vw,38px)}
+  .o7 .nav .sec-kick{margin-bottom:14px;display:block}
+  .o7 .nav button{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;cursor:pointer;text-align:left;font:500 1.15rem var(--serif);color:var(--ink-soft);padding:13px 0;border-bottom:1px solid var(--line);min-height:44px;transition:color .2s}
+  .o7 .nav button.active{color:var(--ink)}
+  .o7 .nav button.active::after{content:"→";color:var(--terra)}
+  .o7 .panel{padding:clamp(22px,3vw,38px);background:var(--cream)}
+  .o7 .pane{display:none}.o7 .pane.show{display:block;animation:slidein .4s ease}
+  @keyframes slidein{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+  .o7 .row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .o7 .row .p{font-weight:600;color:var(--brown-d)}
+
+  /* ===== OPTION 8 — Numbered Editorial ===== */
+  .o8{padding:clamp(26px,3vw,46px)}
+  .o8 .list{margin-top:22px}
+  .o8 .row{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:18px 14px;border-top:1px solid var(--line);overflow:hidden}
+  .o8 .row:last-child{border-bottom:1px solid var(--line)}
+  .o8 .row .bar{position:absolute;inset:0;background:var(--cream2);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:0}
+  .o8 .row:hover .bar{transform:scaleX(1)}
+  .o8 .row>*{position:relative;z-index:1}
+  .o8 .idx{font:600 .9rem var(--sans);color:var(--terra)}
+  .o8 .row h3{font:500 clamp(1.2rem,.9rem+1vw,1.7rem) var(--serif)}
+  .o8 .row .d{font-size:.82rem;color:var(--ink-soft)}
+  .o8 .row .p{font:600 1.1rem var(--sans);color:var(--ink);font-variant-numeric:tabular-nums}
+
+  /* ===== OPTION 9 — Service-Reise / Steps ===== */
+  .o9{padding:clamp(26px,3vw,46px)}
+  .o9 .steps{margin-top:24px;display:grid;gap:0;position:relative}
+  .o9 .steps::before{content:"";position:absolute;left:23px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--terra),var(--orange));opacity:.5}
+  .o9 .step{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:start;padding:14px 0}
+  .o9 .dot{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--terra);display:grid;place-items:center;font-size:1.3rem;z-index:1}
+  .o9 .step h3{font:500 1.25rem var(--serif)}
+  .o9 .step p{font-size:.88rem;color:var(--ink-soft);max-width:42ch}
+  .o9 .step .p{font-weight:700;color:var(--brown-d);white-space:nowrap}
+
+  /* ===== OPTION 10 — Bento Grid ===== */
+  .o10{padding:clamp(22px,3vw,40px)}
+  .o10 .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:120px;gap:12px;margin-top:20px}
+  .o10 .t{border-radius:16px;padding:18px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s}
+  .o10 .t:hover{transform:translateY(-4px)}
+  .o10 .t .p{font:700 1.15rem var(--sans);color:var(--brown-d)}
+  .o10 .t .n{font:500 1.05rem var(--serif)}
+  .o10 .feature{grid-column:span 2;grid-row:span 2;background:linear-gradient(135deg,var(--brown),var(--brown-d));color:#fff}
+  .o10 .feature .p{color:#fff;font-size:1.5rem}
+  .o10 .feature .sec-kick{color:var(--orange)}
+  .o10 .photo{grid-column:span 2;background-size:cover;background-position:center;border:none}
+  .o10 .dark{background:var(--ink);color:var(--cream)}.o10 .dark .n{color:var(--cream)}
+  .o10 .terra{background:rgba(204,119,85,.14)}
+
+  @media (max-width:760px){
+    .o7{grid-template-columns:1fr}
+    .o10 .bento{grid-template-columns:repeat(2,1fr)}
+    .o10 .feature{grid-column:span 2}
+    .o10 .photo{grid-column:span 2}
+  }
+  .footnote{max-width:1100px;margin:6px auto 70px;padding:0 24px;color:var(--ink-soft);font-size:.85rem}
+</style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="kicker">Hair Power · Sektion 3 / Leistungen · Runde 2</div>
+    <h1>5 weitere Optionen (6–10)</h1>
+    <p>Andere Layout-Logiken: Karussell, Kategorie-Navigation, Editorial-Liste, Service-Reise, Bento-Grid. Echte Preise. Option 7 = Kategorien links klicken.</p>
+  </header>
+
+  <!-- OPTION 6 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 6</span><h2>Snap-Carousel</h2><span class="tag">Horizontale Karten mit Bild · Touch-Swipe · mobil stark</span></div>
+    <div class="frame"><div class="o6" data-anim>
+      <div class="head"><span class="sec-kick reveal">Unsere Services</span><h2 class="sec-h reveal d1">Wisch dich durch</h2></div>
+      <div class="track">
+        <div class="c"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=500&q=60')"></div><div class="b"><h3>Schnitt</h3><p>Waschen · Schneiden · Föhnen</p><div class="p">ab 26,50 €</div></div></div>
+        <div class="c"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=60')"></div><div class="b"><h3>Farbe</h3><p>Färbung & Tönung</p><div class="p">ab 39,50 €</div></div></div>
+        <div class="c"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=500&q=60')"></div><div class="b"><h3>Balayage</h3><p>Sanfte Verläufe</p><div class="p">ab 135 €</div></div></div>
+        <div class="c"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=500&q=60')"></div><div class="b"><h3>Herren</h3><p>Cut · Kontur · Bart</p><div class="p">ab 16 €</div></div></div>
+        <div class="c"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=500&q=60')"></div><div class="b"><h3>Anlass</h3><p>Hochsteckfrisuren</p><div class="p">ab 45 €</div></div></div>
+      </div>
+      <div class="hint">← → ziehen / wischen</div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 7 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 7</span><h2>Kategorie-Navigation</h2><span class="tag">Liste links wählen · Preise rechts · sehr aufgeräumt</span></div>
+    <div class="frame"><div class="o7" data-anim>
+      <div class="nav">
+        <span class="sec-kick">Kategorien</span>
+        <button class="active" data-t="c1">Damen · Schnitt</button>
+        <button data-t="c2">Farbe & Balayage</button>
+        <button data-t="c3">Herren</button>
+        <button data-t="c4">Kinder & Anlass</button>
+      </div>
+      <div class="panel">
+        <div class="pane show" data-p="c1">
+          <div class="row"><span>Waschen · Schneiden · Föhnen</span><span class="p">37,50 €</span></div>
+          <div class="row"><span>Anfeuchten · Schneiden</span><span class="p">26,50 €</span></div>
+          <div class="row"><span>Pony schneiden</span><span class="p">7,00 €</span></div>
+          <div class="row"><span>Glätten (extra)</span><span class="p">ab 15,00 €</span></div>
+        </div>
+        <div class="pane" data-p="c2">
+          <div class="row"><span>Haarfärbung (Neu)</span><span class="p">ab 39,50 €</span></div>
+          <div class="row"><span>Tönung</span><span class="p">ab 26,50 €</span></div>
+          <div class="row"><span>Foliensträhnen</span><span class="p">45,50–61 €</span></div>
+          <div class="row"><span>Balayage</span><span class="p">ab 135,00 €</span></div>
+        </div>
+        <div class="pane" data-p="c3">
+          <div class="row"><span>Waschen · Schneiden · Föhnen</span><span class="p">26,50 €</span></div>
+          <div class="row"><span>Maschinenschnitt</span><span class="p">16,00 €</span></div>
+          <div class="row"><span>Konturenschnitt</span><span class="p">15,00 €</span></div>
+          <div class="row"><span>Bart schneiden</span><span class="p">8,00 €</span></div>
+        </div>
+        <div class="pane" data-p="c4">
+          <div class="row"><span>Kinderschnitt</span><span class="p">auf Anfrage</span></div>
+          <div class="row"><span>Hochsteckfrisur</span><span class="p">ab 45,00 €</span></div>
+          <div class="row"><span>Dauerwelle</span><span class="p">ab 49,50 €</span></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 8 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 8</span><h2>Numbered Editorial</h2><span class="tag">Große nummerierte Zeilen · Hover-Balken · sehr edel</span></div>
+    <div class="frame"><div class="o8" data-anim>
+      <span class="sec-kick reveal">Leistungen</span>
+      <h2 class="sec-h reveal d1">Handwerk mit Haltung</h2>
+      <div class="list reveal d2">
+        <div class="row"><span class="bar"></span><span class="idx">01</span><div><h3>Schnitt & Styling</h3><div class="d">Waschen · Schneiden · Föhnen</div></div><span class="p">ab 26,50 €</span></div>
+        <div class="row"><span class="bar"></span><span class="idx">02</span><div><h3>Farbe & Tönung</h3><div class="d">individuelle Farbberatung</div></div><span class="p">ab 39,50 €</span></div>
+        <div class="row"><span class="bar"></span><span class="idx">03</span><div><h3>Balayage & Strähnen</h3><div class="d">Signature-Technik</div></div><span class="p">ab 135 €</span></div>
+        <div class="row"><span class="bar"></span><span class="idx">04</span><div><h3>Herren</h3><div class="d">Cut · Kontur · Bartpflege</div></div><span class="p">ab 16 €</span></div>
+        <div class="row"><span class="bar"></span><span class="idx">05</span><div><h3>Anlass & Hochzeit</h3><div class="d">Hochsteckfrisuren</div></div><span class="p">ab 45 €</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 9 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 9</span><h2>Service-Reise</h2><span class="tag">Ablauf als Schritte · Storytelling · Vertrauen</span></div>
+    <div class="frame"><div class="o9" data-anim>
+      <span class="sec-kick reveal">So läuft dein Besuch</span>
+      <h2 class="sec-h reveal d1">Von der Beratung bis zum Finish</h2>
+      <div class="steps reveal d2">
+        <div class="step"><div class="dot">💬</div><div><h3>Beratung</h3><p>Wir hören zu – ehrlich, was zu dir passt.</p></div><span class="p">kostenlos</span></div>
+        <div class="step"><div class="dot">✂️</div><div><h3>Schnitt</h3><p>Waschen, Schneiden, Föhnen – typgerecht.</p></div><span class="p">ab 26,50 €</span></div>
+        <div class="step"><div class="dot">🎨</div><div><h3>Farbe & Balayage</h3><p>Natürliche Tiefe, individuell abgestimmt.</p></div><span class="p">ab 39,50 €</span></div>
+        <div class="step"><div class="dot">✨</div><div><h3>Finish & Pflege</h3><p>Styling-Tipps für zuhause inklusive.</p></div><span class="p">inklusive</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- OPTION 10 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 10</span><h2>Bento-Grid</h2><span class="tag">Gemischte Kacheln · Signature groß · Foto + „ohne Termin"</span></div>
+    <div class="frame"><div class="o10" data-anim>
+      <span class="sec-kick reveal">Leistungen & Preise</span>
+      <div class="bento reveal d1">
+        <div class="t feature"><span class="sec-kick">Signature</span><div><div class="n" style="color:#fff;font-size:1.3rem">Balayage & Farbe</div><p style="color:rgba(255,255,255,.8);font-size:.85rem;margin-top:6px">Sanfte Verläufe, strahlende Tiefe.</p></div><div class="p">ab 135 €</div></div>
+        <div class="t"><div class="n">Schnitt</div><div class="p">ab 26,50 €</div></div>
+        <div class="t terra"><div class="n">Tönung</div><div class="p">ab 26,50 €</div></div>
+        <div class="t"><div class="n">Foliensträhnen</div><div class="p">ab 45,50 €</div></div>
+        <div class="t dark"><div class="n">Herren-Cut</div><div class="p" style="color:var(--orange)">ab 16 €</div></div>
+        <div class="t photo" style="background-image:url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=60')"></div>
+        <div class="t"><div class="n">Hochsteckfrisur</div><div class="p">ab 45 €</div></div>
+        <div class="t terra"><div class="n">Bart</div><div class="p">8 €</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <p class="footnote">Bilder in 6/10: Unsplash-Platzhalter – ersetzbar durch eigene Salon-/Werk-Fotos. Alles datengetrieben in Next.js (zentrale Preis-Datei).</p>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.reveal').forEach(x=>x.classList.add('in'));}})},{threshold:.2});
+  document.querySelectorAll('[data-anim]').forEach(el=>io.observe(el));
+  document.querySelectorAll('.o7 .nav button').forEach(b=>b.addEventListener('click',()=>{
+    const r=b.closest('.o7');r.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    r.querySelectorAll('.pane').forEach(p=>p.classList.toggle('show',p.dataset.p===b.dataset.t));
+  }));
+</script>
+</body>
+</html>
