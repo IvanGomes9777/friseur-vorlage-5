@@ -25,9 +25,14 @@ const config: Config = {
           "70%": { boxShadow: "0 0 0 7px rgba(155,230,160,0)" },
           "100%": { boxShadow: "0 0 0 0 rgba(155,230,160,0)" },
         },
+        "slow-zoom": {
+          "0%": { transform: "scale(1.12)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         "pulse-ring": "pulse-ring 2s infinite",
+        "slow-zoom": "slow-zoom 18s ease-out forwards",
       },
     },
   },
