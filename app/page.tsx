@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Leistungen from "@/components/Leistungen";
+import Team from "@/components/Team";
 
 export default function Home() {
   return (
@@ -8,10 +9,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Leistungen />
+      <Team />
 
       {/* Anker-Platzhalter für die folgenden Sektionen */}
       {[
-        ["team", "Team"],
         ["galerie", "Galerie"],
         ["bewertungen", "Bewertungen"],
         ["kontakt", "Kontakt"],
