@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hair Power · 5 Kontakt-Optionen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F9F6F2;--cream2:#F2ECE3;--ink:#2A211B;--ink-soft:#6B5D50;
+    --brown:#8B6F47;--brown-d:#6E5535;--terra:#CC7755;--sage:#B5B5A0;--orange:#F4A460;
+    --line:rgba(42,33,27,.14);--serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,sans-serif;
+    --shadow:0 18px 50px -22px rgba(42,33,27,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#E7DFD4;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+  .page-head{max-width:1100px;margin:0 auto;padding:48px 24px 8px}
+  .page-head .kicker{font:600 .8rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+  .page-head h1{font:600 clamp(1.8rem,1.2rem+2.8vw,3rem)/1.05 var(--serif)}
+  .page-head p{max-width:62ch;margin-top:14px;color:var(--ink-soft)}
+  .demo{max-width:1100px;margin:34px auto;padding:0 24px}
+  .label{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .label .num{font:600 .85rem/1 var(--sans);background:var(--ink);color:var(--cream);padding:7px 12px;border-radius:999px}
+  .label h2{font:600 1.35rem/1.1 var(--serif)}
+  .label .tag{font-size:.86rem;color:var(--ink-soft)}
+  .frame{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6);background:var(--cream);position:relative}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+  .sec-kick{font:600 .76rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+  .sec-h{font:500 clamp(1.6rem,1rem+2.4vw,2.4rem)/1.05 var(--serif);margin-top:10px}
+
+  /* form bits */
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:.78rem;font-weight:600;color:var(--ink-soft);margin-bottom:5px}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:.9rem;background:#fff;min-height:44px}
+  .field textarea{min-height:84px;resize:vertical}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--terra);outline-offset:1px;border-color:transparent}
+  .consent{display:flex;gap:9px;font-size:.78rem;color:var(--ink-soft);margin:6px 0 12px}
+  .consent a{color:var(--brown-d)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:13px;font-weight:600;font-size:.92rem;text-decoration:none;border:none;cursor:pointer;background:var(--terra);color:#fff;transition:transform .2s,background .2s}
+  .btn:hover{background:var(--brown-d);transform:translateY(-2px)}
+  .cap{font-size:.72rem;color:var(--ink-soft);margin-top:8px}
+  .info-row{display:flex;gap:11px;align-items:flex-start;padding:9px 0}
+  .info-row .i{width:34px;height:34px;border-radius:9px;background:rgba(204,119,85,.14);display:grid;place-items:center;flex:none}
+  .info-row b{font-size:.92rem}.info-row span{font-size:.86rem;color:var(--ink-soft)}
+  .hours{width:100%;font-size:.88rem}
+  .hours div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .hours .now{color:var(--brown-d);font-weight:600}
+  .walkin{display:inline-flex;align-items:center;gap:8px;background:rgba(155,181,160,.22);color:var(--brown-d);font-size:.8rem;font-weight:600;padding:7px 13px;border-radius:999px;margin-top:6px}
+  .walkin .dot{width:8px;height:8px;border-radius:50%;background:#3FA060}
+
+  /* DSGVO map placeholder */
+  .map{position:relative;border-radius:14px;overflow:hidden;min-height:200px;background:
+    linear-gradient(rgba(181,181,160,.25),rgba(181,181,160,.25)),
+    repeating-linear-gradient(0deg,#e9e4da,#e9e4da 18px,#f3efe7 18px,#f3efe7 36px),
+    repeating-linear-gradient(90deg,#e9e4da,#e9e4da 18px,#f3efe7 18px,#f3efe7 36px);display:grid;place-items:center;text-align:center}
+  .map .load{background:rgba(255,255,255,.92);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);max-width:240px}
+  .map .load b{font-size:.92rem}.map .load p{font-size:.74rem;color:var(--ink-soft);margin:5px 0 10px}
+  .map .pin{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font-size:1.6rem;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+
+  /* ===== O1 Split ===== */
+  .o1{padding:clamp(26px,3vw,46px)}
+  .o1 .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px}
+  .o1 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+  /* ===== O2 Map-first ===== */
+  .o2 .maptop{min-height:240px}
+  .o2 .body{padding:clamp(24px,3vw,42px);display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:-60px}
+  .o2 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+  /* ===== O3 Two cards ===== */
+  .o3{padding:clamp(26px,3vw,46px)}
+  .o3 .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+  .o3 .card{border-radius:18px;padding:24px}
+  .o3 .visit{background:var(--brown);color:#fff}
+  .o3 .visit .info-row .i{background:rgba(255,255,255,.15)}.o3 .visit .info-row span{color:rgba(255,255,255,.8)}
+  .o3 .visit .hours div{border-color:rgba(255,255,255,.2)}.o3 .visit .hours .now{color:#fff}
+  .o3 .write{background:#fff;border:1px solid var(--line)}
+  /* ===== O4 Centered ===== */
+  .o4{padding:clamp(28px,3vw,48px);text-align:center;background:radial-gradient(120% 80% at 50% 0,var(--cream) 0,var(--cream2) 100%)}
+  .o4 .infogrid{display:flex;justify-content:center;flex-wrap:wrap;gap:26px;margin:22px 0 24px}
+  .o4 .infogrid .it{min-width:150px}.o4 .infogrid .it b{display:block;font-family:var(--serif);font-size:1.05rem}.o4 .infogrid .it span{font-size:.85rem;color:var(--ink-soft)}
+  .o4 form{max-width:440px;margin:0 auto;text-align:left}
+  /* ===== O5 Big CTA ===== */
+  .o5{display:grid;grid-template-columns:1.1fr .9fr}
+  .o5 .left{background:var(--ink);color:var(--cream);padding:clamp(26px,3vw,46px);display:flex;flex-direction:column;justify-content:center}
+  .o5 .left h2{font:500 clamp(1.8rem,1rem+3vw,2.8rem)/1.05 var(--serif)}
+  .o5 .left .sec-kick{color:var(--orange)}
+  .o5 .left .info-row .i{background:rgba(255,255,255,.12)}.o5 .left .info-row span{color:rgba(249,246,242,.7)}
+  .o5 .left .walkin{background:rgba(244,164,96,.2);color:var(--orange)}
+  .o5 .right{padding:clamp(24px,3vw,42px);background:var(--cream)}
+
+  @media (max-width:760px){
+    .o1 .cols,.o2 .body,.o3 .cols,.o5{grid-template-columns:1fr}
+    .o2 .body{margin-top:18px}
+    .o5 .left{order:0}
+  }
+  .footnote{max-width:1100px;margin:6px auto 70px;padding:0 24px;color:var(--ink-soft);font-size:.85rem}
+</style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="kicker">Hair Power · Sektion 6 / Kontakt</div>
+    <h1>5 Optionen für Kontakt & Anfahrt</h1>
+    <p>Alle mit DSGVO-Karte (Klick zum Laden), Öffnungszeiten, Walk-In-Hinweis und Formular. Klick die „Karte laden"-Buttons zum Testen.</p>
+  </header>
+
+  <!-- O1 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 1</span><h2>Split: Info / Formular</h2><span class="tag">Klassisch · Infos + Karte links, Formular rechts</span></div>
+    <div class="frame"><div class="o1" data-anim>
+      <span class="sec-kick reveal">Kontakt</span><h2 class="sec-h reveal d1">Komm vorbei oder schreib uns</h2>
+      <div class="cols">
+        <div class="card reveal d1">
+          <div class="info-row"><div class="i">📍</div><div><b>Grevener Str. 63</b><br><span>48149 Münster · York Center, Kreuzviertel</span></div></div>
+          <div class="info-row"><div class="i">📞</div><div><b>0251 5340748</b><br><span>info@friseur-hairpower.de</span></div></div>
+          <span class="walkin"><span class="dot"></span> Friseur ohne Termin – einfach reinkommen</span>
+          <div class="map" style="margin-top:16px"><div class="pin">📍</div><div class="load"><b>Karte ansehen</b><p>Lädt Google Maps erst nach Klick (DSGVO).</p><button class="btn" onclick="this.closest('.map').innerHTML='<div style=\'padding:20px;font-size:.85rem;color:#6B5D50\'>🗺️ Karte würde hier laden</div>'">Karte laden</button></div></div>
+        </div>
+        <div class="card reveal d2">
+          <form onsubmit="return false">
+            <div class="field"><label>Name</label><input placeholder="Dein Name"></div>
+            <div class="field"><label>E-Mail</label><input type="email" placeholder="du@beispiel.de"></div>
+            <div class="field"><label>Telefon (optional)</label><input placeholder="0251 …"></div>
+            <div class="field"><label>Nachricht</label><textarea placeholder="Worum geht's?"></textarea></div>
+            <div class="consent"><input type="checkbox"><span>Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</span></div>
+            <button class="btn" style="width:100%">Nachricht senden</button>
+            <div class="cap">🔒 Spam-Schutz via Friendly Captcha (DSGVO-konform)</div>
+          </form>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- O2 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 2</span><h2>Map-first</h2><span class="tag">Karte oben breit, Karten überlappen · modern</span></div>
+    <div class="frame"><div class="o2" data-anim>
+      <div class="map maptop"><div class="pin">📍</div><div class="load"><b>Anfahrt Kreuzviertel</b><p>Klick zum Laden (DSGVO).</p><button class="btn" onclick="this.closest('.map').innerHTML='<div style=\'padding:20px;color:#6B5D50\'>🗺️ Karte geladen</div>'">Karte laden</button></div></div>
+      <div class="body">
+        <div class="card reveal">
+          <span class="sec-kick">Besuch uns</span>
+          <div class="info-row" style="margin-top:8px"><div class="i">📍</div><div><b>Grevener Str. 63</b><br><span>48149 Münster · York Center</span></div></div>
+          <div class="info-row"><div class="i">🕐</div><div><b>Öffnungszeiten</b></div></div>
+          <div class="hours"><div><span>Mo</span><span>Ruhetag</span></div><div class="now"><span>Di–Fr</span><span>08:30–18:00</span></div><div><span>Sa</span><span>08:00–13:00</span></div></div>
+        </div>
+        <div class="card reveal d1">
+          <form onsubmit="return false">
+            <div class="field"><label>Name</label><input placeholder="Dein Name"></div>
+            <div class="field"><label>E-Mail</label><input type="email" placeholder="du@beispiel.de"></div>
+            <div class="field"><label>Nachricht</label><textarea placeholder="Deine Nachricht"></textarea></div>
+            <div class="consent"><input type="checkbox"><span>Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</span></div>
+            <button class="btn" style="width:100%">Senden</button>
+          </form>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- O3 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 3</span><h2>Zwei Karten</h2><span class="tag">„Besuch uns" (dunkel) + „Schreib uns" · klare Trennung</span></div>
+    <div class="frame"><div class="o3" data-anim>
+      <span class="sec-kick reveal">Kontakt</span><h2 class="sec-h reveal d1">Wir freuen uns auf dich</h2>
+      <div class="cols">
+        <div class="card visit reveal d1">
+          <div class="info-row"><div class="i">📍</div><div><b>Grevener Str. 63</b><br><span>48149 Münster · Kreuzviertel</span></div></div>
+          <div class="info-row"><div class="i">📞</div><div><b>0251 5340748</b><br><span>info@friseur-hairpower.de</span></div></div>
+          <div class="hours" style="margin-top:8px"><div><span>Mo</span><span>Ruhetag</span></div><div class="now"><span>Di–Fr</span><span>08:30–18:00</span></div><div><span>Sa</span><span>08:00–13:00</span></div></div>
+          <div class="map" style="margin-top:16px;min-height:140px"><div class="load"><b>Karte laden</b><p style="margin-bottom:8px">DSGVO – Klick zum Laden</p><button class="btn" onclick="this.closest('.map').innerHTML='<div style=\'padding:16px;color:#6B5D50\'>🗺️ geladen</div>'">Laden</button></div></div>
+        </div>
+        <div class="card write reveal d2">
+          <span class="walkin"><span class="dot"></span> Ohne Termin – Anfrage trotzdem willkommen</span>
+          <form onsubmit="return false" style="margin-top:12px">
+            <div class="field"><label>Name</label><input placeholder="Dein Name"></div>
+            <div class="field"><label>E-Mail</label><input type="email" placeholder="du@beispiel.de"></div>
+            <div class="field"><label>Nachricht</label><textarea placeholder="Worum geht's?"></textarea></div>
+            <div class="consent"><input type="checkbox"><span>Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</span></div>
+            <button class="btn" style="width:100%">Nachricht senden</button>
+            <div class="cap">🔒 Friendly Captcha</div>
+          </form>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- O4 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 4</span><h2>Centered Minimal</h2><span class="tag">Zentriert · Infos in Reihe · Formular gestapelt</span></div>
+    <div class="frame"><div class="o4" data-anim>
+      <span class="sec-kick reveal">Kontakt</span><h2 class="sec-h reveal d1">Schön, dich zu sehen</h2>
+      <div class="infogrid reveal d1">
+        <div class="it"><b>Adresse</b><span>Grevener Str. 63<br>48149 Münster</span></div>
+        <div class="it"><b>Telefon</b><span>0251 5340748</span></div>
+        <div class="it"><b>Öffnung</b><span>Di–Fr 8:30–18:00<br>Sa 8:00–13:00</span></div>
+      </div>
+      <span class="walkin reveal d2"><span class="dot"></span> Friseur ohne Termin</span>
+      <form onsubmit="return false" class="reveal d2" style="margin-top:18px">
+        <div class="field"><label>Name</label><input placeholder="Dein Name"></div>
+        <div class="field"><label>E-Mail</label><input type="email" placeholder="du@beispiel.de"></div>
+        <div class="field"><label>Nachricht</label><textarea placeholder="Deine Nachricht"></textarea></div>
+        <div class="consent"><input type="checkbox"><span>Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</span></div>
+        <button class="btn" style="width:100%">Senden</button>
+      </form>
+    </div></div>
+  </section>
+
+  <!-- O5 -->
+  <section class="demo">
+    <div class="label"><span class="num">Option 5</span><h2>Big CTA (dunkel)</h2><span class="tag">Großes „Komm vorbei" links, Formular rechts</span></div>
+    <div class="frame"><div class="o5" data-anim>
+      <div class="left">
+        <span class="sec-kick">Kontakt & Anfahrt</span>
+        <h2 style="margin:10px 0 14px">Komm vorbei –<br>mitten im Kreuzviertel.</h2>
+        <div class="info-row"><div class="i">📍</div><div><b>Grevener Str. 63</b><br><span>48149 Münster · York Center</span></div></div>
+        <div class="info-row"><div class="i">📞</div><div><b>0251 5340748</b><br><span>info@friseur-hairpower.de</span></div></div>
+        <div class="info-row"><div class="i">🕐</div><div><b>Di–Fr 8:30–18:00 · Sa 8:00–13:00</b><br><span>Montag Ruhetag</span></div></div>
+        <span class="walkin"><span class="dot"></span> Ohne Termin – einfach reinkommen</span>
+      </div>
+      <div class="right">
+        <form onsubmit="return false">
+          <div class="field"><label>Name</label><input placeholder="Dein Name"></div>
+          <div class="field"><label>E-Mail</label><input type="email" placeholder="du@beispiel.de"></div>
+          <div class="field"><label>Telefon (optional)</label><input placeholder="0251 …"></div>
+          <div class="field"><label>Nachricht</label><textarea placeholder="Worum geht's?"></textarea></div>
+          <div class="consent"><input type="checkbox"><span>Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</span></div>
+          <button class="btn" style="width:100%">Nachricht senden</button>
+          <div class="cap">🔒 Spam-Schutz via Friendly Captcha</div>
+        </form>
+      </div>
+    </div></div>
+  </section>
+
+  <p class="footnote">Karte lädt erst nach Klick (kein Google-Request vorab = DSGVO). Formular: Pflichtfelder, Datenschutz-Checkbox, Friendly Captcha (kein reCAPTCHA). Versand später via API-Route/Mail-Service.</p>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.reveal').forEach(x=>x.classList.add('in'));}})},{threshold:.2});
+  document.querySelectorAll('[data-anim]').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
