@@ -19,16 +19,47 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Hair Power · Friseur Münster Kreuzviertel – ohne Termin",
+  metadataBase: new URL("https://friseur-hairpower.de"),
+  title: {
+    default: "Hair Power · Friseur Münster Kreuzviertel – ohne Termin",
+    template: "%s",
+  },
   description:
     "Hair Power by Katja – Friseurmeisterbetrieb im Kreuzviertel Münster. Damen, Herren & Kinder, ohne Termin. Schnitt, Farbe, Balayage. Grevener Str. 63.",
-  metadataBase: new URL("https://friseur-hairpower.de"),
+  keywords: [
+    "Friseur Münster",
+    "Friseur Kreuzviertel",
+    "Friseur ohne Termin Münster",
+    "Balayage Münster",
+    "Herrenfriseur Münster",
+    "Kinderfriseur Münster",
+    "Hair Power Münster",
+  ],
+  alternates: { canonical: "/" },
+  formatDetection: { telephone: true },
   openGraph: {
     title: "Hair Power · Friseur Münster – ohne Termin",
     description:
       "Friseurmeisterbetrieb im Kreuzviertel. Frisuren für Dich – ehrlich, typgerecht. Einfach vorbeikommen.",
+    url: "/",
+    siteName: "Hair Power",
     locale: "de_DE",
     type: "website",
+    images: [
+      {
+        url: "/salon/salon-facade.png",
+        width: 1200,
+        height: 630,
+        alt: "Hair Power Friseursalon im Kreuzviertel Münster",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hair Power · Friseur Münster – ohne Termin",
+    description:
+      "Friseurmeisterbetrieb im Kreuzviertel Münster. Frisuren für Dich – einfach vorbeikommen.",
+    images: ["/salon/salon-facade.png"],
   },
 };
 
@@ -39,7 +70,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className={`${fraunces.variable} ${jakarta.variable}`}>
-      <body>{children}</body>
+      <body>
+        <a
+          href="#top"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-cream"
+        >
+          Zum Inhalt springen
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

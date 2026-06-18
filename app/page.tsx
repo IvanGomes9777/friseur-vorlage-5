@@ -6,10 +6,12 @@ import Bewertungen from "@/components/Bewertungen";
 import Galerie from "@/components/Galerie";
 import Kontakt from "@/components/Kontakt";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 
 export default function Home() {
   return (
     <main id="top">
+      <JsonLd />
       <Navbar />
       <Hero />
       <Leistungen />
