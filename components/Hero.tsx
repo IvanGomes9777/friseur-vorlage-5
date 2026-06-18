@@ -11,11 +11,12 @@ import { computeStatus, type OpenStatus } from "@/lib/openingHours";
    Bild via next/image (responsive, AVIF/WebP). 100% responsiv, svh-Höhe.
 --------------------------------------------------------------------------- */
 
+// Deep-Links: springen direkt in den passenden Tab der Leistungs-Sektion
 const CHIPS: { label: string; href: string }[] = [
-  { label: "Damen", href: "#leistungen" },
-  { label: "Herren", href: "#leistungen" },
-  { label: "Kinder", href: "#leistungen" },
-  { label: "Farbe & Balayage", href: "#leistungen" },
+  { label: "Damen", href: "#leistungen-damen" },
+  { label: "Herren", href: "#leistungen-herren" },
+  { label: "Kinder", href: "#leistungen-kinder" },
+  { label: "Farbe & Balayage", href: "#leistungen-damen" },
 ];
 
 function Reveal({

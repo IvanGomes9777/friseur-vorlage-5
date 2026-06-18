@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SERVICE_CATEGORIES,
   OCCASIONS,
@@ -18,6 +18,27 @@ export default function Leistungen() {
   const [active, setActive] = useState(SERVICE_CATEGORIES[0].id);
   const { ref, inView } = useInView<HTMLDivElement>(0.15);
   const cat = SERVICE_CATEGORIES.find((c) => c.id === active)!;
+
+  // Deep-Link: #leistungen-<kategorie> (z. B. aus den Hero-Chips) öffnet den
+  // passenden Tab und scrollt hierher – beim Laden und bei jeder Hash-Änderung.
+  useEffect(() => {
+    const applyHash = () => {
+      const h = window.location.hash.replace(/^#/, "");
+      const prefix = "leistungen-";
+      if (!h.startsWith(prefix)) return;
+      const id = h.slice(prefix.length);
+      if (!SERVICE_CATEGORIES.some((c) => c.id === id)) return;
+      setActive(id);
+      requestAnimationFrame(() =>
+        document
+          .getElementById("leistungen")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      );
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
 
   const reveal = () =>
     `transition-all duration-700 ease-out motion-reduce:transition-none ${
