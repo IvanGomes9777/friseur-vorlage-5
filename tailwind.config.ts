@@ -33,11 +33,21 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(8px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-rev": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         "pulse-ring": "pulse-ring 2s infinite",
         "slow-zoom": "slow-zoom 18s ease-out forwards",
         "fade-in": "fade-in 0.4s ease both",
+        marquee: "marquee 42s linear infinite",
+        "marquee-rev": "marquee-rev 42s linear infinite",
       },
     },
   },

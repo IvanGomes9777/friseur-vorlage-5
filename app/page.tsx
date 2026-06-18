@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Leistungen from "@/components/Leistungen";
 import Team from "@/components/Team";
+import Bewertungen from "@/components/Bewertungen";
 
 export default function Home() {
   return (
@@ -10,11 +11,11 @@ export default function Home() {
       <Hero />
       <Leistungen />
       <Team />
+      <Bewertungen />
 
       {/* Anker-Platzhalter für die folgenden Sektionen */}
       {[
         ["galerie", "Galerie"],
-        ["bewertungen", "Bewertungen"],
         ["kontakt", "Kontakt"],
       ].map(([id, label], i) => (
         <section
