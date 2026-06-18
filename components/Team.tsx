@@ -27,7 +27,7 @@ export default function Team() {
   });
 
   return (
-    <section id="team" className="scroll-mt-28 bg-cream px-6 py-20 sm:py-28">
+    <section id="team" className="scroll-mt-28 bg-cream px-6 py-16 sm:py-24">
       <div ref={ref} className="mx-auto max-w-5xl">
         {/* Kopf */}
         <div {...reveal()}>
@@ -42,14 +42,14 @@ export default function Team() {
         {/* Featured: Katja */}
         <div
           {...reveal(80)}
-          className={`${reveal(80).className} mt-8 grid gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.85fr_1.15fr] sm:items-center`}
+          className={`${reveal(80).className} mt-8 grid gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-stretch`}
         >
-          <div className="group relative aspect-square overflow-hidden">
+          <div className="group relative aspect-[4/3] overflow-hidden sm:aspect-auto">
             <Image
               src={TEAM_LEAD.image}
               alt={TEAM_LEAD.alt}
               fill
-              sizes="(max-width: 640px) 100vw, 45vw"
+              sizes="(max-width: 640px) 100vw, 40vw"
               className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <Shine />
