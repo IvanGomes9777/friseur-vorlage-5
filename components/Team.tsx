@@ -42,15 +42,15 @@ export default function Team() {
         {/* Featured: Katja */}
         <div
           {...reveal(80)}
-          className={`${reveal(80).className} mt-6 grid gap-5 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-stretch`}
+          className={`${reveal(80).className} mt-6 grid gap-5 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-center`}
         >
-          <div className="group relative aspect-[4/3] overflow-hidden sm:aspect-auto">
+          <div className="group relative aspect-[4/5] overflow-hidden">
             <Image
               src={TEAM_LEAD.image}
               alt={TEAM_LEAD.alt}
               fill
               sizes="(max-width: 640px) 100vw, 40vw"
-              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <Shine />
           </div>
