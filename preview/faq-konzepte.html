@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · FAQ – 5 Konzepte</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.23,1,0.32,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(480px,78vh,860px);overflow-y:auto;overflow-x:hidden;position:relative;background:#F9F6F2;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .btn{transition:transform .16s var(--eo),background-color .22s}.btn:active{transform:scale(.97)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--eo),transform .6s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--eo)}.panel.open{grid-template-rows:1fr}.panel>div{overflow:hidden}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}.panel{transition:none}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 09 — FAQ</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Häufige Fragen". Klick öffnet eine Antwort. (FAQPage-Schema fürs SEO bleibt im Live-Code erhalten.)</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Echte FAQ-Antworten · zugänglich (aria-expanded) · FAQPage-Schema im Live-Code.</footer>
+
+<script>
+const FAQS=[
+  ['Brauche ich einen Termin?','Nein – Hair Power arbeitet ohne Termine. Komm einfach vorbei, ganz ohne Anmeldung. Die Wartezeiten sind in der Regel kurz.'],
+  ['Wann habt ihr geöffnet?','Dienstag bis Freitag 08:30–18:00 Uhr und Samstag 08:00–13:00 Uhr. Montag Ruhetag, Sonntag geschlossen.'],
+  ['Wo kann ich parken – und mein Fahrrad abstellen?','Parkplätze direkt am Salon im York Center. Auch deine Leeze kannst du sicher direkt am Salon abstellen.'],
+  ['Wie komme ich mit Bus & Bahn zu euch?','Buslinien 9, 15, 16 sowie die Ringlinie halten in unmittelbarer Nähe. Eingang Catharina-Müller-Str. ist ebenerdig & barrierefrei.'],
+  ['Schneidet ihr auch Kinder?','Ja! Eigener Wartebereich mit Spielecke und altersgerechte Schnitte. Haarschnitt bis 14 Jahre ab 17,50 €.'],
+  ['Was kostet ein Haarschnitt?','Damen Waschen·Schneiden·Föhnen ab 37,50 €, Herren ab 26,50 €, Kinder bis 14 J. 17,50 €. Alle Preise unter „Leistungen“.'],
+  ['Macht ihr auch Farbe und Balayage?','Ja – Färben, Strähnen, Tönen, Grauhaarabdeckung und Balayage (ab 135 €). Auf Hautton & Haartyp abgestimmt, auf Wunsch ammoniakfrei.'],
+  ['Wie kann ich bezahlen?','Du kannst bequem bar oder mit Karte bezahlen.'],
+];
+const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const CONCEPTS={
+
+/* 01 · SINGLE ACCORDION */
+single:{
+  label:'01 · Single-Accordion',
+  blurb:'Eine klare Spalte, Accordion mit +/×, erste Frage offen. Zugänglich & vertraut (aktuell).',
+  motion:'Sanftes Aufklappen (grid-rows), Plus dreht zu ×. Reveal beim Eintritt.',
+  vibe:'Klar · zugänglich',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Häufige Fragen</p>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Gut zu wissen</h2>
+    <div class="acc mt-6 max-w-3xl border-y border-ink/10">${FAQS.map((f,i)=>accItem(f,i,'light')).join('')}</div>
+    ${ctaLine()}
+  </section>${filler('light')}`,
+  init:(vp)=>accInit(vp,0),
+},
+
+/* 02 · TWO COLUMN */
+twocol:{
+  label:'02 · Zwei-Spalten',
+  blurb:'Accordion in zwei Spalten – weniger Scrollen, mehr Übersicht bei vielen Fragen.',
+  motion:'Pro Spalte unabhängig aufklappbar. Reveal-Stagger. Plus dreht.',
+  vibe:'Kompakt · übersichtlich',
+  render:()=>{const half=Math.ceil(FAQS.length/2);return `
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Häufige Fragen</p>
+    <h2 class="reveal mt-3 mb-6 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Gut zu wissen</h2>
+    <div class="acc grid gap-x-10 sm:grid-cols-2">
+      <div class="border-t border-ink/10">${FAQS.slice(0,half).map((f,i)=>accItem(f,i,'light')).join('')}</div>
+      <div class="border-t border-ink/10">${FAQS.slice(half).map((f,i)=>accItem(f,i+half,'light')).join('')}</div>
+    </div>
+    ${ctaLine()}
+  </section>${filler('light')}`;},
+  init:(vp)=>accInit(vp,-1),
+},
+
+/* 03 · SEARCH + ACCORDION */
+search:{
+  label:'03 · Suche + Accordion',
+  blurb:'Suchfeld filtert die Fragen live – ideal, wenn die Liste wächst. App-haft & schnell.',
+  motion:'Live-Filter beim Tippen, Treffer faden ein. Accordion-Aufklappen wie gewohnt.',
+  vibe:'Utility · schnell',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Häufige Fragen</p>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Wie können wir helfen?</h2>
+    <div class="reveal mt-5 flex max-w-3xl items-center gap-3 rounded-2xl border border-ink/15 bg-white px-4 py-3" style="transition-delay:.12s"><span class="text-inkSoft">🔍</span><input id="fq-in" class="w-full bg-transparent text-base outline-none placeholder:text-inkSoft/60" placeholder="z. B. Termin, Parken, Balayage …"></div>
+    <div id="fq-list" class="acc mt-5 max-w-3xl border-y border-ink/10"></div>
+    ${ctaLine()}
+  </section>${filler('light')}`,
+  init:(vp)=>{const inp=vp.querySelector('#fq-in'),list=vp.querySelector('#fq-list');
+    const draw=q=>{const f=FAQS.map((x,i)=>[x,i]).filter(([x])=> (x[0]+' '+x[1]).toLowerCase().includes(q.toLowerCase()));
+      list.innerHTML=f.length?f.map(([x,i])=>accItem(x,i,'light')).join(''):`<p class="py-6 text-center text-inkSoft">Nichts gefunden – ruf uns an: <b>0251 5340748</b></p>`;accInit({querySelectorAll:s=>list.querySelectorAll(s)},-1,list);};
+    inp.addEventListener('input',()=>draw(inp.value));draw('');},
+},
+
+/* 04 · DARK LUXE */
+luxe:{
+  label:'04 · Dark Luxe',
+  blurb:'Dunkle Bühne, Gold-Akzente, edles Accordion. Kohärent zu Hero/Über uns/Team/Kontakt.',
+  motion:'Aufklappen sanft, goldenes Plus dreht. Reveal-Stagger. Premium & ruhig.',
+  vibe:'Luxus · markentreu',
+  render:()=>`
+  <section class="bg-ink px-7 py-14 text-cream sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Häufige Fragen</p>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Gut zu wissen</h2>
+    <div class="acc mt-6 max-w-3xl border-y border-white/10">${FAQS.map((f,i)=>accItem(f,i,'dark')).join('')}</div>
+    <p class="mt-6 text-sm text-cream/70">Noch eine Frage? <a href="#" class="font-semibold text-orange hover:underline">Schreib uns</a> oder ruf an: <a href="#" class="font-semibold text-orange hover:underline">0251 5340748</a>.</p>
+  </section>${filler('dark')}`,
+  init:(vp)=>accInit(vp,0),
+},
+
+/* 05 · SPLIT INTRO + ACCORDION */
+split:{
+  label:'05 · Split mit Intro/CTA',
+  blurb:'Links bleibt eine Einladung + „Ohne Termin"-CTA stehen, rechts das Accordion. Persönlich & conversion-stark.',
+  motion:'Sticky Intro links, Accordion rechts. Reveal & sanftes Aufklappen.',
+  vibe:'Persönlich · conversion',
+  render:()=>`
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <div class="grid gap-10 md:grid-cols-[0.85fr_1.15fr]">
+      <div class="md:sticky md:top-8 md:self-start">
+        <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Häufige Fragen</p>
+        <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight" style="transition-delay:.06s">Alles, was du wissen musst.</h2>
+        <p class="reveal mt-4 text-inkSoft" style="transition-delay:.12s">Und wenn nicht: komm einfach vorbei – ganz ohne Termin.</p>
+        <div class="reveal mt-5 flex flex-wrap gap-3" style="transition-delay:.18s"><a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl bg-terra px-6 font-semibold text-white hover:bg-brownDark">Vorbeikommen</a><a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl border border-ink/15 px-6 font-semibold hover:bg-ink/5">0251 5340748</a></div>
+      </div>
+      <div class="acc border-y border-ink/10">${FAQS.map((f,i)=>accItem(f,i,'light')).join('')}</div>
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>accInit(vp,0),
+},
+};
+
+/* ============ HELPERS ============ */
+function accItem([q,a],i,theme){const d=theme==='dark';return `
+  <div class="acc-item reveal border-b ${d?'border-white/10':'border-ink/10'} last:border-b-0">
+    <button class="acc-head flex w-full items-center justify-between gap-4 py-3.5 text-left font-serif text-lg font-medium ${d?'text-cream':'text-ink'}" aria-expanded="false">
+      <span>${q}</span><span class="acc-ico shrink-0 text-xl ${d?'text-orange':'text-terra'} transition-transform duration-300">＋</span>
+    </button>
+    <div class="panel"><div><p class="pb-4 ${d?'text-cream/70':'text-inkSoft'}">${a}</p></div></div>
+  </div>`;}
+function accInit(vp,openIdx,scope){const items=[...(scope||vp).querySelectorAll('.acc-item')];
+  items.forEach((it,i)=>{const head=it.querySelector('.acc-head'),panel=it.querySelector('.panel'),ico=it.querySelector('.acc-ico');
+    const set=o=>{panel.classList.toggle('open',o);ico.style.transform=o?'rotate(45deg)':'';head.setAttribute('aria-expanded',o);};
+    head.onclick=()=>set(!panel.classList.contains('open'));
+    if(i===openIdx)set(true);});}
+function ctaLine(){return `<p class="mt-6 max-w-3xl text-sm text-inkSoft">Noch eine Frage? <a href="#" class="font-semibold text-brownDark underline-offset-2 hover:underline">Schreib uns</a> oder ruf an: <a href="#" class="font-semibold text-brownDark underline-offset-2 hover:underline">0251 5340748</a>.</p>`;}
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-12"><p class="text-center font-serif text-lg ${d?'text-cream/55':'text-inkSoft'}">↑ weiter scrollen</p><div class="h-[22vh]"></div></section>`;}
+let io;function wireReveal(vp){if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.08});[...vp.querySelectorAll('.reveal')].forEach((el,i)=>{if(!el.style.transitionDelay)el.style.transitionDelay=(i*0.04)+'s';io.observe(el);});}
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+60)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>

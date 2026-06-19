@@ -4,30 +4,60 @@ import { useState } from "react";
 import { FAQS } from "@/data/faq";
 import { useInView } from "@/lib/useInView";
 
-/* Hair Power · FAQ (letzte Sektion vor dem Footer).
-   Akkordeon (zugänglich) + FAQPage-Schema für Rich Results. */
+/* ---------------------------------------------------------------------------
+   Hair Power · FAQ (Sektion 9) — Konzept 05 "Split mit Intro/CTA"
+   Links bleibt eine Einladung + Walk-In-CTA stehen (sticky), rechts das
+   zugängliche Accordion. FAQPage-Schema für Rich Results bleibt erhalten.
+--------------------------------------------------------------------------- */
 
 export default function FAQ() {
   const { ref, inView } = useInView<HTMLDivElement>(0.1);
   const [open, setOpen] = useState<number | null>(0);
 
-  return (
-    <section id="faq" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
-      <FaqJsonLd />
-      <div
-        ref={ref}
-        className={`mx-auto max-w-5xl transition-all duration-700 ease-out motion-reduce:transition-none ${
-          inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
-        }`}
-      >
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">
-          Häufige Fragen
-        </p>
-        <h2 className="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight text-ink">
-          Gut zu wissen
-        </h2>
+  const reveal = (delay = 0) => ({
+    className: `transition-all duration-700 ease-out motion-reduce:transition-none ${
+      inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+    }`,
+    style: { transitionDelay: `${delay}ms` },
+  });
 
-        <div className="mt-6 border-y border-ink/10">
+  return (
+    <section id="faq" className="scroll-mt-28 bg-cream2 px-6 py-9 sm:py-12 lg:px-10">
+      <FaqJsonLd />
+      <div ref={ref} className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.85fr_1.15fr]">
+        {/* Linke Seite: Intro + CTA (sticky) */}
+        <div className="md:sticky md:top-8 md:self-start">
+          <p {...reveal()} className={`${reveal().className} text-xs font-semibold uppercase tracking-[0.22em] text-terra`}>
+            Häufige Fragen
+          </p>
+          <h2
+            {...reveal(80)}
+            className={`${reveal(80).className} mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight text-ink`}
+          >
+            Alles, was du wissen musst.
+          </h2>
+          <p {...reveal(140)} className={`${reveal(140).className} mt-4 max-w-[40ch] text-inkSoft`}>
+            Und wenn deine Frage nicht dabei ist: Komm einfach vorbei – ganz ohne
+            Termin – oder ruf uns an.
+          </p>
+          <div {...reveal(200)} className={`${reveal(200).className} mt-5 flex flex-wrap gap-3`}>
+            <a
+              href="#kontakt"
+              className="inline-flex min-h-[48px] items-center rounded-xl bg-terra px-6 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brownDark"
+            >
+              Vorbeikommen
+            </a>
+            <a
+              href="tel:+492515340748"
+              className="inline-flex min-h-[48px] items-center rounded-xl border border-ink/15 px-6 font-semibold text-ink transition-colors duration-200 hover:bg-ink/5"
+            >
+              0251 5340748
+            </a>
+          </div>
+        </div>
+
+        {/* Rechte Seite: Accordion */}
+        <div {...reveal(120)} className={`${reveal(120).className} border-y border-ink/10`}>
           {FAQS.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -38,7 +68,7 @@ export default function FAQ() {
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-3 text-left font-serif text-lg font-medium text-ink"
+                    className="flex w-full items-center justify-between gap-4 py-3.5 text-left font-serif text-lg font-medium text-ink"
                   >
                     <span>{f.q}</span>
                     <span
@@ -66,21 +96,6 @@ export default function FAQ() {
             );
           })}
         </div>
-
-        <p className="mt-6 text-sm text-inkSoft">
-          Noch eine Frage?{" "}
-          <a
-            href="#kontakt"
-            className="font-semibold text-brownDark underline-offset-2 hover:underline"
-          >
-            Schreib uns
-          </a>{" "}
-          oder ruf an:{" "}
-          <a href="tel:+492515340748" className="font-semibold text-brownDark underline-offset-2 hover:underline">
-            0251 5340748
-          </a>
-          .
-        </p>
       </div>
     </section>
   );
