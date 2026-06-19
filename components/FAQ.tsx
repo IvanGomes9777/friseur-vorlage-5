@@ -12,11 +12,11 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
+    <section id="faq" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20 lg:px-10">
       <FaqJsonLd />
       <div
         ref={ref}
-        className={`mx-auto max-w-3xl transition-all duration-700 ease-out motion-reduce:transition-none ${
+        className={`mx-auto max-w-5xl transition-all duration-700 ease-out motion-reduce:transition-none ${
           inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
         }`}
       >

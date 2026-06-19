@@ -26,7 +26,7 @@ export default function Bewertungen() {
       {/* Kopf + Rating + CTA */}
       <div
         ref={ref}
-        className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-6"
+        className="mx-auto flex max-w-screen-2xl flex-wrap items-end justify-between gap-6 px-6 lg:px-10"
       >
         <div {...reveal()}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">
@@ -67,7 +67,7 @@ export default function Bewertungen() {
       </div>
 
       {/* Footer-Link */}
-      <div className="mx-auto mt-8 max-w-6xl px-6 text-center">
+      <div className="mx-auto mt-8 max-w-screen-2xl px-6 text-center lg:px-10">
         <a
           href={REVIEW_META.reviewUrl}
           target="_blank"

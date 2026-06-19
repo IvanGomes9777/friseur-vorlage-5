@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/25 to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-4xl">
         <Reveal show={mounted}>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <span

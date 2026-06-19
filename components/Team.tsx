@@ -27,8 +27,8 @@ export default function Team() {
   });
 
   return (
-    <section id="team" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-5xl">
+    <section id="team" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
         {/* Kopf */}
         <div {...reveal()}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">

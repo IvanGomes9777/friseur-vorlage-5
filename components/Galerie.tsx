@@ -29,8 +29,8 @@ export default function Galerie() {
   }, [lightbox]);
 
   return (
-    <section id="galerie" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-6xl">
+    <section id="galerie" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
         <div
           className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
             inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"

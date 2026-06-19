@@ -37,8 +37,8 @@ export default function UeberUns() {
   });
 
   return (
-    <section id="ueber" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-6xl">
+    <section id="ueber" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Foto */}
           <div {...reveal()} className={`${reveal().className} relative`}>

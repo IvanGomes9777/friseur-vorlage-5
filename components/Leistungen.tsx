@@ -46,8 +46,8 @@ export default function Leistungen() {
     }`;
 
   return (
-    <section id="leistungen" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-4xl">
+    <section id="leistungen" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
         {/* Kopf */}
         <div className={reveal()}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">

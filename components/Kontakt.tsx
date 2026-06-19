@@ -13,10 +13,10 @@ export default function Kontakt() {
   const { ref, inView } = useInView<HTMLDivElement>(0.1);
 
   return (
-    <section id="kontakt" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20">
+    <section id="kontakt" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20 lg:px-10">
       <div
         ref={ref}
-        className={`mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-ink/10 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[1.05fr_0.95fr] ${
+        className={`mx-auto grid max-w-screen-2xl overflow-hidden rounded-3xl border border-ink/10 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[1.05fr_0.95fr] ${
           inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >

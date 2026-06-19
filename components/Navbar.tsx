@@ -74,7 +74,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50">
       {/* ---------- Utility-Bar ---------- */}
       <div className="bg-brown text-[0.78rem] tracking-wide text-cream/90">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-2">
+        <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-2 lg:px-10">
           <span className="inline-flex items-center gap-2">
             <StatusDot status={status} />
             <StatusLabel status={status} />
@@ -100,7 +100,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-5 transition-all duration-300 lg:grid-cols-3 ${
+          className={`mx-auto grid max-w-screen-2xl grid-cols-[1fr_auto] items-center gap-4 px-5 transition-all duration-300 lg:grid-cols-3 lg:px-10 ${
             scrolled ? "py-2.5" : "py-4"
           }`}
         >

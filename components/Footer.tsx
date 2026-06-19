@@ -15,7 +15,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-ink text-cream">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-10 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-screen-2xl gap-10 px-6 py-10 sm:grid-cols-3 lg:px-10">
         <div>
           <p className="font-serif text-xl font-semibold tracking-[0.04em]">
             HAIR POWER
@@ -79,7 +79,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-screen-2xl flex-col gap-3 px-6 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p>© {year} Hair Power · Katja Schaffeld. Alle Rechte vorbehalten.</p>
           <nav aria-label="Rechtliches" className="flex gap-5">
             <Link href="/impressum" className="hover:text-cream">
