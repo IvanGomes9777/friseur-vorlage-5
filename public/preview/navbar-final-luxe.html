@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Finale Navbar (Salon Luxe Dark + Marquee)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460" },
+    fontFamily: { serif:['Fraunces','Georgia','serif'], sans:['"Plus Jakarta Sans"','system-ui','sans-serif'] },
+    keyframes: { marquee:{from:{transform:"translateX(0)"},to:{transform:"translateX(-50%)"}}, pulseRing:{ "0%":{boxShadow:"0 0 0 0 rgba(155,230,160,.7)"},"70%":{boxShadow:"0 0 0 7px rgba(155,230,160,0)"},"100%":{boxShadow:"0 0 0 0 rgba(155,230,160,0)"} } },
+    animation: { marquee:"marquee 38s linear infinite", pulseRing:"pulseRing 2s infinite" },
+  } } };
+</script>
+<style>
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+  .ul-grow{position:relative}.ul-grow::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:0;background:#F4A460;transition:width .3s cubic-bezier(.25,1,.5,1)}.ul-grow:hover::after{width:100%}
+  @media (prefers-reduced-motion: reduce){ .animate-marquee,.animate-pulseRing{animation:none!important} }
+</style>
+</head>
+<body class="bg-cream text-ink">
+
+<header id="hdr" class="sticky top-0 z-50 bg-ink text-cream">
+  <!-- Utility-Strip -->
+  <div id="util" class="overflow-hidden border-b border-white/5 bg-[#211913] transition-all duration-500" style="max-height:48px">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-2 text-[0.76rem] tracking-wide text-cream/70">
+      <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#9BE6A0] animate-pulseRing"></span><b class="font-semibold text-cream">Jetzt geöffnet</b> · bis 18:00</span>
+      <span class="hidden sm:inline">📍 Grevener Str. 63 · Kreuzviertel</span>
+      <a href="#" class="font-semibold text-orange hover:underline">0251 5340748</a>
+      <span class="hidden md:inline">Friseur <b class="font-semibold text-cream">ohne Termin</b></span>
+    </div>
+  </div>
+
+  <!-- Hauptbar mit Spotlight -->
+  <div id="bar" style="background:#2A211B">
+    <div id="row" class="mx-auto grid max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-5 py-5 transition-all duration-500 lg:grid-cols-3">
+      <nav class="hidden items-center gap-6 lg:flex">
+        <a href="#" class="ul-grow py-1 text-[0.8rem] font-medium uppercase tracking-[0.16em] text-cream/70 hover:text-orange">Über uns</a>
+        <a href="#" class="ul-grow py-1 text-[0.8rem] font-medium uppercase tracking-[0.16em] text-cream/70 hover:text-orange">Leistungen</a>
+        <a href="#" class="ul-grow py-1 text-[0.8rem] font-medium uppercase tracking-[0.16em] text-cream/70 hover:text-orange">Team</a>
+      </nav>
+      <a href="#" class="justify-self-start text-center leading-none lg:col-start-2 lg:justify-self-center">
+        <span id="mark" class="block font-serif text-xl sm:text-2xl font-semibold tracking-[0.06em] text-cream transition-all duration-500">HAIR POWER</span>
+        <span class="mt-1 block text-[0.58rem] uppercase tracking-[0.4em] text-orange">Friseurmeister · Münster</span>
+      </a>
+      <div class="flex items-center justify-end gap-5 lg:col-start-3">
+        <nav class="hidden items-center gap-6 lg:flex">
+          <a href="#" class="ul-grow py-1 text-[0.8rem] font-medium uppercase tracking-[0.16em] text-cream/70 hover:text-orange">Galerie</a>
+          <a href="#" class="ul-grow py-1 text-[0.8rem] font-medium uppercase tracking-[0.16em] text-cream/70 hover:text-orange">Bewertungen</a>
+        </nav>
+        <a href="#" class="hidden min-h-[44px] items-center rounded-full border border-orange/60 px-5 text-sm font-semibold text-orange transition-colors duration-200 hover:bg-orange hover:text-ink sm:inline-flex">Kontakt</a>
+        <button id="burger" aria-label="Menü öffnen" class="inline-flex h-11 w-11 items-center justify-center lg:hidden">
+          <span class="relative block h-3.5 w-6">
+            <span class="absolute left-0 top-0 h-0.5 w-full rounded bg-cream"></span>
+            <span class="absolute left-0 top-1.5 h-0.5 w-full rounded bg-cream"></span>
+            <span class="absolute left-0 top-3 h-0.5 w-full rounded bg-cream"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <!-- Goldlinie -->
+    <div id="gold" class="mx-auto h-px max-w-7xl bg-gradient-to-r from-transparent via-orange to-transparent transition-[width] duration-700 ease-out" style="width:0"></div>
+  </div>
+
+  <!-- Service-Marquee -->
+  <div id="mq" class="overflow-hidden border-b border-white/5 bg-[#211913] transition-all duration-500" style="max-height:40px">
+    <div class="group flex overflow-hidden py-2">
+      <div class="flex shrink-0 animate-marquee whitespace-nowrap text-[0.72rem] uppercase tracking-[0.22em] text-cream/55 group-hover:[animation-play-state:paused]" id="mqtrack"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Overlay -->
+<div id="overlay" class="invisible fixed inset-0 z-40 bg-ink opacity-0 transition-opacity duration-300 lg:hidden" style="height:100dvh">
+  <button id="close" aria-label="Menü schließen" class="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full text-cream hover:bg-cream/10 hover:text-orange">
+    <span class="relative block h-5 w-5"><span class="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 rotate-45 rounded bg-current"></span><span class="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 -rotate-45 rounded bg-current"></span></span>
+  </button>
+  <nav class="flex h-full flex-col justify-center gap-1 px-8 pt-24" id="mlinks"></nav>
+</div>
+
+<!-- Demo-Seite -->
+<section class="px-6 sm:px-10 pt-16 pb-24">
+  <p class="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-terra">Friseur ohne Termin · Kreuzviertel Münster</p>
+  <h1 class="mt-4 max-w-[16ch] font-serif text-[clamp(2.4rem,5vw,4.6rem)] font-semibold leading-[0.98] tracking-tight" style="text-wrap:balance">Frisuren für Dich — einfach vorbeikommen.</h1>
+  <p class="mt-6 max-w-[48ch] text-[1.02rem] leading-relaxed text-inkSoft">Meisterbetrieb seit über 15 Jahren. Schnitt, Farbe &amp; Balayage — ehrlich beraten, typgerecht umgesetzt.</p>
+  <p class="mt-10 font-serif text-xl text-inkSoft">↓ scrolle — Utility-Strip &amp; Marquee fahren weg, die Bar schrumpft, die Goldlinie bleibt.</p>
+  <div class="h-[120vh]"></div>
+  <p class="font-serif text-2xl">Noch mehr Inhalt …</p>
+  <div class="h-[80vh]"></div>
+</section>
+
+<script>
+  const LINKS=['Über uns','Leistungen','Team','Galerie','Bewertungen','Kontakt'];
+  const MQ=['Friseur ohne Termin','Balayage ab 135 €','Herren ab 16 €','Kinder mit Spielecke','Grauabdeckung','Hochsteckfrisuren ab 45 €','4,3 ★ · 254 Rezensionen'];
+  const seq=()=>MQ.map(i=>`<span class="mx-5 inline-flex items-center gap-3">${i}<span class="text-orange">✦</span></span>`).join('');
+  document.getElementById('mqtrack').innerHTML = seq()+seq();
+  document.getElementById('mlinks').innerHTML = LINKS.map((l,i)=>`
+    <a href="#" data-c class="flex items-baseline gap-4 py-2 font-serif text-[clamp(1.6rem,1rem+4vw,2.4rem)] text-cream hover:text-orange">
+      <span class="font-sans text-xs font-semibold tracking-widest text-terra">0${i+1}</span>${l}
+    </a>`).join('') + `<a href="#" data-c class="mt-6 inline-flex min-h-[44px] w-fit items-center gap-3 rounded-full border border-orange/60 px-6 py-3 font-sans text-base font-semibold text-orange hover:bg-orange hover:text-ink">Einfach vorbeikommen →</a>`;
+
+  // Goldlinie aufwachsen
+  requestAnimationFrame(()=>document.getElementById('gold').style.width='100%');
+
+  // Shrink + collapse beim Scrollen
+  const util=document.getElementById('util'),mq=document.getElementById('mq'),row=document.getElementById('row'),mark=document.getElementById('mark');
+  addEventListener('scroll',()=>{ const s=scrollY>40;
+    util.style.maxHeight=s?'0px':'48px'; util.style.opacity=s?'0':'1';
+    mq.style.maxHeight=s?'0px':'40px'; mq.style.opacity=s?'0':'1';
+    row.classList.toggle('py-3',s); row.classList.toggle('py-5',!s);
+    mark.classList.toggle('text-lg',s); mark.classList.toggle('text-xl',!s); mark.classList.toggle('sm:text-2xl',!s);
+  },{passive:true});
+
+  // Spotlight
+  const bar=document.getElementById('bar');
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(fine){ bar.addEventListener('mousemove',e=>{const r=bar.getBoundingClientRect();bar.style.background=`radial-gradient(440px circle at ${e.clientX-r.left}px ${e.clientY-r.top}px, rgba(244,164,96,.16), transparent 60%), #2A211B`;});
+    bar.addEventListener('mouseleave',()=>bar.style.background='#2A211B'); }
+
+  // Mobile menu
+  const ov=document.getElementById('overlay');
+  const open=()=>{ov.classList.remove('invisible','opacity-0');ov.classList.add('opacity-100');document.body.style.overflow='hidden';};
+  const close=()=>{ov.classList.add('opacity-0');ov.classList.remove('opacity-100');document.body.style.overflow='';setTimeout(()=>ov.classList.add('invisible'),300);};
+  document.getElementById('burger').onclick=open; document.getElementById('close').onclick=close;
+  ov.querySelectorAll('[data-c]').forEach(a=>a.onclick=close);
+  addEventListener('keydown',e=>e.key==='Escape'&&close());
+</script>
+</body>
+</html>
