@@ -263,6 +263,19 @@ function MobileMenu({
       }`}
       style={{ height: "100dvh" }}
     >
+      {/* Schließen-Button (X) – oben rechts, immer über dem Overlay-Inhalt */}
+      <button
+        type="button"
+        aria-label="Menü schließen"
+        onClick={onClose}
+        className="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full text-cream transition-colors hover:bg-cream/10 hover:text-orange"
+      >
+        <span className="relative block h-5 w-5" aria-hidden="true">
+          <span className="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 rotate-45 rounded bg-current" />
+          <span className="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 -rotate-45 rounded bg-current" />
+        </span>
+      </button>
+
       <nav className="flex h-full flex-col justify-center gap-1 px-8 pt-24">
         {LINKS.map((l, i) => (
           <a
