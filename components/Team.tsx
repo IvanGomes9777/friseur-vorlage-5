@@ -28,7 +28,7 @@ export default function Team() {
 
   return (
     <section id="team" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
-      <div ref={ref} className="mx-auto max-w-screen-2xl">
+      <div ref={ref} className="mx-auto max-w-6xl">
         {/* Kopf */}
         <div {...reveal()}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">
@@ -75,12 +75,12 @@ export default function Team() {
               {...reveal(160 + i * 90)}
               className={`${reveal(160 + i * 90).className} group overflow-hidden rounded-2xl border border-ink/10 bg-cream2 transition-shadow duration-300 hover:shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]`}
             >
-              <div className="relative aspect-[3/4] overflow-hidden">
+              <div className="relative h-56 overflow-hidden sm:h-64">
                 <Image
                   src={m.image}
                   alt={m.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 30vw"
+                  sizes="(max-width: 640px) 100vw, 360px"
                   className="object-cover object-top grayscale-[0.25] transition-all duration-500 ease-out group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <Shine />

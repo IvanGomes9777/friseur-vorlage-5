@@ -67,7 +67,7 @@ export default function ContactForm() {
   const sending = status === "sending";
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-3.5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-3">
       <Field id="name" label="Name" placeholder="Dein Name" required />
       <Field
         id="email"
@@ -88,7 +88,7 @@ export default function ContactForm() {
           id="message"
           name="message"
           required
-          rows={4}
+          rows={3}
           placeholder="Worum geht's?"
           className="w-full resize-y rounded-lg border border-ink/15 bg-white px-3.5 py-2.5 text-sm focus:border-transparent focus:outline focus:outline-2 focus:outline-terra"
         />
