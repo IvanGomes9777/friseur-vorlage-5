@@ -27,7 +27,7 @@ export default function Team() {
   });
 
   return (
-    <section id="team" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20 lg:px-10">
+    <section id="team" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
       <div ref={ref} className="mx-auto max-w-screen-2xl">
         {/* Kopf */}
         <div {...reveal()}>
@@ -42,7 +42,7 @@ export default function Team() {
         {/* Featured: Katja */}
         <div
           {...reveal(80)}
-          className={`${reveal(80).className} mt-8 grid gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-stretch`}
+          className={`${reveal(80).className} mt-6 grid gap-5 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-stretch`}
         >
           <div className="group relative aspect-[4/3] overflow-hidden sm:aspect-auto">
             <Image
@@ -54,7 +54,7 @@ export default function Team() {
             />
             <Shine />
           </div>
-          <div className="p-6 sm:p-9">
+          <div className="p-6 sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-terra">
               {TEAM_LEAD.role}
             </p>
@@ -68,14 +68,14 @@ export default function Team() {
         </div>
 
         {/* Team-Reihe */}
-        <div className="mt-6 grid gap-6 sm:grid-cols-3">
+        <div className="mt-5 grid gap-5 sm:grid-cols-3">
           {TEAM.map((m, i) => (
             <article
               key={m.name}
               {...reveal(160 + i * 90)}
               className={`${reveal(160 + i * 90).className} group overflow-hidden rounded-2xl border border-ink/10 bg-cream2 transition-shadow duration-300 hover:shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]`}
             >
-              <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src={m.image}
                   alt={m.alt}

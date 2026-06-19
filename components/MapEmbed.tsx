@@ -10,7 +10,7 @@ export default function MapEmbed() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/15">
+    <div className="relative aspect-[2/1] overflow-hidden rounded-xl border border-white/15">
       {loaded ? (
         <iframe
           title="Karte: Hair Power, Grevener Str. 63, Münster"

@@ -21,7 +21,7 @@ export default function Bewertungen() {
   return (
     <section
       id="bewertungen"
-      className="scroll-mt-28 overflow-hidden bg-cream2 py-14 sm:py-20"
+      className="scroll-mt-28 overflow-hidden bg-cream2 py-9 sm:py-12"
     >
       {/* Kopf + Rating + CTA */}
       <div
@@ -61,13 +61,13 @@ export default function Bewertungen() {
       </div>
 
       {/* Laufband-Reihen (volle Breite) */}
-      <div className="group mt-8 flex flex-col gap-4">
+      <div className="group mt-6 flex flex-col gap-4">
         <Row items={REVIEWS_A} />
         <Row items={REVIEWS_B} reverse />
       </div>
 
       {/* Footer-Link */}
-      <div className="mx-auto mt-8 max-w-screen-2xl px-6 text-center lg:px-10">
+      <div className="mx-auto mt-6 max-w-screen-2xl px-6 text-center lg:px-10">
         <a
           href={REVIEW_META.reviewUrl}
           target="_blank"
