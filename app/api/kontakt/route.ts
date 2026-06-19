@@ -44,6 +44,19 @@ export async function POST(req: Request) {
     );
   }
 
+  // Längen-Limits gegen Missbrauch/Header-Injection (Resend nimmt Plaintext).
+  if (
+    name.length > 120 ||
+    email.length > 160 ||
+    phone.length > 40 ||
+    message.length > 4000
+  ) {
+    return NextResponse.json(
+      { ok: false, error: "Eingaben zu lang." },
+      { status: 422 },
+    );
+  }
+
   const to = process.env.CONTACT_TO || "info@friseur-hairpower.de";
   const from = process.env.CONTACT_FROM || "Hair Power <kontakt@friseur-hairpower.de>";
   const apiKey = process.env.RESEND_API_KEY;
