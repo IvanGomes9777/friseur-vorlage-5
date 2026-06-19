@@ -6,11 +6,17 @@
 
 export type PriceItem = { name: string; price: string; note?: string };
 export type ServiceGroup = { title?: string; items: PriceItem[] };
+export type InfoBox = {
+  title: string;
+  items: { heading: string; text: string }[];
+};
+
 export type ServiceCategory = {
   id: string;
   label: string;
   intro?: string;
   groups: ServiceGroup[];
+  infoBox?: InfoBox;
 };
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -19,6 +25,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     label: "Damen",
     intro:
       "Individuell und modebewusst – traditionelle Technik in Schnitt und Farbe, kombiniert mit aktuellen Trends.",
+    infoBox: {
+      title: "Damenhaar aus Meisterhand",
+      items: [
+        {
+          heading: "Schnitt & Styling",
+          text: "Waschen, Schneiden, Föhnen – individuell auf Haarstruktur, Gesichtsform und deinen Stil abgestimmt, inklusive Pflegeberatung.",
+        },
+        {
+          heading: "Farbe, Strähnen & Balayage",
+          text: "Grauabdeckung, Aufhellung oder natürliche Highlights – Wurzelfarbe, Balayage, Ombré. Auf Hautton & Haartyp abgestimmt, auf Wunsch ammoniakfrei.",
+        },
+      ],
+    },
     groups: [
       {
         title: "Schnitt & Styling",
@@ -68,6 +87,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     label: "Herren",
     intro:
       "Typgerechte, pflegeleichte Business-Frisuren für die City – Schnitt, Pflege, Strähnen, Tönen und Grauhaarabdeckung.",
+    infoBox: {
+      title: "Dein Gentleman-Barbier im Kreuzviertel",
+      items: [
+        {
+          heading: "Individuell für den Herrn",
+          text: "Ob Business oder Freizeit – typgerechte, pflegeleichte Schnitte samt Waschen, Föhnen und Bartpflege. Personalisierung & Beratung sind unser Markenzeichen.",
+        },
+        {
+          heading: "Farbe & mehr",
+          text: "Strähnen, Tönen und Grauhaarabdeckung – dezent und natürlich, abgestimmt auf deinen Typ.",
+        },
+      ],
+    },
     groups: [
       {
         title: "Schnitt & Bart",
@@ -94,6 +126,19 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     label: "Kinder",
     intro:
       "Kinderfriseur für junge Leute – trendig, modern, selbstbewusst. Altersgerecht, individuell und zeitgemäß. New Style, Top Style & Pflege bis 14 Jahre.",
+    infoBox: {
+      title: "Kinderfriseur mit Spielecke",
+      items: [
+        {
+          heading: "Eigener Wartebereich mit Spielecke",
+          text: "Bei uns wird der Friseurbesuch entspannt: eigene Spielecke und die neuesten Trends – damit die Kleinen chic und cool aus dem York Center gehen.",
+        },
+        {
+          heading: "Beratung & Pflege",
+          text: "Altersgerechter, individueller Schnitt mit klasse Beratung. Wir zeigen, wie ihr die Frisur zuhause am besten pflegt und kämmt.",
+        },
+      ],
+    },
     groups: [
       {
         items: [

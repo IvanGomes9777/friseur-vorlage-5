@@ -105,7 +105,10 @@ export default function UeberUns() {
               {...reveal(120 + i * 90)}
               className={`${reveal(120 + i * 90).className} rounded-2xl border border-ink/10 bg-cream2 p-6`}
             >
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-terra/14 text-xl">
+              <span
+                aria-hidden="true"
+                className="grid h-11 w-11 place-items-center rounded-xl bg-terra/14 text-xl"
+              >
                 {a.icon}
               </span>
               <h3 className="mt-3 font-serif text-lg font-medium text-ink">

@@ -13,7 +13,7 @@ export default function Kontakt() {
   const { ref, inView } = useInView<HTMLDivElement>(0.1);
 
   return (
-    <section id="kontakt" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
+    <section id="kontakt" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20">
       <div
         ref={ref}
         className={`mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-ink/10 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[1.05fr_0.95fr] ${
@@ -105,7 +105,10 @@ function InfoRow({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-white/12 text-base">
+      <span
+        aria-hidden="true"
+        className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-white/12 text-base"
+      >
         {icon}
       </span>
       <div className="leading-snug">{children}</div>

@@ -5,7 +5,9 @@ const NAV = [
   { label: "Über uns", href: "/#ueber" },
   { label: "Leistungen", href: "/#leistungen" },
   { label: "Team", href: "/#team" },
+  { label: "Galerie", href: "/#galerie" },
   { label: "Bewertungen", href: "/#bewertungen" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Kontakt", href: "/#kontakt" },
 ];
 

@@ -111,6 +111,30 @@ export default function Leistungen() {
             ))}
           </div>
 
+          {cat.infoBox && (
+            <div className="mt-8 rounded-2xl border border-terra/25 bg-terra/5 p-6 sm:p-7">
+              <h3 className="font-serif text-lg font-medium text-ink">
+                {cat.infoBox.title}
+              </h3>
+              <div className="mt-4 grid gap-5 sm:grid-cols-2">
+                {cat.infoBox.items.map((it) => (
+                  <div key={it.heading}>
+                    <p className="text-sm font-semibold text-brownDark">
+                      {it.heading}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-inkSoft">
+                      {it.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-sm text-inkSoft">
+                Entspann dich, während wir uns nach allen Regeln der Kunst um
+                dein Haar kümmern – ganz ohne Termin.
+              </p>
+            </div>
+          )}
+
           <p className="mt-8 text-sm text-inkSoft">
             „ab"-Preise sind Richtwerte – der genaue Preis hängt von Haarlänge
             &amp; Aufwand ab. Wir beraten Dich gerne vorab.
