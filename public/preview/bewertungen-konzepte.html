@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Bewertungen – 5 Konzepte</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+    keyframes:{mq:{from:{transform:'translateX(0)'},to:{transform:'translateX(-50%)'}},mqr:{from:{transform:'translateX(-50%)'},to:{transform:'translateX(0)'}}},
+    animation:{mq:'mq 40s linear infinite',mqr:'mqr 40s linear infinite'},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.23,1,0.32,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(480px,78vh,860px);overflow-y:auto;overflow-x:hidden;position:relative;background:#F9F6F2;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .btn{transition:transform .16s var(--eo),background-color .22s}.btn:active{transform:scale(.97)}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--eo),transform .7s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .lift{transition:transform .3s var(--eo),box-shadow .3s var(--eo)}.lift:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(42,33,27,.45)}
+  .tcard{transform-style:preserve-3d;transition:transform .5s var(--eo);will-change:transform}.tcard.live{transition:none}
+  .slide{transition:opacity .6s var(--eo),transform .6s var(--eo)}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}.tcard{transition:none}.animate-mq,.animate-mqr{animation:none!important}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 06 — Bewertungen</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Was unsere Gäste sagen". Echte Google-Reviews · 4,3 ★ · 254.</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Echte Rezensionen (Vorname/Initial, DSGVO-konform) · Farben &amp; Fonts aus dem Projekt.</footer>
+
+<script>
+const META={rating:'4,3',count:254};
+const REVIEWS=[
+  {t:"Top beraten und so geschnitten wie gewünscht! Bin jahrelange Kundin.",n:"Isabella",w:"vor 9 Monaten"},
+  {t:"Bin mit superschönen Strähnen und frischem Haarschnitt glücklich zur Tür hinaus.",n:"Dalli",w:"vor 8 Monaten"},
+  {t:"Katja hat mir einen wirklich tollen Haarschnitt gezaubert – rundum gut aufgehoben.",n:"Sonka Wegner",w:"vor 8 Monaten"},
+  {t:"Absolut begeistert! Das Ergebnis hat meine Erwartungen übertroffen.",n:"Karsten Luetteke",w:"vor 9 Monaten"},
+  {t:"Keine langen Wartezeiten, Frisur sitzt auch immer super.",n:"Pascal Schmale"},
+  {t:"Erster Haarschnitt unseres Sohnes – Katja war liebevoll & kindgerecht.",n:"Julia B.",w:"vor 9 Monaten"},
+  {t:"Ich habe mich sofort verstanden und professionell aufgehoben gefühlt.",n:"La Me"},
+  {t:"Man kann immer ohne Termin hinein – ich musste nie lange warten :)",n:"Isabella",w:"vor 9 Monaten"},
+];
+const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=()=>matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced();
+const stars=(c='#F0A500')=>`<span style="color:${c}" aria-label="5 Sterne">★★★★★</span>`;
+const av=n=>`<span class="grid h-9 w-9 flex-none place-items-center rounded-full bg-terra text-sm font-bold text-white">${n.charAt(0)}</span>`;
+
+const CONCEPTS={
+
+/* 01 · MARQUEE WALL */
+marquee:{
+  label:'01 · Marquee-Wall',
+  blurb:'Zwei endlos laufende Reihen (Hover pausiert), Rating-Block & „Bewerten"-CTA. Lebendig, voller Social Proof (aktuell).',
+  motion:'Gegenläufige Laufbänder, Pause bei Hover. Rating & CTA reveal-en. Reduced-Motion: still.',
+  vibe:'Lebendig · viel Social Proof',
+  render:()=>`
+  <section class="overflow-hidden bg-cream2 py-12">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-7 lg:px-10">
+      <div class="reveal"><p class="text-xs font-semibold uppercase tracking-[0.22em] text-terra">Was unsere Gäste sagen</p><h2 class="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium">Eure Gäste lieben Hair Power</h2></div>
+      <div class="reveal flex items-center gap-5" style="transition-delay:.08s"><div class="flex items-center gap-3"><span class="font-serif text-4xl font-semibold text-brownDark">${META.rating}</span><div>${stars()}<p class="text-sm text-inkSoft">${META.count} Google-Bewertungen</p></div></div><a href="#" class="btn inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-ink px-5 text-sm font-semibold text-cream hover:bg-terra">★ Bewertung abgeben</a></div>
+    </div>
+    <div class="group mt-6 flex flex-col gap-4">
+      <div class="flex w-max gap-4 animate-mq group-hover:[animation-play-state:paused]">${[...REVIEWS,...REVIEWS].map(card).join('')}</div>
+      <div class="flex w-max gap-4 animate-mqr group-hover:[animation-play-state:paused]">${[...REVIEWS.slice().reverse(),...REVIEWS.slice().reverse()].map(card).join('')}</div>
+    </div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 02 · SPOTLIGHT SLIDER */
+slider:{
+  label:'02 · Spotlight-Slider',
+  blurb:'Ein großes Zitat im Fokus, automatisch wechselnd, mit Avatar & Punkten. Ruhig, fokussiert, sehr lesbar.',
+  motion:'Crossfade zwischen Zitaten (auto, pausiert bei Hover), Punkt-Navigation, Pfeile. Großes Anführungszeichen als Deko.',
+  vibe:'Fokussiert · elegant',
+  render:()=>`
+  <section class="bg-cream px-7 py-16 text-center sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Was unsere Gäste sagen</p>
+    <div class="reveal mx-auto mt-3 flex items-center justify-center gap-3" style="transition-delay:.06s"><span class="font-serif text-3xl font-semibold text-brownDark">${META.rating}</span>${stars()}<span class="text-sm text-inkSoft">· ${META.count} Bewertungen</span></div>
+    <div class="sl-host relative mx-auto mt-8 min-h-[220px] max-w-3xl">
+      <span class="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 font-serif text-8xl text-terra/20">”</span>
+      ${REVIEWS.map((r,i)=>`<figure class="sl-item slide absolute inset-0 grid place-items-center ${i?'opacity-0':''}" data-i="${i}"><div><blockquote class="font-serif text-[clamp(1.3rem,1rem+1.6vw,2rem)] font-medium leading-snug text-ink">„${r.t}"</blockquote><figcaption class="mt-6 flex items-center justify-center gap-3">${av(r.n)}<span class="text-left text-sm"><b class="text-ink">${r.n}</b><span class="block text-xs text-inkSoft">Google${r.w?' · '+r.w:''}</span></span></figcaption></div></figure>`).join('')}
+    </div>
+    <div class="mt-8 flex items-center justify-center gap-4"><button class="sl-prev btn grid h-10 w-10 place-items-center rounded-full bg-ink text-cream">‹</button><div class="sl-dots flex gap-2"></div><button class="sl-next btn grid h-10 w-10 place-items-center rounded-full bg-ink text-cream">›</button></div>
+  </section>${filler('light')}`,
+  init:(vp)=>sliderInit(vp),
+},
+
+/* 03 · BENTO ALL VISIBLE */
+bento:{
+  label:'03 · Bento (alles sichtbar)',
+  blurb:'Rating als große Kachel + alle Reviews in einem versetzten Raster. Alles auf einen Blick, modern.',
+  motion:'Kacheln poppen gestaffelt, Hover-Lift. Rating-Kachel dominiert. Nichts versteckt.',
+  vibe:'Modern · alles offen',
+  render:()=>`
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Was unsere Gäste sagen</p>
+    <h2 class="reveal mt-3 mb-6 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Eure Stimmen</h2>
+    <div class="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:balance]">
+      <div class="reveal lift mb-4 break-inside-avoid rounded-2xl bg-ink p-6 text-cream"><span class="font-serif text-5xl font-semibold text-orange">${META.rating}</span><div class="mt-2">${stars('#F4A460')}</div><p class="mt-2 text-sm text-cream/70">${META.count} Google-Bewertungen</p><a href="#" class="btn mt-4 inline-flex min-h-[44px] items-center rounded-xl bg-orange px-5 text-sm font-semibold text-ink">Bewertung abgeben</a></div>
+      ${REVIEWS.map(r=>`<figure class="reveal lift mb-4 break-inside-avoid rounded-2xl border border-ink/10 bg-cream p-5">${stars()}<blockquote class="mt-3 text-sm leading-relaxed text-ink">„${r.t}"</blockquote><figcaption class="mt-4 flex items-center gap-3">${av(r.n)}<span class="text-sm"><b class="text-ink">${r.n}</b><span class="block text-xs text-inkSoft">Google${r.w?' · '+r.w:''}</span></span></figcaption></figure>`).join('')}
+    </div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 04 · DARK LUXE SLIDER */
+luxe:{
+  label:'04 · Dark Luxe Slider',
+  blurb:'Edler dunkler Testimonial-Slider mit Gold-Sternen & großem Zitat. Kohärent zu Hero/Über uns/Team.',
+  motion:'Crossfade-Slider (auto + Pfeile), Gold-Akzente, großes Zitat. Premium & ruhig.',
+  vibe:'Luxus · markentreu',
+  render:()=>`
+  <section class="bg-ink px-7 py-16 text-center text-cream sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Was unsere Gäste sagen</p>
+    <div class="reveal mx-auto mt-3 flex items-center justify-center gap-3" style="transition-delay:.06s"><span class="font-serif text-3xl font-semibold text-orange">${META.rating}</span>${stars('#F4A460')}<span class="text-sm text-cream/60">· ${META.count} Bewertungen</span></div>
+    <div class="sl-host relative mx-auto mt-8 min-h-[210px] max-w-3xl">
+      ${REVIEWS.map((r,i)=>`<figure class="sl-item slide absolute inset-0 grid place-items-center ${i?'opacity-0':''}" data-i="${i}"><div><blockquote class="font-serif text-[clamp(1.3rem,1rem+1.6vw,2rem)] font-medium italic leading-snug">„${r.t}"</blockquote><figcaption class="mt-6 text-sm text-orange">${r.n} · Google${r.w?' · '+r.w:''}</figcaption></div></figure>`).join('')}
+    </div>
+    <div class="mt-8 flex items-center justify-center gap-4"><button class="sl-prev btn grid h-10 w-10 place-items-center rounded-full border border-orange/50 text-orange">‹</button><div class="sl-dots flex gap-2"></div><button class="sl-next btn grid h-10 w-10 place-items-center rounded-full border border-orange/50 text-orange">›</button></div>
+  </section>${filler('dark')}`,
+  init:(vp)=>sliderInit(vp,'#F4A460'),
+},
+
+/* 05 · 3D TILT CARDS */
+tilt:{
+  label:'05 · 3D Tilt-Karten',
+  blurb:'Review-Karten im Raster, die sich leicht zum Cursor neigen. Verspielt-premium, „lebendig".',
+  motion:'Spring-Lerp-Tilt pro Karte, Reveal-Stagger. Beim Verlassen federt zurück. Touch/reduce: ruhig.',
+  vibe:'Verspielt-premium · 3D',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-4"><div><p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Was unsere Gäste sagen</p><h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Echte Stimmen, echtes Lob</h2></div><div class="reveal flex items-center gap-2" style="transition-delay:.1s"><span class="font-serif text-3xl font-semibold text-brownDark">${META.rating}</span>${stars()}<span class="text-sm text-inkSoft">· ${META.count}</span></div></div>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style="perspective:1000px">
+      ${REVIEWS.slice(0,6).map(r=>`<article class="reveal"><div class="tcard rounded-2xl border border-ink/10 bg-cream2 p-5">${stars()}<blockquote class="mt-3 text-sm leading-relaxed text-ink">„${r.t}"</blockquote><figcaption class="mt-4 flex items-center gap-3">${av(r.n)}<span class="text-sm"><b class="text-ink">${r.n}</b><span class="block text-xs text-inkSoft">Google${r.w?' · '+r.w:''}</span></span></figcaption></div></article>`).join('')}
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>{const cards=[...vp.querySelectorAll('.tcard')];if(!fine())return;const lp=(a,b,t)=>a+(b-a)*t;
+    cards.forEach(card=>{let tx=0,ty=0,cx=0,cy=0,raf=null,act=false;const loop=()=>{cx=lp(cx,tx,.14);cy=lp(cy,ty,.14);card.style.transform=`rotateX(${(-cy*8).toFixed(2)}deg) rotateY(${(cx*10).toFixed(2)}deg)`;if(act||Math.abs(cx-tx)>.01)raf=requestAnimationFrame(loop);else raf=null;};card.classList.add('live');
+      card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;act=true;if(!raf)raf=requestAnimationFrame(loop);});
+      card.addEventListener('mouseleave',()=>{tx=0;ty=0;act=false;if(!raf)raf=requestAnimationFrame(loop);});});},
+},
+};
+
+/* ============ HELPERS ============ */
+function card(r){return `<figure class="flex w-[300px] flex-none flex-col rounded-2xl border border-ink/10 bg-cream p-5">${stars()}<blockquote class="mt-3 grow text-sm leading-relaxed text-ink">„${r.t}"</blockquote><figcaption class="mt-4 flex items-center gap-3">${av(r.n)}<span class="text-sm"><b class="font-semibold text-ink">${r.n}</b><span class="block text-xs text-inkSoft">Google${r.w?' · '+r.w:''}</span></span></figcaption></figure>`;}
+function sliderInit(vp,dot='#CC7755'){const items=[...vp.querySelectorAll('.sl-item')],dots=vp.querySelector('.sl-dots');let i=0,timer;
+  dots.innerHTML=items.map((_,k)=>`<button data-k="${k}" class="h-2 w-2 rounded-full" style="background:${k===0?dot:'rgba(120,120,120,.35)'}"></button>`).join('');
+  const go=k=>{i=(k+items.length)%items.length;items.forEach((it,n)=>{it.style.opacity=n===i?1:0;it.style.transform=n===i?'translateY(0)':'translateY(8px)';});dots.querySelectorAll('button').forEach((b,n)=>b.style.background=n===i?dot:'rgba(120,120,120,.35)');};
+  vp.querySelector('.sl-next').onclick=()=>{go(i+1);reset();};vp.querySelector('.sl-prev').onclick=()=>{go(i-1);reset();};
+  dots.querySelectorAll('button').forEach(b=>b.onclick=()=>{go(+b.dataset.k);reset();});
+  const host=vp.querySelector('.sl-host');function start(){if(reduced())return;timer=setInterval(()=>go(i+1),4200);}function reset(){clearInterval(timer);start();}
+  host.addEventListener('mouseenter',()=>clearInterval(timer));host.addEventListener('mouseleave',start);go(0);start();}
+
+/* ============ SHELL ============ */
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-12"><p class="text-center font-serif text-lg ${d?'text-cream/55':'text-inkSoft'}">↑ weiter scrollen</p><div class="h-[24vh]"></div></section>`;}
+let io;function wireReveal(vp){if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.1});[...vp.querySelectorAll('.reveal')].forEach((el,i)=>{if(!el.style.transitionDelay)el.style.transitionDelay=(i*0.05)+'s';io.observe(el);});}
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+60)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>

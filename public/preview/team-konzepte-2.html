@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Team – Effekt-Konzepte (06–10)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.23,1,0.32,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(480px,78vh,860px);overflow-y:auto;overflow-x:hidden;position:relative;background:#0f0b08;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .btn{transition:transform .16s var(--eo),background-color .22s}.btn:active{transform:scale(.97)}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--eo),transform .7s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .scene{perspective:1200px}.pre3d{transform-style:preserve-3d}
+  .holo{transform-style:preserve-3d;transition:transform .5s var(--eo);will-change:transform}.holo.live{transition:none}
+  .foil{position:absolute;inset:0;border-radius:inherit;mix-blend-mode:color-dodge;opacity:0;transition:opacity .3s;background:linear-gradient(115deg,transparent 20%,rgba(255,120,170,.5),rgba(120,200,255,.5),rgba(180,255,160,.5),transparent 80%);background-size:200% 200%}
+  .glare{position:absolute;inset:0;border-radius:inherit;mix-blend-mode:soft-light;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.7),transparent 40%)}
+  .cf-card{will-change:transform,opacity;transition:transform .55s var(--eo),opacity .55s var(--eo)}
+  .spot-c{-webkit-mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,-40%),#000 0,transparent 72%);mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,-40%),#000 0,transparent 72%)}
+  .floatimg{position:fixed;width:220px;height:280px;object-fit:cover;border-radius:16px;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.9);transition:opacity .4s var(--eo),transform .4s var(--eo);z-index:50;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}.holo,.cf-card{transition:none!important;transform:none!important}.foil,.glare,.floatimg{display:none}.spot-c{-webkit-mask-image:none;mask-image:none}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Team-FX</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Team — Effekt-Konzepte (06–10)</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Effektreiche Richtungen. Maus über Namen/Karten bewegen, ziehen, hovern. Fotos = Unsplash-Vorschau.</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Effekte nach Craft-Regeln · GPU-only · spring-Lerp · reduce-motion-sicher.</footer>
+
+<script>
+const P={katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",melanie:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",heike:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",lars:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"};
+const ALL=[{name:'Katja Schaffeld',role:'Inhaberin · Friseurmeisterin',img:P.katja},{name:'Melanie Köhler',role:'Hairstylistin',img:P.melanie},{name:'Heike',role:'Leiterin Service',img:P.heike},{name:'Lars Tembrink',role:'Hairstylist',img:P.lars}];
+const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=()=>matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced();
+const lerp=(a,b,t)=>a+(b-a)*t;
+
+const CONCEPTS={
+
+/* 06 · HOVER-LIST + FLOATING IMAGE */
+floatlist:{
+  label:'06 · Namen-Liste + Floating-Foto ⭐',
+  blurb:'Große Namensliste; beim Hovern erscheint das Porträt und schwebt dem Cursor nach. Der edle Awwwards-Klassiker.',
+  motion:'Foto folgt dem Cursor per Spring-Lerp, faded ein/aus. Aktiver Name färbt sich Terra & rückt leicht. Touch: Grid-Fallback.',
+  vibe:'Editorial-Awwwards · sehr edel',
+  render:()=>`
+  <section class="relative grid min-h-[clamp(440px,62vh,720px)] place-items-center bg-[#0f0b08] px-7 text-cream" id="fl-sec">
+    <div class="w-full max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.3em] text-orange">Unser Team</p>
+      <ul class="mt-6 divide-y divide-white/10 border-y border-white/10">
+        ${ALL.map((m,i)=>`<li><a href="#" data-img="${m.img}" class="fl-row group flex items-baseline justify-between gap-4 py-5 transition-colors"><span class="font-serif text-[clamp(1.8rem,5vw,3.2rem)] font-medium leading-none transition-transform duration-300 group-hover:translate-x-3">${m.name}</span><span class="text-sm uppercase tracking-widest text-cream/50">${m.role}</span></a></li>`).join('')}
+      </ul>
+      <p class="mt-5 text-xs text-cream/40">↗ über die Namen fahren</p>
+    </div>
+    <img class="floatimg" id="fl-img" alt="">
+  </section>${filler('dark')}`,
+  init:(vp)=>{const sec=vp.querySelector('#fl-sec'),img=vp.querySelector('#fl-img'),rows=[...vp.querySelectorAll('.fl-row')];if(!fine())return;
+    let tx=0,ty=0,cx=0,cy=0,raf=null,vis=false;
+    const loop=()=>{cx=lerp(cx,tx,.16);cy=lerp(cy,ty,.16);img.style.left=cx+'px';img.style.top=cy+'px';if(vis||Math.abs(cx-tx)>.5||Math.abs(cy-ty)>.5)raf=requestAnimationFrame(loop);else raf=null;};
+    sec.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;if(!raf)raf=requestAnimationFrame(loop);});
+    rows.forEach(r=>{r.addEventListener('mouseenter',()=>{img.src=r.dataset.img;img.style.opacity='1';img.style.transform='translate(-50%,-50%) scale(1) rotate(-3deg)';vis=true;r.style.color='#F4A460';});
+      r.addEventListener('mouseleave',()=>{img.style.opacity='0';img.style.transform='translate(-50%,-50%) scale(.9)';vis=false;r.style.color='';});});},
+},
+
+/* 07 · HOLOGRAPHIC TILT CARDS */
+holo:{
+  label:'07 · Holografische Karten',
+  blurb:'Team-Karten mit Foil-Schimmer & Glanzlicht beim Kippen – wie edle Sammelkarten. Premium-„wow".',
+  motion:'Spring-Lerp-Tilt, Foil-Gradient verschiebt sich, Glare folgt der Maus. Verlassen → federt zurück. Touch/reduce: ruhig.',
+  vibe:'Königsklasse · Sammelkarte',
+  render:()=>`
+  <section class="bg-gradient-to-b from-[#1b140f] to-[#0f0b08] px-7 py-14 text-cream sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Unser Team</p>
+    <h2 class="reveal mt-3 mb-9 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Die Crew als Sammelkarten</h2>
+    <div class="scene grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      ${ALL.map(m=>`<article class="reveal"><div class="holo relative aspect-[63/88] overflow-hidden rounded-2xl bg-ink shadow-2xl"><img src="${m.img}" class="absolute inset-0 h-full w-full object-cover object-top" alt=""><div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent"></div><div class="foil"></div><div class="glare"></div><div class="absolute inset-x-3 bottom-3"><h4 class="font-serif text-lg">${m.name}</h4><p class="text-xs uppercase tracking-wider text-orange">${m.role}</p></div></div></article>`).join('')}
+    </div>
+  </section>${filler('dark')}`,
+  init:(vp)=>{const cards=[...vp.querySelectorAll('.holo')];if(!fine())return;
+    cards.forEach(card=>{const foil=card.querySelector('.foil'),glare=card.querySelector('.glare');let tx=0,ty=0,cx=0,cy=0,tg=50,tgy=50,cg=50,cgy=50,raf=null,act=false;
+      const loop=()=>{cx=lerp(cx,tx,.14);cy=lerp(cy,ty,.14);cg=lerp(cg,tg,.14);cgy=lerp(cgy,tgy,.14);card.style.transform=`rotateX(${(-cy*15).toFixed(2)}deg) rotateY(${(cx*17).toFixed(2)}deg)`;foil.style.backgroundPosition=`${cg}% ${cgy}%`;glare.style.setProperty('--gx',cg+'%');glare.style.setProperty('--gy',cgy+'%');if(act||Math.abs(cx-tx)>.01)raf=requestAnimationFrame(loop);else raf=null;};
+      card.classList.add('live');
+      card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tx=x;ty=y;tg=(x+.5)*100;tgy=(y+.5)*100;act=true;foil.style.opacity='.85';glare.style.opacity='1';if(!raf)raf=requestAnimationFrame(loop);});
+      card.addEventListener('mouseleave',()=>{tx=0;ty=0;act=false;foil.style.opacity='0';glare.style.opacity='0';if(!raf)raf=requestAnimationFrame(loop);});});},
+},
+
+/* 08 · 3D COVERFLOW */
+coverflow:{
+  label:'08 · 3D Coverflow',
+  blurb:'Team-Porträts als 3D-Coverflow: mittlere Karte frontal, seitliche drehen in den Raum. Ziehen oder Pfeile.',
+  motion:'rotateY + translateZ/X je nach Abstand. Wechsel retargetet flüssig. Aktive Karte angehoben & scharf.',
+  vibe:'Interaktiv-3D · spektakulär',
+  render:()=>`
+  <section class="bg-[#0f0b08] px-6 py-16 text-center text-cream">
+    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-orange">Unser Team</p>
+    <h2 class="mx-auto mt-2 font-serif text-[clamp(1.6rem,1rem+2.4vw,2.4rem)] font-medium">Dreh dich durch die Crew</h2>
+    <div class="scene relative mx-auto mt-10 h-[360px] max-w-2xl">
+      <div class="cf-stage pre3d absolute inset-0">
+        ${ALL.map((m,i)=>`<article class="cf-card absolute left-1/2 top-1/2 w-[220px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl bg-ink shadow-2xl" data-i="${i}"><div class="relative aspect-[3/4]"><img src="${m.img}" class="h-full w-full object-cover object-top" alt=""><div class="absolute inset-0 bg-gradient-to-t from-ink/85 to-transparent"></div><div class="absolute inset-x-3 bottom-3 text-left"><h4 class="font-serif text-lg">${m.name}</h4><p class="text-xs text-orange">${m.role}</p></div></div></article>`).join('')}
+      </div>
+    </div>
+    <div class="mt-6 flex justify-center gap-3"><button class="cf-prev btn grid h-11 w-11 place-items-center rounded-full bg-orange text-ink">‹</button><button class="cf-next btn grid h-11 w-11 place-items-center rounded-full bg-orange text-ink">›</button></div>
+  </section>${filler('dark')}`,
+  init:(vp)=>{const cards=[...vp.querySelectorAll('.cf-card')];let cur=0;
+    const lay=()=>cards.forEach((c,i)=>{const o=i-cur;c.style.transform=`translate(-50%,-50%) translateX(${o*150}px) translateZ(${-Math.abs(o)*180}px) rotateY(${o*-38}deg) scale(${o===0?1:.9})`;c.style.opacity=Math.abs(o)>1?0:1;c.style.zIndex=10-Math.abs(o);});lay();
+    vp.querySelector('.cf-next').onclick=()=>{cur=Math.min(cards.length-1,cur+1);lay();};vp.querySelector('.cf-prev').onclick=()=>{cur=Math.max(0,cur-1);lay();};
+    const st=vp.querySelector('.cf-stage');let sx=null;st.addEventListener('pointerdown',e=>sx=e.clientX);window.addEventListener('pointerup',e=>{if(sx===null)return;const d=e.clientX-sx;if(d<-40&&cur<cards.length-1)cur++;else if(d>40&&cur>0)cur--;lay();sx=null;});},
+},
+
+/* 09 · SPOTLIGHT DUOTONE */
+spotlight:{
+  label:'09 · Spotlight-Duotone',
+  blurb:'Porträts in edlem Schwarzweiß; ein Lichtkegel folgt der Maus und enthüllt Farbe. Mysteriös & hochwertig.',
+  motion:'Radiale Masken-Spotlight pro Karte folgt dem Cursor. Reveal-Stagger. Touch/reduce: Farbe dauerhaft sichtbar.',
+  vibe:'Cinematic · edel-interaktiv',
+  render:()=>`
+  <section class="bg-[#0f0b08] px-7 py-14 text-cream sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Unser Team</p>
+    <h2 class="reveal mt-3 mb-8 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Bring uns ins Licht</h2>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      ${ALL.map(m=>`<article class="reveal group"><div class="spot-host relative aspect-[3/4] overflow-hidden rounded-2xl"><img src="${m.img}" class="absolute inset-0 h-full w-full object-cover object-top opacity-25 grayscale" alt=""><img src="${m.img}" class="spot-c absolute inset-0 h-full w-full object-cover object-top" alt=""><div class="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent"></div><div class="absolute inset-x-3 bottom-3"><h4 class="font-serif text-lg">${m.name}</h4><p class="text-xs text-orange">${m.role}</p></div></div></article>`).join('')}
+    </div>
+  </section>${filler('dark')}`,
+  init:(vp)=>{if(!fine())return;vp.querySelectorAll('.spot-host').forEach(h=>{const c=h.querySelector('.spot-c');h.addEventListener('mousemove',e=>{const r=h.getBoundingClientRect();c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');});h.addEventListener('mouseleave',()=>{c.style.setProperty('--my','-40%');});});},
+},
+
+/* 10 · FLOATING DEPTH PORTRAITS */
+depth:{
+  label:'10 · Schwebende Tiefe',
+  blurb:'Porträts schweben auf verschiedenen Ebenen, neigen sich gemeinsam zur Maus (Parallax-Tiefe) und „atmen" im Leerlauf.',
+  motion:'Jede Karte hat eigene Tiefe (translateZ); Container kippt zur Maus, Karten parallaxen + Idle-Float. Spring-Lerp. Touch/reduce: ruhig.',
+  vibe:'Immersiv-3D · lebendig',
+  render:()=>`
+  <section class="scene relative grid min-h-[clamp(440px,62vh,700px)] place-items-center overflow-hidden bg-gradient-to-b from-[#1b140f] to-[#0f0b08] px-6 text-cream">
+    <p class="absolute top-6 left-1/2 -translate-x-1/2 text-xs font-semibold uppercase tracking-[0.3em] text-orange">Unser Team</p>
+    <div class="depth pre3d relative h-[440px] w-full max-w-3xl">
+      ${ALL.map((m,i)=>{const pos=['left-[4%] top-[18%]','right-[6%] top-[10%]','left-[22%] bottom-[10%]','right-[20%] bottom-[14%]'][i];const z=[2,5,3,6][i];return `<figure class="dlayer absolute ${pos} w-40 overflow-hidden rounded-2xl bg-ink shadow-2xl" data-z="${z}" data-f="${z*2}"><div class="relative aspect-[3/4]"><img src="${m.img}" class="h-full w-full object-cover object-top" alt=""><div class="absolute inset-0 bg-gradient-to-t from-ink/85 to-transparent"></div><figcaption class="absolute inset-x-2 bottom-2"><span class="block font-serif text-sm">${m.name}</span><span class="text-[0.65rem] text-orange">${m.role}</span></figcaption></div></figure>`;}).join('')}
+    </div>
+    <p class="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-cream/40">Maus bewegen für Tiefe</p>
+  </section>${filler('dark')}`,
+  init:(vp)=>{const dp=vp.querySelector('.depth'),ls=[...vp.querySelectorAll('.dlayer')];if(!fine())return;
+    let tx=0,ty=0,cx=0,cy=0,raf,t0=performance.now();
+    const loop=(t)=>{const dt=(t-t0)/1000;cx=lerp(cx,tx,.08);cy=lerp(cy,ty,.08);dp.style.transform=`rotateX(${(-cy*5).toFixed(2)}deg) rotateY(${(cx*7).toFixed(2)}deg)`;
+      ls.forEach((l,i)=>{const z=+l.dataset.z,f=+l.dataset.f;const fl=Math.sin(dt*0.8+i)*f;l.style.transform=`translate(${(cx*z*8).toFixed(1)}px,${(cy*z*8+fl).toFixed(1)}px) translateZ(${z*16}px)`;});raf=requestAnimationFrame(loop);};
+    raf=requestAnimationFrame(loop);
+    vp.querySelector('section').addEventListener('mousemove',e=>{const r=dp.getBoundingClientRect();tx=(e.clientX-(r.left+r.width/2))/r.width;ty=(e.clientY-(r.top+r.height/2))/r.height;});},
+},
+};
+
+/* ============ SHELL ============ */
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-[#0f0b08] text-cream':'bg-cream2 text-ink'} px-6 py-12"><p class="text-center font-serif text-lg ${d?'text-cream/55':'text-inkSoft'}">↑ weiter scrollen</p><div class="h-[26vh]"></div></section>`;}
+let io;function wireReveal(vp){if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.12});[...vp.querySelectorAll('.reveal')].forEach((el,i)=>{if(!el.style.transitionDelay)el.style.transitionDelay=(i*0.06)+'s';io.observe(el);});}
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+60)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>

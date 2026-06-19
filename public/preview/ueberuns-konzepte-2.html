@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Über uns – 5 weitere Konzepte (06–10)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.16,1,0.3,1);--eq:cubic-bezier(0.25,1,0.5,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(460px,76vh,820px);overflow-y:auto;overflow-x:hidden;position:relative;background:#F9F6F2;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--eo),transform .8s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .pop{opacity:0;transform:translateY(16px) scale(.965);transition:opacity .7s var(--eo),transform .7s var(--eo)}.pop.in{opacity:1;transform:none}
+  .clip{clip-path:inset(0 100% 0 0);transition:clip-path 1.05s var(--eo)}.clip.in{clip-path:inset(0 0 0 0)}
+  .lift{transition:transform .3s var(--eo),box-shadow .3s var(--eo)}.lift:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(42,33,27,.55)}
+  .btn{transition:transform .18s var(--eq),background-color .22s}.btn:active{transform:scale(.97)}
+  @keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}.mqL{animation:mqL 30s linear infinite}
+  @media (prefers-reduced-motion:reduce){.reveal,.pop,.clip{opacity:1!important;transform:none!important;clip-path:none!important;transition:none}.mqL{animation:none!important}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 03 — Über uns · weitere Konzepte (06–10)</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf zusätzliche Richtungen. Tab wählen, im Fenster scrollen. Echte O-Töne; Fotos = Unsplash-Vorschau.</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Konzepte 06–10 · echte O-Töne &amp; Zielgruppen.</footer>
+
+<script>
+const IMG={
+  salon:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1500&q=80",
+  katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+  chair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1100&q=80",
+  detail:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=80",
+};
+const KICK='Wer wir sind';
+const H='Friseurmeisterbetrieb im Kreuzviertel — ohne Termine';
+const QUOTE='Style zu Mensch, passender Look und Zufriedenheit.';
+const P1='Dein Friseur Hair Power im York Center ist zentral, gemütlich und entspannend — und weit mehr als ein Salon. Hier bekommst du den Kopf frei. Wir stehen für Qualität, Authentizität und die fachliche Kunst des Schneidens, Färbens und Verwöhnens.';
+const USPS=['Meisterbetrieb','Ohne Termine','Faire Preise','Barrierefrei'];
+const AUD=[
+  ['🚲','Junge Leute & Studenten','Komm mit der Leeze vorbei. Coole Farben, Schnitte und Beratung zu fairen Preisen.'],
+  ['👵','Seniorinnen & Senioren','Ebenerdiger Eingang, kurze Wartezeiten, Bushaltestellen direkt vor der Tür.'],
+  ['👨‍👩‍👧','Für Jung & Alt','Die Frisur kennt keine Generationsgrenze — typgerechte Looks für die Familie.'],
+];
+const uspRow=(d)=>USPS.map(u=>`<span class="rounded-full ${d?'bg-white/10 text-cream':'bg-cream2 text-brownDark'} px-3.5 py-1.5 text-xs font-semibold">${u}</span>`).join('');
+const audCards=(d)=>AUD.map(([i,t,x])=>`<article class="pop lift rounded-2xl border ${d?'border-white/10 bg-white/5':'border-ink/10 bg-cream2'} p-5"><span class="grid h-11 w-11 place-items-center rounded-xl bg-terra/15 text-xl">${i}</span><h3 class="mt-3 font-serif text-lg font-medium ${d?'text-cream':'text-ink'}">${t}</h3><p class="mt-2 text-sm ${d?'text-cream/65':'text-inkSoft'}">${x}</p></article>`).join('');
+
+const CONCEPTS={
+
+/* 06 · MARQUEE VALUES BAND */
+band:{
+  label:'06 · Marquee Values Band',
+  blurb:'Werte als großes Laufband, in der Mitte ein rundes Porträt mit Story. Mutig, warm, sofort „Marke".',
+  motion:'Werte-Laufband oben (Pause bei Hover). Rundes Porträt & Story per Reveal. USP-Chips poppen. Zielgruppen heben beim Hover.',
+  vibe:'Editorial-bold · markant',
+  render:()=>`
+  <section class="overflow-hidden bg-cream py-12">
+    <div class="flex overflow-hidden border-y border-ink/10 py-3"><div class="mqL flex shrink-0 whitespace-nowrap font-serif text-[clamp(1.4rem,3vw,2.2rem)] italic text-brownDark">${valband()}${valband()}</div></div>
+    <div class="mx-auto mt-10 max-w-2xl px-6 text-center">
+      <div class="reveal mx-auto mb-6 h-28 w-28 overflow-hidden rounded-full ring-4 ring-terra/30"><img src="${IMG.katja}" class="h-full w-full object-cover" alt="Katja (Platzhalter)"></div>
+      <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">${KICK}</p>
+      <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight" style="transition-delay:.1s">${H}</h2>
+      <p class="reveal mt-4 font-serif text-lg italic text-brownDark" style="transition-delay:.16s">„${QUOTE}"</p>
+      <p class="reveal mx-auto mt-4 max-w-[52ch] text-inkSoft" style="transition-delay:.22s">${P1}</p>
+      <div class="reveal mt-6 flex flex-wrap justify-center gap-2" style="transition-delay:.3s">${uspRow(false)}</div>
+    </div>
+    <div class="mx-auto mt-10 grid max-w-4xl gap-4 px-6 sm:grid-cols-3">${audCards(false)}</div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 07 · ASYMMETRIC BENTO */
+bento:{
+  label:'07 · Asymmetric Bento',
+  blurb:'Magazin-Bento: Foto-, Zitat-, Kennzahl- und Zielgruppen-Kacheln in einem ruhigen Raster. Modern, ordentlich.',
+  motion:'Kacheln poppen gestaffelt herein (Fade + Scale). Hover hebt einzelne Kacheln an. Kompakt &amp; übersichtlich.',
+  vibe:'Minimal-modern · bento',
+  render:()=>`
+  <section class="bg-cream2 px-5 py-12 sm:px-8">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">${KICK}</p>
+    <h2 class="reveal mt-2 mb-6 max-w-[24ch] font-serif text-[clamp(1.6rem,1rem+2.4vw,2.4rem)] font-medium leading-tight" style="transition-delay:.08s">${H}</h2>
+    <div class="grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-3 sm:grid-cols-4">
+      <div class="pop lift col-span-2 row-span-2 overflow-hidden rounded-3xl sm:col-span-2"><img src="${IMG.salon}" class="h-full min-h-[200px] w-full object-cover" alt="Salon"></div>
+      <div class="pop lift col-span-2 flex flex-col justify-center rounded-3xl bg-ink p-6 text-cream"><p class="font-serif text-xl italic leading-snug">„${QUOTE}"</p></div>
+      <div class="pop lift flex flex-col items-center justify-center rounded-3xl bg-orange/20 p-5 text-center"><b class="font-serif text-3xl text-ink">15+</b><span class="mt-1 text-xs text-inkSoft">Jahre Meister</span></div>
+      <div class="pop lift flex flex-col items-center justify-center rounded-3xl bg-terra p-5 text-center text-white"><b class="font-serif text-3xl">4,3★</b><span class="mt-1 text-xs">254 Bewertungen</span></div>
+      ${AUD.map(([i,t,x])=>`<div class="pop lift col-span-2 rounded-3xl bg-white p-5 sm:col-span-2"><div class="flex items-start gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-terra/15 text-lg">${i}</span><div><h3 class="font-serif text-base font-medium">${t}</h3><p class="mt-1 text-xs text-inkSoft">${x}</p></div></div></div>`).join('')}
+    </div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 08 · FULL-BLEED + GLASS CARD */
+glass:{
+  label:'08 · Full-bleed + Glass Card',
+  blurb:'Großes Salonbild, darüber eine matte Glaskarte mit Story &amp; Zitat. Premium-Consumer, „Apple-y".',
+  motion:'Bild mit sanftem Zoom. Glaskarte gleitet herein. USP-Chips poppen. Zielgruppen-Reihe darunter mit Hover-Lift.',
+  vibe:'Premium · glas, ruhig-edel',
+  render:()=>`
+  <section class="bg-cream px-0 pb-12">
+    <div class="relative">
+      <div class="relative h-[clamp(260px,42vh,440px)] overflow-hidden"><img src="${IMG.salon}" class="h-full w-full object-cover" alt="Salon"><div class="absolute inset-0 bg-ink/25"></div></div>
+      <div class="reveal mx-auto -mt-24 max-w-3xl rounded-3xl border border-white/60 bg-white/70 p-7 shadow-2xl backdrop-blur-xl sm:p-10" style="position:relative">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-terra">${KICK}</p>
+        <h2 class="mt-3 font-serif text-[clamp(1.6rem,1rem+2.4vw,2.4rem)] font-medium leading-tight">${H}</h2>
+        <p class="mt-4 font-serif text-lg italic text-brownDark">„${QUOTE}"</p>
+        <p class="mt-4 text-inkSoft">${P1}</p>
+        <div class="mt-6 flex flex-wrap gap-2">${uspRow(false)}</div>
+      </div>
+    </div>
+    <div class="mx-auto mt-8 grid max-w-4xl gap-4 px-6 sm:grid-cols-3">${audCards(false)}</div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 09 · NUMBERED "WARUM WIR" */
+numbered:{
+  label:'09 · Warum wir · Nummern',
+  blurb:'Typo-stark: „Warum Hair Power?" als große nummerierte Werte (01–03), minimal &amp; selbstbewusst.',
+  motion:'Riesige Index-Nummern und Werte erscheinen nacheinander (Reveal). Zitat als Abschluss. Sehr viel Weißraum.',
+  vibe:'Type-forward · minimal-mutig',
+  render:()=>`
+  <section class="bg-cream px-7 py-16 sm:px-12">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">${KICK}</p>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.8rem,1rem+3vw,3rem)] font-medium leading-tight" style="transition-delay:.08s">Warum Hair&nbsp;Power?</h2>
+    <div class="mt-10 space-y-10">
+      ${[
+        ['01','Meisterhandwerk','Qualität &amp; Authentizität — die fachliche Kunst des Schneidens, Färbens und Verwöhnens.'],
+        ['02','Ohne Termine','Walk-In im York Center. Komm einfach vorbei, ohne lange Wartezeiten.'],
+        ['03','Für alle da','Studierende, Senior:innen, Familien — typgerecht und fair kalkuliert.'],
+      ].map(([n,t,x],i)=>`
+      <div class="reveal flex items-baseline gap-6 border-t border-ink/10 pt-6" style="transition-delay:${i*0.12}s">
+        <span class="font-serif text-[clamp(2.4rem,6vw,4rem)] font-semibold leading-none text-terra/30">${n}</span>
+        <div><h3 class="font-serif text-2xl font-medium">${t}</h3><p class="mt-2 max-w-[54ch] text-inkSoft">${x}</p></div>
+      </div>`).join('')}
+    </div>
+    <p class="reveal mt-12 font-serif text-2xl italic text-brownDark" style="transition-delay:.4s">„${QUOTE}"</p>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 10 · DIAGONAL SPLIT */
+diagonal:{
+  label:'10 · Diagonal Split',
+  blurb:'Dunkles Textpanel mit diagonaler Kante über dem Salonbild — dynamisch, Awwwards-Kante, markentreu dunkel.',
+  motion:'Bild mit Zoom, dunkles Panel gleitet von links über die Diagonale herein. USP-Chips poppen. Zielgruppen als dunkle Kacheln.',
+  vibe:'Dynamisch / Awwwards · dunkel',
+  render:()=>`
+  <section class="bg-ink">
+    <div class="relative grid md:grid-cols-2">
+      <div class="relative min-h-[240px] overflow-hidden md:min-h-[460px]"><img src="${IMG.chair}" class="h-full w-full object-cover" alt="Salon innen"></div>
+      <div class="reveal relative z-10 -mt-12 bg-ink px-7 py-10 text-cream md:mt-0 md:-ml-16 md:py-16 md:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)] md:pl-24 sm:px-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-orange">${KICK}</p>
+        <h2 class="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight">${H}</h2>
+        <p class="mt-4 font-serif text-lg italic text-orange/90">„${QUOTE}"</p>
+        <p class="mt-4 text-cream/75">${P1}</p>
+        <div class="mt-6 flex flex-wrap gap-2">${uspRow(true)}</div>
+      </div>
+    </div>
+    <div class="mx-auto grid max-w-5xl gap-4 px-6 py-12 sm:grid-cols-3">${audCards(true)}</div>
+  </section>${filler('dark')}`,
+  init:()=>{},
+},
+};
+
+/* ============ HELPERS ============ */
+function reduced(){return matchMedia('(prefers-reduced-motion: reduce)').matches;}
+function valband(){return ['Qualität','Authentizität','Beratung','Verwöhnen','Natürlich schön','Ohne Termine'].map(w=>`<span class="mx-6">${w} <span class="text-terra/50">✦</span></span>`).join('');}
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-14"><p class="text-center font-serif text-xl ${d?'text-cream/60':'text-inkSoft'}">↑ scrolle weiter</p><div class="h-[45vh]"></div></section>`;}
+let io;
+function wireReveal(vp){ if(io)io.disconnect(); io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.12}); vp.querySelectorAll('.reveal,.pop,.clip').forEach(el=>io.observe(el)); }
+function staggerPop(vp){ vp.querySelectorAll('.pop').forEach((el,i)=>el.style.transitionDelay=(i*0.08)+'s'); }
+
+/* ============ RENDER / SWITCH ============ */
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();staggerPop(vp);wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal,.pop,.clip').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+40)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>

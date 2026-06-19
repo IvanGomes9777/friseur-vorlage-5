@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Team – 5 Konzepte</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.23,1,0.32,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(480px,78vh,860px);overflow-y:auto;overflow-x:hidden;position:relative;background:#F9F6F2;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .btn{transition:transform .16s var(--eo),background-color .22s}.btn:active{transform:scale(.97)}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--eo),transform .7s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .shine{pointer-events:none;position:absolute;top:0;left:-60%;height:100%;width:50%;transform:skewX(-12deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transition:left .7s var(--eo)}
+  .group:hover .shine{left:120%}
+  .acc-item{transition:flex-grow .5s var(--eo)}
+  .tcard{transform-style:preserve-3d;transition:transform .5s var(--eo);will-change:transform}.tcard.live{transition:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}.shine{display:none}.acc-item,.tcard{transition:none}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 05 — Team</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Unser Team". Tab wählen, im Fenster hovern/scrollen. Fotos = Unsplash-Vorschau (final eure echten Team-Bilder).</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Echte Namen/Rollen · Fotos final aus public/team · Farben &amp; Fonts aus dem Projekt.</footer>
+
+<script>
+const P={
+  katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+  melanie:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",
+  heike:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",
+  lars:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+};
+const LEAD={name:'Katja Schaffeld',role:'Inhaberin · Friseurmeisterin',img:P.katja,quote:'Style zu Mensch, passender Look und Zufriedenheit – darum geht es uns.'};
+const TEAM=[{name:'Melanie Köhler',role:'Hairstylistin',img:P.melanie},{name:'Heike',role:'Leiterin Service',img:P.heike},{name:'Lars Tembrink',role:'Hairstylist',img:P.lars}];
+const ALL=[{...LEAD},...TEAM];
+
+const CONCEPTS={
+
+/* 1 · FEATURED LEAD + ROW */
+featured:{
+  label:'01 · Featured Inhaberin + Reihe',
+  blurb:'Katja groß mit Zitat, das übrige Team als Reihe. Persönlich, vertrauensbildend – die sichere Bank (aktuelle Variante).',
+  motion:'Reveal-Stagger. Foto-Hover: Zoom + Graustufen→Farbe + diagonaler Shine-Sweep. Rollen-Unterstrich wächst bei Hover.',
+  vibe:'Persönlich · vertrauensbildend',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unser Team</p>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">„by Katja" – und das ganze Team</h2>
+    <div class="reveal mt-6 grid gap-5 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-center" style="transition-delay:.12s">
+      <div class="group relative aspect-[4/5] overflow-hidden"><img src="${LEAD.img}" class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt=""><span class="shine"></span></div>
+      <div class="p-6 sm:p-7"><p class="text-xs font-semibold uppercase tracking-wide text-terra">${LEAD.role}</p><h3 class="mt-1.5 font-serif text-2xl font-medium sm:text-3xl">${LEAD.name}</h3><p class="mt-4 border-l-2 border-terra pl-4 font-serif text-lg italic text-brownDark">„${LEAD.quote}"</p></div>
+    </div>
+    <div class="mt-5 grid gap-5 sm:grid-cols-3">
+      ${TEAM.map(m=>`<article class="group overflow-hidden rounded-2xl border border-ink/10 bg-cream2 transition-shadow hover:shadow-xl"><div class="relative aspect-[4/5] overflow-hidden"><img src="${m.img}" class="h-full w-full object-cover object-top grayscale-[.25] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" alt=""><span class="shine"></span></div><div class="p-4"><h4 class="font-serif text-lg font-medium">${m.name}</h4><p class="relative inline-block text-sm text-inkSoft">${m.role}<span class="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-terra transition-all duration-300 group-hover:w-full"></span></p></div></article>`).join('')}
+    </div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 2 · EDITORIAL GRID */
+grid:{
+  label:'02 · Editorial Portrait-Grid',
+  blurb:'Vier gleichwertige große Porträts im Raster, Name/Rolle darunter. Ruhig, magazinhaft, alle auf Augenhöhe.',
+  motion:'Karten reveal-en gestaffelt. Hover: sanfter Zoom + Name-Block fährt leicht hoch. Klar & edel.',
+  vibe:'Editorial · gleichwertig',
+  render:()=>`
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unser Team</p>
+    <h2 class="reveal mt-3 mb-7 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Die Köpfe hinter Hair Power</h2>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      ${ALL.map(m=>`<article class="reveal group overflow-hidden rounded-2xl bg-white"><div class="relative aspect-[3/4] overflow-hidden"><img src="${m.img}" class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt=""></div><div class="p-4"><h4 class="font-serif text-lg font-medium">${m.name}</h4><p class="text-sm text-terra">${m.role}</p></div></article>`).join('')}
+    </div>
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 3 · DARK LUXE */
+luxe:{
+  label:'03 · Dark Luxe Team',
+  blurb:'Dunkle Bühne, Porträts mit Goldrahmen-Akzent, edle Typo. Kohärent zu Navbar/Hero/Über uns.',
+  motion:'Reveal-Stagger. Hover: Goldrahmen leuchtet auf + Zoom. Premium, ruhig.',
+  vibe:'Luxus · markentreu',
+  render:()=>`
+  <section class="bg-ink px-7 py-14 text-cream sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Unser Team</p>
+    <h2 class="reveal mt-3 mb-8 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Meisterhand & Herzblut</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      ${ALL.map(m=>`<article class="reveal group text-center"><div class="relative mx-auto aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-orange/30 transition-all duration-500 group-hover:ring-2 group-hover:ring-orange"><img src="${m.img}" class="h-full w-full object-cover object-top grayscale-[.3] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" alt=""></div><h4 class="mt-3 font-serif text-lg">${m.name}</h4><p class="text-sm text-orange/90">${m.role}</p></article>`).join('')}
+    </div>
+    <p class="reveal mx-auto mt-10 max-w-[50ch] text-center font-serif text-lg italic text-orange/85">„${LEAD.quote}"</p>
+  </section>${filler('dark')}`,
+  init:()=>{},
+},
+
+/* 4 · HOVER-EXPAND ACCORDION */
+accordion:{
+  label:'04 · Hover-Expand Galerie',
+  blurb:'Porträts als horizontale Streifen, die beim Hovern aufgehen und Name/Rolle zeigen. Interaktiv, Awwwards-Kante.',
+  motion:'Aktiver Streifen wächst (flex-grow), andere schrumpfen; Infos faden ein. Smooth, taktil. Mobil: gestapelt.',
+  vibe:'Interaktiv · elegant-modern',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unser Team</p>
+    <h2 class="reveal mt-3 mb-7 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Lern uns kennen</h2>
+    <div class="flex h-[420px] gap-3 max-sm:flex-col max-sm:h-auto" id="acc">
+      ${ALL.map((m,i)=>`<div class="acc-item group relative cursor-pointer overflow-hidden rounded-2xl max-sm:h-40" style="flex-grow:${i===0?3:1};flex-basis:0"><img src="${m.img}" class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt=""><div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div><div class="absolute inset-x-4 bottom-4"><h4 class="font-serif text-xl text-cream">${m.name}</h4><p class="text-sm text-orange opacity-0 transition-opacity duration-300 group-hover:opacity-100">${m.role}</p></div></div>`).join('')}
+    </div>
+    <p class="mt-3 text-center text-xs text-inkSoft">↗ über die Porträts fahren</p>
+  </section>${filler('light')}`,
+  init:(vp)=>{const items=[...vp.querySelectorAll('.acc-item')];items.forEach(it=>{it.addEventListener('mouseenter',()=>{items.forEach(o=>o.style.flexGrow=o===it?'4':'1');});});const acc=vp.querySelector('#acc');acc.addEventListener('mouseleave',()=>items.forEach((o,i)=>o.style.flexGrow=i===0?'3':'1'));},
+},
+
+/* 5 · 3D TILT CARDS */
+tilt:{
+  label:'05 · 3D Tilt-Karten',
+  blurb:'Jedes Team-Mitglied auf einer Karte, die sich leicht in 3D zum Cursor neigt. Verspielt-premium, „lebendig".',
+  motion:'Spring-Lerp-Tilt pro Karte (sanft, gegated auf Maus). Reveal-Stagger. Beim Verlassen federt die Karte zurück.',
+  vibe:'Verspielt-premium · 3D',
+  render:()=>`
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unser Team</p>
+    <h2 class="reveal mt-3 mb-8 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Sag Hallo zum Team</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style="perspective:1000px">
+      ${ALL.map(m=>`<article class="reveal"><div class="tcard overflow-hidden rounded-2xl bg-white shadow-lg"><div class="relative aspect-[3/4] overflow-hidden"><img src="${m.img}" class="h-full w-full object-cover object-top" alt=""></div><div class="p-4 text-center"><h4 class="font-serif text-lg font-medium">${m.name}</h4><p class="text-sm text-terra">${m.role}</p></div></div></article>`).join('')}
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>{const cards=[...vp.querySelectorAll('.tcard')];if(!(matchMedia('(hover:hover) and (pointer:fine)').matches)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    cards.forEach(card=>{let tx=0,ty=0,cx=0,cy=0,raf=null,act=false;const lp=(a,b,t)=>a+(b-a)*t;
+      const loop=()=>{cx=lp(cx,tx,.14);cy=lp(cy,ty,.14);card.style.transform=`rotateX(${(-cy*9).toFixed(2)}deg) rotateY(${(cx*11).toFixed(2)}deg)`;if(act||Math.abs(cx-tx)>.01||Math.abs(cy-ty)>.01)raf=requestAnimationFrame(loop);else raf=null;};
+      card.classList.add('live');
+      card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;act=true;if(!raf)raf=requestAnimationFrame(loop);});
+      card.addEventListener('mouseleave',()=>{tx=0;ty=0;act=false;if(!raf)raf=requestAnimationFrame(loop);});});},
+},
+};
+
+/* ============ SHELL ============ */
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-12"><p class="text-center font-serif text-lg ${d?'text-cream/55':'text-inkSoft'}">↑ weiter scrollen</p><div class="h-[26vh]"></div></section>`;}
+let io;function wireReveal(vp){if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){e.target.classList.add('in');}}),{root:vp,threshold:.12});[...vp.querySelectorAll('.reveal')].forEach((el,i)=>{el.style.transitionDelay=(el.style.transitionDelay||(i*0.06+'s'));io.observe(el);});}
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+60)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>

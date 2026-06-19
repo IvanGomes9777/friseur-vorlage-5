@@ -6,11 +6,15 @@ import { SITE } from "@/data/site";
 /* DSGVO: Google-Maps-iFrame lädt ERST nach aktivem Klick (kein Request an
    Google vor Einwilligung). Bis dahin ein gestylter Platzhalter. */
 
-export default function MapEmbed() {
+export default function MapEmbed({
+  className = "h-44 rounded-xl border border-white/15 sm:h-52",
+}: {
+  className?: string;
+}) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative h-44 overflow-hidden rounded-xl border border-white/15 sm:h-52">
+    <div className={`relative overflow-hidden ${className}`}>
       {loaded ? (
         <iframe
           title="Karte: Hair Power, Grevener Str. 63, Münster"
