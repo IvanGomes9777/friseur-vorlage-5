@@ -36,7 +36,7 @@ export const GALLERY: GalleryItem[] = [
   { src: U("photo-1519741497674-611481863552"), alt: "Hochzeitsfrisur", category: "hochzeit" },
   { src: U("photo-1580618672591-eb180b1a973f"), alt: "Damen-Styling", category: "damen" },
   { src: U("photo-1560869713-7d0a29430803"), alt: "Strähnen / Farbe", category: "farbe" },
-  { src: U("photo-1599387737838-626c8f6deba0"), alt: "Herren-Look", category: "herren" },
+  { src: U("photo-1599351431202-1e0f0137899a"), alt: "Herren-Look", category: "herren" },
   { src: U("photo-1595152772835-219674b2a8a6"), alt: "Hochsteckfrisur", category: "hochzeit" },
   { src: U("photo-1605497788044-5a32c7078486"), alt: "Kinder-Haarschnitt", category: "kinder" },
   { src: U("photo-1560066984-138dadb4c035"), alt: "Frischer Schnitt für Kids", category: "kinder" },
