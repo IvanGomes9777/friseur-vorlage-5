@@ -12,11 +12,11 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
+    <section id="faq" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
       <FaqJsonLd />
       <div
         ref={ref}
-        className={`mx-auto max-w-3xl transition-all duration-700 ease-out motion-reduce:transition-none ${
+        className={`mx-auto max-w-5xl transition-all duration-700 ease-out motion-reduce:transition-none ${
           inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
         }`}
       >
@@ -27,7 +27,7 @@ export default function FAQ() {
           Gut zu wissen
         </h2>
 
-        <div className="mt-8 border-y border-ink/10">
+        <div className="mt-6 border-y border-ink/10">
           {FAQS.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -38,7 +38,7 @@ export default function FAQ() {
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-4 text-left font-serif text-lg font-medium text-ink"
+                    className="flex w-full items-center justify-between gap-4 py-3 text-left font-serif text-lg font-medium text-ink"
                   >
                     <span>{f.q}</span>
                     <span
@@ -59,7 +59,7 @@ export default function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="pb-5 text-inkSoft">{f.a}</p>
+                    <p className="pb-4 text-inkSoft">{f.a}</p>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function FAQ() {
           })}
         </div>
 
-        <p className="mt-8 text-sm text-inkSoft">
+        <p className="mt-6 text-sm text-inkSoft">
           Noch eine Frage?{" "}
           <a
             href="#kontakt"

@@ -37,12 +37,12 @@ export default function UeberUns() {
   });
 
   return (
-    <section id="ueber" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-6xl">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
+    <section id="ueber" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
+        <div className="grid items-center gap-7 lg:grid-cols-2">
           {/* Foto */}
           <div {...reveal()} className={`${reveal().className} relative`}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]">
               <Image
                 src="/salon/salon-facade.png"
                 alt="Hair Power Salon im York Center am Kreuzviertel, Münster"
@@ -77,7 +77,7 @@ export default function UeberUns() {
             <p {...reveal(180)} className={`${reveal(180).className} mt-4 font-serif text-lg italic text-brownDark`}>
               „Style zu Mensch, passender Look und Zufriedenheit."
             </p>
-            <div {...reveal(240)} className={`${reveal(240).className} mt-4 space-y-4 text-inkSoft`}>
+            <div {...reveal(240)} className={`${reveal(240).className} mt-4 space-y-3 text-inkSoft`}>
               <p>
                 Dein Friseur Hair Power im York Center am Kreuzviertel ist
                 zentral gelegen, gemütlich und entspannend – und weit mehr als
@@ -98,12 +98,12 @@ export default function UeberUns() {
         </div>
 
         {/* Zielgruppen-Karten */}
-        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+        <div className="mt-7 grid gap-4 sm:grid-cols-3">
           {AUDIENCES.map((a, i) => (
             <article
               key={a.title}
               {...reveal(120 + i * 90)}
-              className={`${reveal(120 + i * 90).className} rounded-2xl border border-ink/10 bg-cream2 p-6`}
+              className={`${reveal(120 + i * 90).className} rounded-2xl border border-ink/10 bg-cream2 p-5`}
             >
               <span
                 aria-hidden="true"

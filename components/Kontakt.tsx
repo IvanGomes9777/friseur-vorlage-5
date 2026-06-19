@@ -13,7 +13,7 @@ export default function Kontakt() {
   const { ref, inView } = useInView<HTMLDivElement>(0.1);
 
   return (
-    <section id="kontakt" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20">
+    <section id="kontakt" className="scroll-mt-28 bg-cream2 px-6 py-9 sm:py-12 lg:px-10">
       <div
         ref={ref}
         className={`mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-ink/10 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[1.05fr_0.95fr] ${
@@ -21,7 +21,7 @@ export default function Kontakt() {
         }`}
       >
         {/* Linke, dunkle Seite */}
-        <div className="bg-ink p-7 text-cream sm:p-10">
+        <div className="bg-ink p-6 text-cream sm:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-orange">
             Kontakt &amp; Anfahrt
           </p>
@@ -29,7 +29,7 @@ export default function Kontakt() {
             Komm vorbei – mitten im Kreuzviertel.
           </h2>
 
-          <div className="mt-7 space-y-4">
+          <div className="mt-6 space-y-3">
             <InfoRow icon="📍">
               <b className="font-semibold">{SITE.street}</b>
               <span className="block text-sm text-cream/70">
@@ -75,13 +75,13 @@ export default function Kontakt() {
             Friseur ohne Termin – einfach reinkommen
           </span>
 
-          <div className="mt-6">
+          <div className="mt-5">
             <MapEmbed />
           </div>
         </div>
 
         {/* Rechte Seite: Formular */}
-        <div className="bg-cream2 p-7 sm:p-10">
+        <div className="bg-cream2 p-6 sm:p-8">
           <h3 className="font-serif text-xl font-medium text-ink">
             Schreib uns
           </h3>

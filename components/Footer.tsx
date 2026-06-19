@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/data/site";
 
@@ -15,14 +16,15 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-ink text-cream">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-10 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-screen-2xl gap-10 px-6 py-10 sm:grid-cols-3 lg:px-10">
         <div>
-          <p className="font-serif text-xl font-semibold tracking-[0.04em]">
-            HAIR POWER
-          </p>
-          <p className="mt-1 text-xs uppercase tracking-[0.28em] text-terra">
-            The Art of Hair Power
-          </p>
+          <Image
+            src="/brand/hair-power-logo.png"
+            alt="Hair Power · Friseur Münster by Katja"
+            width={232}
+            height={123}
+            className="h-16 w-auto rounded-xl bg-white p-2.5"
+          />
           <p className="mt-4 max-w-[30ch] text-sm text-cream/70">
             Friseurmeisterbetrieb im Kreuzviertel Münster – Damen, Herren &amp;
             Kinder, ohne Termin.
@@ -79,7 +81,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-screen-2xl flex-col gap-3 px-6 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p>© {year} Hair Power · Katja Schaffeld. Alle Rechte vorbehalten.</p>
           <nav aria-label="Rechtliches" className="flex gap-5">
             <Link href="/impressum" className="hover:text-cream">
