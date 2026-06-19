@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
@@ -158,18 +159,16 @@ export default function Navbar() {
 
 function Wordmark({ scrolled }: { scrolled: boolean }) {
   return (
-    <span className="block leading-none">
-      <span
-        className={`block font-serif font-semibold tracking-[0.04em] text-ink transition-all duration-300 ${
-          scrolled ? "text-lg" : "text-xl sm:text-2xl"
-        }`}
-      >
-        HAIR POWER
-      </span>
-      <span className="mt-1 block text-[0.6rem] uppercase tracking-[0.34em] text-terra">
-        The Art of Hair Power
-      </span>
-    </span>
+    <Image
+      src="/brand/hair-power-logo.png"
+      alt="Hair Power · Friseur Münster by Katja"
+      width={232}
+      height={123}
+      priority
+      className={`w-auto transition-all duration-300 ${
+        scrolled ? "h-10" : "h-12 sm:h-14"
+      }`}
+    />
   );
 }
 
