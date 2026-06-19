@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Hero – 5 weitere Konzepte (06–10)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.16,1,0.3,1);--eq:cubic-bezier(0.25,1,0.5,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(460px,76vh,820px);overflow-y:auto;overflow-x:hidden;position:relative;background:#F9F6F2;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--eo),transform .8s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .pop{opacity:0;transform:translateY(16px) scale(.965);transition:opacity .7s var(--eo),transform .7s var(--eo)}.pop.in{opacity:1;transform:none}
+  .line-mask{overflow:hidden;display:block}.line-mask>span{display:block;transform:translateY(110%);transition:transform .9s var(--eo)}.line-mask.in>span{transform:none}
+  @keyframes kb{from{transform:scale(1.18)}to{transform:scale(1)}}.kb{animation:kb 9s ease-out forwards}
+  @keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}@keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  .mqL{animation:mqL 28s linear infinite}.mqR{animation:mqR 28s linear infinite}
+  @keyframes pr{0%{box-shadow:0 0 0 0 rgba(155,230,160,.7)}70%{box-shadow:0 0 0 8px rgba(155,230,160,0)}100%{box-shadow:0 0 0 0 rgba(155,230,160,0)}}.pulse{animation:pr 2s infinite}
+  .btn{transition:transform .18s var(--eq),background-color .22s,box-shadow .3s var(--eq)}.btn:active{transform:scale(.97)}
+  .lift{transition:transform .3s var(--eo),box-shadow .3s var(--eo)}.lift:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(42,33,27,.55)}
+  @media (prefers-reduced-motion:reduce){.reveal,.pop,.line-mask>span{opacity:1!important;transform:none!important;transition:none}.kb,.mqL,.mqR,.pulse{animation:none!important}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 02 — Hero · weitere Konzepte (06–10)</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf zusätzliche Richtungen — interaktiv &amp; scroll-getrieben. Tab wählen, im Fenster <b>scrollen/ziehen</b>. Bilder = Unsplash-Vorschau; final eure echten Fotos.</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Konzepte 06–10 · echte Texte/Zahlen · Farben &amp; Fonts aus dem Projekt.</footer>
+
+<script>
+const IMG={
+  salon:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1500&q=80",
+  chair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80",
+  style:"https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1100&q=80",
+  color:"https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1100&q=80",
+  portrait:"https://images.unsplash.com/photo-1457972729786-0411a3b2b626?auto=format&fit=crop&w=1100&q=80",
+  before:"https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1100&q=80",
+  after:"https://images.unsplash.com/photo-1500840216050-6ffa99d75160?auto=format&fit=crop&w=1100&q=80",
+  detail:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1100&q=80",
+};
+
+const CONCEPTS={
+
+/* 06 · BEFORE / AFTER SLIDER */
+beforeafter:{
+  label:'06 · Vorher / Nachher',
+  blurb:'Der Hero ist ein interaktiver Vorher/Nachher-Vergleich — zieh den Regler. Zeigt sofort, was der Salon kann.',
+  motion:'Beim Eintritt fährt der Trennregler einmal sanft durch (Sweep) und pendelt sich auf 50 % ein. Griff pulsiert dezent. Headline & CTA staffeln ein. Drag per Maus & Touch.',
+  vibe:'Interaktiv · vertrauensbildend · salon-spezifisch',
+  render:()=>`
+  <section class="grid items-center gap-8 bg-cream px-7 py-14 sm:px-12 md:grid-cols-[.95fr_1.05fr]">
+    <div>
+      <p class="reveal font-sans text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-terra">Schnitt · Farbe · Balayage</p>
+      <h1 class="reveal mt-5 font-serif text-[clamp(2.2rem,1rem+4.5vw,4rem)] font-semibold leading-[0.98] tracking-tight" style="transition-delay:.1s">Sieh den <span class="italic text-terra">Unterschied.</span></h1>
+      <p class="reveal mt-5 max-w-[40ch] text-[1.02rem] leading-relaxed text-inkSoft" style="transition-delay:.2s">Aus Meisterhand, ehrlich beraten. Zieh am Regler — und komm einfach vorbei, ganz ohne Termin.</p>
+      <div class="reveal mt-7 flex flex-wrap gap-3.5" style="transition-delay:.3s">
+        <a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl bg-terra px-6 font-semibold text-white hover:bg-brownDark">Vorbeikommen</a>
+        <a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl border border-ink/15 px-6 font-semibold hover:bg-ink/5">Preise</a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="ba relative aspect-[4/3] w-full select-none overflow-hidden rounded-2xl shadow-2xl" style="touch-action:none">
+        <img src="${IMG.before}" class="absolute inset-0 h-full w-full object-cover" alt="Vorher" draggable="false">
+        <span class="absolute right-3 top-3 rounded-full bg-ink/70 px-3 py-1 text-xs font-semibold text-cream">Vorher</span>
+        <div class="ba-top absolute inset-0" style="clip-path:inset(0 50% 0 0)">
+          <img src="${IMG.after}" class="absolute inset-0 h-full w-full object-cover" alt="Nachher" draggable="false">
+          <span class="absolute left-3 top-3 rounded-full bg-terra px-3 py-1 text-xs font-semibold text-white">Nachher</span>
+        </div>
+        <div class="ba-div absolute top-0 bottom-0 w-0.5 -translate-x-1/2 bg-white" style="left:50%">
+          <div class="pulse absolute top-1/2 left-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-ink shadow-lg">⟷</div>
+        </div>
+      </div>
+      <p class="mt-3 text-center text-xs text-inkSoft">↔ Regler ziehen</p>
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>slider(vp),
+},
+
+/* 07 · DUAL MARQUEE EDITORIAL BAND */
+band:{
+  label:'07 · Dual Marquee Band',
+  blurb:'Zwei gegenläufige Wortbänder rahmen ein zentrales Statement mit gerahmtem Foto. Mutig, typografisch, energetisch.',
+  motion:'Oberes Band läuft links, unteres rechts (gegenläufig, Pause bei Hover). Zentrum mit Masken-Reveal. Foto kippt beim Hover leicht (3D-Tilt).',
+  vibe:'Editorial-bold · Awwwards-Energie',
+  render:()=>`
+  <section class="overflow-hidden bg-ink py-10 text-cream">
+    <div class="flex overflow-hidden border-y border-white/10 py-3"><div class="mqL flex shrink-0 whitespace-nowrap font-serif text-[clamp(1.4rem,3vw,2.4rem)] uppercase tracking-tight text-orange/90">${band1()}${band1()}</div></div>
+    <div class="mx-auto max-w-2xl px-6 py-12 text-center">
+      <div class="tilt mx-auto mb-6 h-28 w-28 overflow-hidden rounded-2xl shadow-2xl"><img src="${IMG.style}" class="h-full w-full object-cover" alt=""></div>
+      <h1 class="font-serif text-[clamp(2rem,1rem+4vw,3.6rem)] font-semibold leading-[1.0] tracking-tight">
+        <span class="line-mask"><span>Frisuren für Dich —</span></span>
+        <span class="line-mask text-orange" style="--d:1"><span>ohne Termin.</span></span>
+      </h1>
+      <p class="reveal mx-auto mt-5 max-w-[40ch] text-cream/70" style="transition-delay:.4s">Meisterbetrieb im Kreuzviertel Münster. Komm rein, setz dich, sieh gut aus.</p>
+      <a href="#" class="reveal btn mt-7 inline-flex min-h-[48px] items-center rounded-full bg-orange px-7 font-semibold text-ink hover:brightness-105" style="transition-delay:.5s">Jetzt vorbeikommen →</a>
+    </div>
+    <div class="flex overflow-hidden border-y border-white/10 py-3"><div class="mqR flex shrink-0 whitespace-nowrap font-serif text-[clamp(1.4rem,3vw,2.4rem)] uppercase tracking-tight text-cream/40">${band2()}${band2()}</div></div>
+  </section>${filler('dark')}`,
+  init:(vp)=>{ lineMasks(vp); tilt(vp); },
+},
+
+/* 08 · SCROLL-SCRUB CURTAIN */
+scrub:{
+  label:'08 · Scroll-Scrub Reveal',
+  blurb:'Beim Scrollen skaliert das Bild langsam auf, der Verdunkler weicht, der Text bleibt gepinnt. Cinematisch, „scrollytelling".',
+  motion:'Scroll-gebundenes Scrubbing: Bild von scale 1.25→1, Overlay 0.75→0.2, Headline-Parallax. Alles an deine Scroll-Position gekoppelt (kein Autoplay).',
+  vibe:'Cinematisch / High-End · scroll-gesteuert',
+  render:()=>`
+  <section class="scrub-sec relative" style="height:200%">
+    <div class="scrub-pin sticky top-0 grid place-items-center overflow-hidden text-center text-cream">
+      <div class="absolute inset-0 -z-10"><img class="scrub-img h-full w-full object-cover" src="${IMG.salon}" alt=""><div class="scrub-ov absolute inset-0 bg-ink" style="opacity:.75"></div></div>
+      <div class="scrub-txt mx-auto max-w-2xl px-6">
+        <p class="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-orange">Kreuzviertel · Münster</p>
+        <h1 class="mt-5 font-serif text-[clamp(2.2rem,1rem+5vw,4.6rem)] font-semibold leading-[0.98] tracking-tight">Tritt ein in<br><span class="italic text-orange">unser Handwerk.</span></h1>
+        <p class="mx-auto mt-5 max-w-[40ch] text-cream/80">Seit über 15 Jahren. Schnitt, Farbe &amp; Balayage — ohne Termin.</p>
+        <p class="mt-8 text-xs uppercase tracking-widest text-cream/50">↓ weiter scrollen</p>
+      </div>
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>scrub(vp),
+},
+
+/* 09 · SOFT PASTEL BENTO */
+bento:{
+  label:'09 · Soft Pastel Bento',
+  blurb:'Hero als Bento-Grid: Headline-Kachel, Foto, Live-Status, Bewertung, Preis-Highlight, CTA — warm, ruhig, modern.',
+  motion:'Kacheln „poppen" gestaffelt herein (Fade + leichtes Hochskalieren). Hover hebt einzelne Kacheln an. Live-Status pulsiert.',
+  vibe:'Minimal-modern · warm-pastell, sehr ordentlich',
+  render:()=>`
+  <section class="bg-cream2 px-5 py-12 sm:px-8">
+    <div class="mx-auto grid max-w-4xl auto-rows-[minmax(0,1fr)] grid-cols-2 gap-3 sm:grid-cols-4">
+      <div class="pop lift col-span-2 row-span-2 flex flex-col justify-between rounded-3xl bg-ink p-7 text-cream sm:col-span-2">
+        <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-orange">Friseur ohne Termin</p>
+        <h1 class="mt-4 font-serif text-[clamp(1.9rem,1rem+3.5vw,3.2rem)] font-semibold leading-[0.98] tracking-tight">Frisuren für Dich.</h1>
+        <a href="#" class="btn mt-6 inline-flex w-fit min-h-[46px] items-center rounded-full bg-orange px-5 font-semibold text-ink hover:brightness-105">Vorbeikommen →</a>
+      </div>
+      <div class="pop lift col-span-2 overflow-hidden rounded-3xl sm:col-span-2"><img src="${IMG.color}" class="h-full min-h-[150px] w-full object-cover" alt="Farbe"></div>
+      <div class="pop lift flex flex-col justify-center rounded-3xl bg-orange/20 p-5 text-center"><b class="font-serif text-3xl text-ink">4,3★</b><span class="mt-1 text-xs text-inkSoft">254 Rezensionen</span></div>
+      <div class="pop lift flex flex-col justify-center rounded-3xl bg-white p-5 text-center"><span class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#3f7d46]"><span class="pulse h-2 w-2 rounded-full bg-[#5fbf6a]"></span>Geöffnet</span><span class="mt-1 text-xs text-inkSoft">bis 18:00</span></div>
+      <div class="pop lift col-span-2 flex items-center justify-between rounded-3xl bg-terra p-5 text-white"><span class="font-serif text-xl">Balayage</span><b class="text-lg">ab 135 €</b></div>
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>{},
+},
+
+/* 10 · CINEMAGRAPH CROSSFADE */
+slideshow:{
+  label:'10 · Cinemagraph Crossfade',
+  blurb:'Vollbild-Diashow, die sanft überblendet (Ken-Burns) — wirkt wie Video, bleibt aber 100 % DSGVO-/performance-freundlich.',
+  motion:'Bilder überblenden alle ~3,5 s mit Ken-Burns-Zoom. Segmentierte Fortschrittsanzeige zeigt das aktive Bild. Headline unten per Reveal. (reduce-motion: ein statisches Bild.)',
+  vibe:'Cinematisch · „bewegt" ohne echtes Video',
+  render:()=>`
+  <section class="relative flex min-h-[clamp(440px,76vh,820px)] items-end overflow-hidden bg-ink text-cream">
+    <div class="slides absolute inset-0 z-0">
+      ${[IMG.salon,IMG.chair,IMG.style,IMG.detail].map((s,i)=>`<img src="${s}" class="slide absolute inset-0 h-full w-full object-cover transition-opacity duration-1000" style="opacity:${i===0?1:0}" alt="" draggable="false">`).join('')}
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/25"></div>
+    </div>
+    <div class="relative z-10 w-full px-7 pb-12 sm:px-12">
+      <div class="dots mb-6 flex gap-2"></div>
+      <div class="reveal max-w-2xl">
+        <p class="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-orange">Hair Power · Münster · ohne Termin</p>
+        <h1 class="mt-4 font-serif text-[clamp(2.2rem,1rem+5vw,4.4rem)] font-semibold leading-[0.98] tracking-tight">Dein Look. Dein Moment.</h1>
+        <p class="mt-4 max-w-[42ch] text-cream/85">Meisterbetrieb seit über 15 Jahren — Schnitt, Farbe &amp; Balayage. Komm einfach vorbei.</p>
+        <a href="#" class="btn mt-7 inline-flex min-h-[48px] items-center rounded-xl bg-terra px-6 font-semibold text-white hover:bg-brownDark">Einfach vorbeikommen</a>
+      </div>
+    </div>
+  </section>${filler('light')}`,
+  init:(vp)=>slideshow(vp),
+},
+};
+
+/* ============ HELPERS ============ */
+function reduced(){return matchMedia('(prefers-reduced-motion: reduce)').matches;}
+function fine(){return matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced();}
+function band1(){return ['Schnitt','Farbe','Balayage','Strähnen','Bart','Hochsteckfrisur'].map(w=>`<span class="mx-6">${w} <span class="text-cream/30">✦</span></span>`).join('');}
+function band2(){return ['Ohne Termin','15+ Jahre','Walk-In','4,3 ★','Kreuzviertel','by Katja'].map(w=>`<span class="mx-6">${w} <span class="text-orange/40">✦</span></span>`).join('');}
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-16"><p class="text-center font-serif text-xl ${d?'text-cream/60':'text-inkSoft'}">↑ scrolle weiter</p><div class="h-[55vh]"></div></section>`;}
+
+let io;
+function wireReveal(vp){ if(io)io.disconnect(); io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.12}); vp.querySelectorAll('.reveal,.pop,.line-mask').forEach(el=>io.observe(el)); }
+function lineMasks(vp){ vp.querySelectorAll('.line-mask').forEach(el=>{const d=+(el.style.getPropertyValue('--d')||0); el.querySelector('span').style.transitionDelay=(0.1+d*0.12)+'s';}); }
+function staggerPop(vp){ vp.querySelectorAll('.pop').forEach((el,i)=>el.style.transitionDelay=(i*0.08)+'s'); }
+
+function slider(vp){
+  const box=vp.querySelector('.ba'); if(!box)return;
+  const top=box.querySelector('.ba-top'), div=box.querySelector('.ba-div');
+  const set=p=>{p=Math.max(2,Math.min(98,p)); top.style.clipPath=`inset(0 ${100-p}% 0 0)`; div.style.left=p+'%';};
+  let drag=false;
+  const at=e=>{const r=box.getBoundingClientRect();const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;set(x/r.width*100);};
+  box.addEventListener('pointerdown',e=>{drag=true;at(e);});
+  window.addEventListener('pointermove',e=>{if(drag)at(e);});
+  window.addEventListener('pointerup',()=>drag=false);
+  if(!reduced()){ // Sweep beim Start
+    let t0;const sweep=t=>{t0=t0||t;const p=Math.min((t-t0)/1100,1);const e=1-Math.pow(1-p,3);set(72-22*e);if(p<1)requestAnimationFrame(sweep);};requestAnimationFrame(sweep);
+  } else set(50);
+}
+function tilt(vp){ const el=vp.querySelector('.tilt'); if(!el||!fine())return; el.style.transition='transform .2s ease';
+  el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(600px) rotateY(${x*16}deg) rotateX(${-y*16}deg)`;});
+  el.addEventListener('mouseleave',()=>el.style.transform=''); }
+function scrub(vp){
+  const sec=vp.querySelector('.scrub-sec'),pin=vp.querySelector('.scrub-pin'),img=vp.querySelector('.scrub-img'),ov=vp.querySelector('.scrub-ov'),txt=vp.querySelector('.scrub-txt');
+  if(!sec)return; pin.style.height=vp.clientHeight+'px';
+  const run=()=>{ const total=sec.offsetHeight-vp.clientHeight; const p=Math.max(0,Math.min(1,(vp.scrollTop-sec.offsetTop)/total));
+    if(reduced()){img.style.transform='none';ov.style.opacity=.4;return;}
+    img.style.transform=`scale(${1.25-0.25*p})`; ov.style.opacity=(0.75-0.55*p).toFixed(2); txt.style.transform=`translateY(${ -30*p }px)`; txt.style.opacity=(1-0.15*p).toFixed(2); };
+  vp.addEventListener('scroll',run,{passive:true}); run();
+}
+function slideshow(vp){
+  const slides=[...vp.querySelectorAll('.slide')],dots=vp.querySelector('.dots'); if(!slides.length)return;
+  slides.forEach((s,i)=>{ if(i===0)s.classList.add('kb'); dots.insertAdjacentHTML('beforeend',`<span class="h-1 w-8 overflow-hidden rounded-full bg-cream/30"><span class="block h-full bg-orange" style="width:${i===0?100:0}%;transition:width .3s linear"></span></span>`); });
+  const bars=[...dots.children].map(d=>d.firstElementChild);
+  if(reduced())return;
+  let cur=0; setInterval(()=>{ const nx=(cur+1)%slides.length;
+    slides[cur].style.opacity=0; slides[cur].classList.remove('kb');
+    slides[nx].style.opacity=1; void slides[nx].offsetWidth; slides[nx].classList.add('kb');
+    bars[cur].style.width='0%'; bars[nx].style.width='100%'; cur=nx;
+  },3500);
+}
+
+/* ============ RENDER / SWITCH ============ */
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();staggerPop(vp);wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal,.pop,.line-mask').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+40)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>

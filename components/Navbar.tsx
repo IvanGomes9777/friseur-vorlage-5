@@ -46,7 +46,15 @@ export default function Navbar() {
   // Status & Scroll erst nach Mount → keine Hydration-Mismatches
   useEffect(() => {
     setStatus(computeStatus(new Date()));
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    // Hysterese gegen "Shrink-Jitter": zum Einklappen > 150px nötig, zum
+    // Ausklappen erst wieder < 60px. Das Totband (90px) ist größer als die
+    // beim Einklappen entfernte Leistenhöhe (Utility + Marquee ≈ 88px) und
+    // verhindert das Auf-/Zu-Flackern an der Schwelle. State ändert sich nur
+    // bei echtem Wechsel (gleicher Wert → React rendert nicht neu).
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled((prev) => (prev ? y >= 60 : y > 150));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     // Goldlinie nach erstem Frame aufwachsen lassen
