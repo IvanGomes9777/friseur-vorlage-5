@@ -124,7 +124,7 @@ export default function Team() {
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 [@media(hover:hover)and(pointer:fine)]:hidden">
           {MEMBERS.map((m) => (
             <figure key={m.name} className="overflow-hidden rounded-2xl bg-white/5">
-              <div className="relative aspect-[3/4]">
+              <div className="relative aspect-[3/4] bg-gradient-to-b from-[#F4EFE7] to-[#E6DBCB]">
                 <Image
                   src={m.image}
                   alt={m.alt}
@@ -152,6 +152,7 @@ export default function Team() {
         style={{
           transform: "translate(-50%,-50%) scale(0.9)",
           transition: `opacity .4s ${EO}, transform .4s ${EO}`,
+          background: "linear-gradient(165deg, #F4EFE7, #E6DBCB)",
         }}
       />
     </section>
