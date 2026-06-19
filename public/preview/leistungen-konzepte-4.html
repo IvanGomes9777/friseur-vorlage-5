@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Power · Leistungen – alle Preise sichtbar (16–20)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config={theme:{extend:{
+    colors:{cream:"#F9F6F2",cream2:"#F2ECE3",ink:"#2A211B",inkSoft:"#6B5D50",brown:"#8B6F47",brownDark:"#6E5535",terra:"#CC7755",sage:"#B5B5A0",orange:"#F4A460"},
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']},
+  }}};
+</script>
+<style>
+  :root{--eo:cubic-bezier(0.23,1,0.32,1);}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#EBE5DC;}
+  .viewport{height:clamp(480px,78vh,860px);overflow-y:auto;overflow-x:hidden;position:relative;background:#F9F6F2;}
+  .viewport::-webkit-scrollbar{width:10px}.viewport::-webkit-scrollbar-thumb{background:#cdbfae;border-radius:8px}
+  .btn{transition:transform .16s var(--eo),background-color .22s}.btn:active{transform:scale(.97)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--eo),transform .6s var(--eo)}.reveal.in{opacity:1;transform:none}
+  .lift{transition:transform .3s var(--eo),box-shadow .3s var(--eo)}.lift:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(42,33,27,.45)}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body class="text-ink">
+
+<header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Leistungen — alle Preise sichtbar (16–20)</h1>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Komplette Preisliste offen, ohne Klicken. Tab wählen, im Fenster scrollen.</p>
+</header>
+
+<nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
+
+<main class="mx-auto max-w-6xl px-5 pb-6">
+  <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
+    <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
+      <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+    </div>
+    <div id="viewport" class="viewport"></div>
+  </div>
+  <section id="notes" class="mt-5 grid gap-4 sm:grid-cols-[1.1fr_1fr]"></section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Alle Preise sichtbar · vollständige Liste · Balayage als Spezialität.</footer>
+
+<script>
+const DATA={
+  damen:{label:'Damen',groups:[
+    {title:'Schnitt & Styling',items:[['Waschen · Schneiden · Föhnen / Legen','37,50 €'],['Waschen · Schneiden / selber Föhnen','32,50 €'],['Anfeuchten · Schneiden','26,50 €'],['Waschen · Föhnen / Legen','ab 24,50 €'],['Pony schneiden','7,00 €'],['Permanent Styling','ab 37,50 €'],['Dauerwelle','ab 49,50 €'],['Hochsteckfrisur','ab 45,00 €'],['Haarpflege · Kur (Intensiv)','9,00 €'],['Glätten','ab 15,00 €']]},
+    {title:'Farbe & Tönung',items:[['Haarfärbung (Neu)','ab 39,50 €'],['Haarfärbung (Ansatz, bis 2 cm)','ab 35,50 €'],['Tönung','ab 26,50 €'],['Balayage','ab 135,00 €',1],['Pastelltoncoloration','ab 25,00 €']]},
+    {title:'Strähnen',items:[['Foliensträhnen (Oberkopf)','ab 45,50 €'],['Foliensträhnen (Ganzer Kopf)','ab 55,50 €'],['Foliensträhnen (Lang)','ab 61,00 €']]},
+    {title:'Augenbrauen & Wimpern',items:[['Augenbrauen zupfen','10,00 €'],['Augenbrauen färben','11,00 €'],['Wimpern färben','11,00 €']]},
+  ]},
+  herren:{label:'Herren',groups:[
+    {title:'Schnitt & Bart',items:[['Anfeuchten · Schneiden','19,50 €'],['Waschen · Schneiden · Föhnen','26,50 €'],['Kompletter Maschinenschnitt','16,00 €'],['Konturenschnitt','15,00 €'],['Bart schneiden','8,00 €']]},
+    {title:'Farbe & Strähnen',items:[['Haarfärbung','ab 35,50 €'],['Strähnen','ab 21,00 €'],['Foliensträhnen','ab 45,50 €']]},
+  ]},
+  kinder:{label:'Kinder',groups:[
+    {title:'Bis 14 Jahre',items:[['Haarschnitt bis 14 Jahre','17,50 €'],['Waschen · Schneiden · Föhnen','ab 24,50 €']]},
+  ]},
+};
+const OCC={kick:'Besondere Anlässe',title:'Frisuren für Deinen schönsten Tag',text:'Hochzeit, Theater, Business & Feiern – passend zum Anlass und zum Kleid.',price:'Hochsteckfrisur ab 45 € · nach Aufwand'};
+const cats=Object.keys(DATA);
+
+const CONCEPTS={
+
+/* 16 · DREI-SPALTEN-BOARD */
+columns3:{
+  label:'16 · Drei-Spalten-Board',
+  blurb:'Damen / Herren / Kinder nebeneinander – jede Spalte zeigt alle Gruppen & Preise offen. Maximal scanbar, alles auf einen Blick.',
+  motion:'Spalten/Karten reveal-en gestaffelt beim Scrollen, Hover-Lift. Balayage hervorgehoben. Keine versteckten Preise.',
+  vibe:'Übersichtlich · alles offen',
+  render:()=>`
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unsere Leistungen</p>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Alle Preise auf einen Blick</h2>
+    <div class="mt-8 grid gap-5 lg:grid-cols-3">
+      ${cats.map(c=>`<div class="reveal lift rounded-3xl border border-ink/10 bg-white p-6"><h3 class="font-serif text-2xl font-medium text-ink">${DATA[c].label}</h3>${DATA[c].groups.map(g=>`<div class="mt-4">${g.title?`<h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-terra">${g.title}</h4>`:''}${g.items.map(rowDots).join('')}</div>`).join('')}</div>`).join('')}
+    </div>
+    ${occBlock()}
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 17 · EDITORIAL MENU */
+menu:{
+  label:'17 · Editorial Menü',
+  blurb:'Eine elegante Speisekarte: alle Kategorien untereinander, zweispaltiger Preisfluss mit Punkt-Leadern. Ruhig & edel.',
+  motion:'Kategorien reveal-en nacheinander. Dünne Trennlinien. Alles sichtbar, sehr lesbar – wie eine gute Menükarte.',
+  vibe:'Editorial-edel · Menükarte',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-12">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Preisliste</p>
+      <h2 class="reveal mt-3 font-serif text-[clamp(1.8rem,1rem+3vw,3rem)] font-medium" style="transition-delay:.06s">Unsere Karte</h2>
+      <p class="reveal mt-3 text-inkSoft" style="transition-delay:.12s">Friseurmeisterbetrieb · ohne Termin · Kreuzviertel Münster</p>
+    </div>
+    <div class="mx-auto mt-10 max-w-3xl space-y-10">
+      ${cats.map(c=>`<div class="reveal"><h3 class="mb-4 border-b-2 border-ink pb-1 font-serif text-2xl font-medium">${DATA[c].label}</h3><div class="grid gap-x-12 gap-y-4 sm:grid-cols-2">${DATA[c].groups.map(g=>`<div>${g.title?`<h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-terra">${g.title}</h4>`:''}${g.items.map(rowDots).join('')}</div>`).join('')}</div></div>`).join('')}
+    </div>
+    ${occBlock()}
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+
+/* 18 · BENTO ALL VISIBLE */
+bento:{
+  label:'18 · Bento (alles sichtbar)',
+  blurb:'Jede Gruppe als eigene Kachel – alle Preise offen, Balayage groß hervorgehoben. Modern, dicht, trotzdem komplett.',
+  motion:'Kacheln poppen gestaffelt, Hover-Lift. Spezialität dominiert. Nichts versteckt.',
+  vibe:'Modern-dicht · komplett',
+  render:()=>{const tiles=[];cats.forEach(c=>DATA[c].groups.forEach(g=>tiles.push([c,g])));return `
+  <section class="bg-cream2 px-7 py-12 sm:px-10">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unsere Leistungen</p>
+    <h2 class="reveal mt-3 mb-6 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Alles, komplett &amp; sichtbar</h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      ${tiles.map(([c,g])=>`<article class="reveal lift rounded-2xl border border-ink/10 bg-white p-5"><div class="flex items-center justify-between"><h3 class="font-serif text-lg font-medium text-terra">${g.title||DATA[c].label}</h3><span class="rounded-full bg-cream2 px-2.5 py-1 text-[0.6rem] font-semibold uppercase text-brownDark">${DATA[c].label}</span></div><div class="mt-3">${g.items.map(rowDots).join('')}</div></article>`).join('')}
+    </div>
+    ${occBlock()}
+  </section>${filler('light')}`;},
+  init:()=>{},
+},
+
+/* 19 · DARK LUXE FULL */
+luxe:{
+  label:'19 · Dark Luxe (komplett)',
+  blurb:'Edle dunkle Karte mit Gold-Leadern – alle Kategorien & Preise offen, zweispaltig. Kohärent zu Navbar/Hero/Über uns.',
+  motion:'Kategorien reveal-en gestaffelt. Goldene Punkt-Leader. Balayage in Gold. Premium & vollständig.',
+  vibe:'Luxus · komplett & markentreu',
+  render:()=>`
+  <section class="bg-ink px-7 py-14 text-cream sm:px-12">
+    <div class="text-center"><p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Preisliste</p><h2 class="reveal mt-3 font-serif text-[clamp(1.8rem,1rem+3vw,3rem)] font-medium" style="transition-delay:.06s">Die Karte aus Meisterhand</h2></div>
+    <div class="mx-auto mt-10 max-w-4xl space-y-9">
+      ${cats.map(c=>`<div class="reveal"><h3 class="mb-3 border-b border-orange/30 pb-1 font-serif text-2xl font-medium text-orange">${DATA[c].label}</h3><div class="grid gap-x-12 gap-y-5 sm:grid-cols-2">${DATA[c].groups.map(g=>`<div>${g.title?`<h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-orange/80">${g.title}</h4>`:''}${g.items.map(rowGold).join('')}</div>`).join('')}</div></div>`).join('')}
+    </div>
+    <div class="reveal mx-auto mt-10 max-w-4xl rounded-2xl border border-orange/30 bg-white/5 p-6 text-center"><p class="text-xs font-semibold uppercase tracking-[0.22em] text-orange">${OCC.kick}</p><h3 class="mt-2 font-serif text-2xl">${OCC.title}</h3><p class="mt-2 text-cream/80">${OCC.text}</p><p class="mt-2 font-serif text-lg text-orange">${OCC.price}</p></div>
+  </section>${filler('dark')}`,
+  init:()=>{},
+},
+
+/* 20 · MAGAZINE COLUMNS */
+magcol:{
+  label:'20 · Magazin-Spalten',
+  blurb:'Zeitungs-/Magazin-Spalten: alle Preise fließen über mehrere Spalten, große Kategorie-Titel. Sehr „designt", komplett offen.',
+  motion:'CSS-Mehrspaltensatz; Kategorien als Blickfang-Titel. Reveal beim Eintritt. Alles sichtbar, dichter editorialer Look.',
+  vibe:'Editorial-bold · Magazin',
+  render:()=>`
+  <section class="bg-cream px-7 py-12 sm:px-12">
+    <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Preisliste komplett</p>
+    <h2 class="reveal mt-3 mb-8 font-serif text-[clamp(1.9rem,1rem+3.5vw,3.4rem)] font-medium leading-[1.02]" style="transition-delay:.06s">Schnitt, Farbe<br><span class="italic text-terra">& alles dazwischen.</span></h2>
+    <div class="reveal [column-gap:2.5rem] sm:[columns:2] lg:[columns:3]">
+      ${cats.map(c=>DATA[c].groups.map((g,gi)=>`<div class="mb-6 break-inside-avoid">${gi===0?`<h3 class="mb-2 font-serif text-2xl font-medium text-ink">${DATA[c].label}</h3>`:''}${g.title?`<h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-terra">${g.title}</h4>`:''}${g.items.map(rowDots).join('')}</div>`).join('')).join('')}
+    </div>
+    ${occBlock()}
+  </section>${filler('light')}`,
+  init:()=>{},
+},
+};
+
+/* ============ HELPERS ============ */
+function rowDots([n,p,f]){return `<div class="flex items-baseline gap-3 border-b border-dashed border-ink/15 py-1.5 ${f?'rounded-lg bg-orange/10 px-2 -mx-2':''}"><span class="text-[0.92rem] font-medium text-ink">${n}${f?' <span class="ml-1 rounded-full bg-terra px-2 py-0.5 text-[0.55rem] font-bold uppercase text-white">Spezial</span>':''}</span><span class="-translate-y-1 flex-1 border-b border-dotted border-ink/25"></span><span class="whitespace-nowrap text-[0.92rem] font-semibold tabular-nums text-brownDark">${p}</span></div>`;}
+function rowGold([n,p,f]){return `<div class="flex items-baseline gap-3 py-2 ${f?'rounded-lg bg-orange/10 px-2 -mx-2':''}"><span class="text-[0.92rem] ${f?'font-semibold text-orange':'text-cream/90'}">${n}</span><span class="-translate-y-1 flex-1 border-b border-dotted border-orange/30"></span><span class="whitespace-nowrap text-[0.92rem] font-semibold tabular-nums ${f?'text-orange':'text-cream'}">${p}</span></div>`;}
+function occBlock(){return `<div class="reveal mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-brown to-brownDark p-6 text-cream sm:p-7"><div class="grid items-center gap-6 sm:grid-cols-[1.4fr_1fr]"><div><p class="text-xs font-semibold uppercase tracking-[0.22em] text-orange">${OCC.kick}</p><h3 class="mt-2 font-serif text-2xl font-medium">${OCC.title}</h3><p class="mt-3 text-sm text-cream/85">${OCC.text}</p></div><div class="rounded-xl border border-white/20 bg-white/10 p-6 text-center"><p class="font-serif text-lg">${OCC.price}</p><a href="#" class="btn mt-4 inline-flex min-h-[44px] items-center justify-center rounded-xl bg-cream px-6 font-semibold text-ink">Beratung anfragen</a></div></div></div>`;}
+
+/* ============ SHELL ============ */
+function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-12"><p class="text-center font-serif text-lg ${d?'text-cream/55':'text-inkSoft'}">↑ weiter scrollen</p><div class="h-[24vh]"></div></section>`;}
+let io;function wireReveal(vp){if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.08});vp.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
+const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
+const keys=Object.keys(CONCEPTS);let active=keys[0];
+function buildTabs(){tabsEl.innerHTML=keys.map(k=>`<button data-k="${k}" class="tab btn rounded-full px-4 py-2 text-sm font-semibold">${CONCEPTS[k].label}</button>`).join('');tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>select(b.dataset.k));}
+function paintTabs(){tabsEl.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.k===active;b.classList.toggle('bg-ink',on);b.classList.toggle('text-cream',on);b.classList.toggle('bg-white',!on);b.classList.toggle('text-ink',!on);b.classList.toggle('border',!on);b.classList.toggle('border-black/10',!on);});}
+function notes(){const c=CONCEPTS[active];notesEl.innerHTML=`
+  <div class="rounded-2xl border border-black/10 bg-white p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Konzept</p><h3 class="mt-1 font-serif text-xl font-semibold">${c.label.replace(/^\d+\s·\s/,'')}</h3><p class="mt-2 text-sm leading-relaxed text-inkSoft">${c.blurb}</p><p class="mt-3 text-xs font-medium text-brown">${c.vibe}</p></div>
+  <div class="rounded-2xl border border-black/10 bg-cream2 p-5"><p class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-terra">Animations-Konzept</p><p class="mt-2 text-sm leading-relaxed text-ink/80">${c.motion}</p></div>`;}
+function select(k){active=k;paintTabs();notes();const c=CONCEPTS[k];vp.scrollTop=0;vp.innerHTML=c.render();wireReveal(vp);requestAnimationFrame(()=>{vp.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vp.clientHeight+60)el.classList.add('in');});c.init&&c.init(vp);});}
+buildTabs();select(active);
+</script>
+</body>
+</html>
