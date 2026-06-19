@@ -191,13 +191,22 @@ function odoInit(vp){
 }
 function trailInit(vp){
   const host=vp.querySelector('.trail-host'); if(!host||!fine())return;
-  const pool=[IMG.salon,IMG.color,IMG.chair,IMG.detail,IMG.man,IMG.katja].map(src=>{const im=document.createElement('img');im.src=src;im.className='trail-img';host.appendChild(im);return im;});
-  let idx=0,last=0;
-  host.addEventListener('mousemove',e=>{const now=performance.now();if(now-last<90)return;last=now;
-    const r=host.getBoundingClientRect();const im=pool[idx%pool.length];idx++;
-    im.style.left=(e.clientX-r.left)+'px';im.style.top=(e.clientY-r.top)+'px';
-    im.style.transition='none';im.style.opacity='1';im.style.transform='translate(-50%,-50%) scale(1) rotate('+((Math.random()*10-5).toFixed(1))+'deg)';
-    requestAnimationFrame(()=>{im.style.transition='opacity .8s var(--eo),transform .8s var(--eo)';im.style.opacity='0';im.style.transform='translate(-50%,-50%) scale(.7)';});});
+  // Größerer Pool (jedes Bild doppelt) → schnelle Bewegungen recyceln kein noch sichtbares Bild
+  const srcs=[IMG.salon,IMG.color,IMG.chair,IMG.detail,IMG.man,IMG.katja];
+  const pool=srcs.concat(srcs).map(src=>{const im=document.createElement('img');im.src=src;im.className='trail-img';host.appendChild(im);return im;});
+  let idx=0,lx=null,ly=null;
+  const STEP=55; // alle 55px Mausweg ein Bild → klassischer, dichter Trail
+  const spawn=(x,y)=>{const im=pool[idx%pool.length];idx++;
+    im.style.left=x+'px';im.style.top=y+'px';
+    im.style.transition='none';im.style.opacity='1';
+    im.style.transform=`translate(-50%,-50%) scale(1) rotate(${(Math.random()*12-6).toFixed(1)}deg)`;
+    void im.offsetWidth; // reflow → Transition greift sicher
+    im.style.transition='opacity .9s var(--eo),transform .9s var(--eo)';
+    im.style.opacity='0';im.style.transform='translate(-50%,-50%) scale(.72)';};
+  host.addEventListener('mousemove',e=>{const r=host.getBoundingClientRect();const x=e.clientX-r.left,y=e.clientY-r.top;
+    if(lx===null){lx=x;ly=y;spawn(x,y);return;}
+    const dx=x-lx,dy=y-ly,dist=Math.hypot(dx,dy);
+    if(dist>=STEP){const steps=Math.min(4,Math.floor(dist/STEP));for(let i=1;i<=steps;i++){spawn(lx+dx*(i/steps),ly+dy*(i/steps));}lx=x;ly=y;}});
 }
 
 /* ============ SHELL ============ */
