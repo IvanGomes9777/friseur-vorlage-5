@@ -75,7 +75,7 @@ export default function Team() {
               {...reveal(160 + i * 90)}
               className={`${reveal(160 + i * 90).className} group overflow-hidden rounded-2xl border border-ink/10 bg-cream2 transition-shadow duration-300 hover:shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]`}
             >
-              <div className="relative h-56 overflow-hidden sm:h-64">
+              <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
                   src={m.image}
                   alt={m.alt}
