@@ -46,8 +46,8 @@ export default function Leistungen() {
     }`;
 
   return (
-    <section id="leistungen" className="scroll-mt-28 bg-cream2 px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-4xl">
+    <section id="leistungen" className="scroll-mt-28 bg-cream2 px-6 py-9 sm:py-12 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
         {/* Kopf */}
         <div className={reveal()}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">
@@ -66,7 +66,7 @@ export default function Leistungen() {
         <div
           role="tablist"
           aria-label="Leistungs-Kategorien"
-          className={`mt-7 inline-flex flex-wrap gap-1.5 rounded-full bg-cream p-1.5 ${reveal()}`}
+          className={`mt-5 inline-flex flex-wrap gap-1.5 rounded-full bg-cream p-1.5 ${reveal()}`}
           style={{ transitionDelay: "80ms" }}
         >
           {SERVICE_CATEGORIES.map((c) => (
@@ -87,14 +87,14 @@ export default function Leistungen() {
         </div>
 
         {/* Panel (re-mountet bei Tab-Wechsel → fade-in) */}
-        <div key={active} className="mt-8 animate-fade-in">
+        <div key={active} className="mt-6 animate-fade-in">
           {cat.intro && (
-            <p className="mb-7 max-w-[58ch] font-serif text-lg italic text-brownDark">
+            <p className="mb-5 max-w-[58ch] font-serif text-lg italic text-brownDark">
               {cat.intro}
             </p>
           )}
 
-          <div className="grid gap-x-12 gap-y-9 sm:grid-cols-2">
+          <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
             {cat.groups.map((g, gi) => (
               <div key={gi} className={cat.groups.length === 1 ? "sm:col-span-2" : ""}>
                 {g.title && (
@@ -112,7 +112,7 @@ export default function Leistungen() {
           </div>
 
           {cat.infoBox && (
-            <div className="mt-8 rounded-2xl border border-terra/25 bg-terra/5 p-6 sm:p-7">
+            <div className="mt-6 rounded-2xl border border-terra/25 bg-terra/5 p-6 sm:p-7">
               <h3 className="font-serif text-lg font-medium text-ink">
                 {cat.infoBox.title}
               </h3>
@@ -135,7 +135,7 @@ export default function Leistungen() {
             </div>
           )}
 
-          <p className="mt-8 text-sm text-inkSoft">
+          <p className="mt-6 text-sm text-inkSoft">
             „ab"-Preise sind Richtwerte – der genaue Preis hängt von Haarlänge
             &amp; Aufwand ab. Wir beraten Dich gerne vorab.
           </p>
@@ -143,7 +143,7 @@ export default function Leistungen() {
 
         {/* Anlässe / Hochzeit */}
         <div
-          className={`mt-10 overflow-hidden rounded-2xl bg-gradient-to-br from-brown to-brownDark p-7 text-cream sm:p-9 ${reveal()}`}
+          className={`mt-7 overflow-hidden rounded-2xl bg-gradient-to-br from-brown to-brownDark p-6 text-cream sm:p-7 ${reveal()}`}
           style={{ transitionDelay: "120ms" }}
         >
           <div className="grid items-center gap-7 sm:grid-cols-[1.4fr_1fr]">
@@ -178,7 +178,7 @@ export default function Leistungen() {
 
 function Row({ name, price, note }: PriceItem) {
   return (
-    <div className="flex items-baseline gap-3 border-b border-dashed border-ink/15 py-2.5">
+    <div className="flex items-baseline gap-3 border-b border-dashed border-ink/15 py-2">
       <span className="font-medium text-ink">
         {name}
         {note && (

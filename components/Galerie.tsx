@@ -29,8 +29,8 @@ export default function Galerie() {
   }, [lightbox]);
 
   return (
-    <section id="galerie" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-6xl">
+    <section id="galerie" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-screen-2xl">
         <div
           className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
             inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
@@ -48,7 +48,7 @@ export default function Galerie() {
         <div
           role="tablist"
           aria-label="Galerie filtern"
-          className="mt-6 inline-flex flex-wrap gap-1.5 rounded-full bg-cream p-1.5"
+          className="mt-5 inline-flex flex-wrap gap-1.5 rounded-full bg-cream p-1.5"
         >
           {GALLERY_FILTERS.map((f) => (
             <button
@@ -70,7 +70,7 @@ export default function Galerie() {
         {/* Raster */}
         <div
           key={filter}
-          className="mt-6 grid animate-fade-in grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+          className="mt-5 grid animate-fade-in grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
         >
           {items.map((item, i) => (
             <button
@@ -83,7 +83,7 @@ export default function Galerie() {
                 src={item.src}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.07]"
               />
               <span className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/15" />
@@ -94,7 +94,7 @@ export default function Galerie() {
           ))}
         </div>
 
-        <p className="mt-6 text-sm text-inkSoft">
+        <p className="mt-5 text-sm text-inkSoft">
           Platzhalter-Bilder – hier kommen eure echten Arbeiten rein.
         </p>
       </div>

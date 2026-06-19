@@ -10,7 +10,7 @@ export type TeamMember = {
 export const TEAM_LEAD: TeamMember & { quote: string } = {
   name: "Katja Schaffeld",
   role: "Inhaberin · Friseurmeisterin",
-  image: "/team/katja-casual.png",
+  image: "/team/katja.png",
   alt: "Katja Schaffeld, Inhaberin und Friseurmeisterin von Hair Power",
   quote: "Style zu Mensch, passender Look und Zufriedenheit – darum geht es uns.",
 };

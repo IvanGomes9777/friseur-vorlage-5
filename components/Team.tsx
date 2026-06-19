@@ -27,8 +27,8 @@ export default function Team() {
   });
 
   return (
-    <section id="team" className="scroll-mt-28 bg-cream px-6 py-14 sm:py-20">
-      <div ref={ref} className="mx-auto max-w-5xl">
+    <section id="team" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
+      <div ref={ref} className="mx-auto max-w-6xl">
         {/* Kopf */}
         <div {...reveal()}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terra">
@@ -42,19 +42,19 @@ export default function Team() {
         {/* Featured: Katja */}
         <div
           {...reveal(80)}
-          className={`${reveal(80).className} mt-8 grid gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-stretch`}
+          className={`${reveal(80).className} mt-6 grid gap-5 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-center`}
         >
-          <div className="group relative aspect-[4/3] overflow-hidden sm:aspect-auto">
+          <div className="group relative aspect-[4/5] overflow-hidden">
             <Image
               src={TEAM_LEAD.image}
               alt={TEAM_LEAD.alt}
               fill
               sizes="(max-width: 640px) 100vw, 40vw"
-              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <Shine />
           </div>
-          <div className="p-6 sm:p-9">
+          <div className="p-6 sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-terra">
               {TEAM_LEAD.role}
             </p>
@@ -68,7 +68,7 @@ export default function Team() {
         </div>
 
         {/* Team-Reihe */}
-        <div className="mt-6 grid gap-6 sm:grid-cols-3">
+        <div className="mt-5 grid gap-5 sm:grid-cols-3">
           {TEAM.map((m, i) => (
             <article
               key={m.name}
@@ -80,7 +80,7 @@ export default function Team() {
                   src={m.image}
                   alt={m.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 30vw"
+                  sizes="(max-width: 640px) 100vw, 360px"
                   className="object-cover object-top grayscale-[0.25] transition-all duration-500 ease-out group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <Shine />

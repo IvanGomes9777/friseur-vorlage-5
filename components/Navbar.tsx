@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
@@ -74,7 +75,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50">
       {/* ---------- Utility-Bar ---------- */}
       <div className="bg-brown text-[0.78rem] tracking-wide text-cream/90">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-2">
+        <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-2 lg:px-10">
           <span className="inline-flex items-center gap-2">
             <StatusDot status={status} />
             <StatusLabel status={status} />
@@ -100,7 +101,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`mx-auto grid max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-5 transition-all duration-300 lg:grid-cols-3 ${
+          className={`mx-auto grid max-w-screen-2xl grid-cols-[1fr_auto] items-center gap-4 px-5 transition-all duration-300 lg:grid-cols-3 lg:px-10 ${
             scrolled ? "py-2.5" : "py-4"
           }`}
         >
@@ -158,18 +159,16 @@ export default function Navbar() {
 
 function Wordmark({ scrolled }: { scrolled: boolean }) {
   return (
-    <span className="block leading-none">
-      <span
-        className={`block font-serif font-semibold tracking-[0.04em] text-ink transition-all duration-300 ${
-          scrolled ? "text-lg" : "text-xl sm:text-2xl"
-        }`}
-      >
-        HAIR POWER
-      </span>
-      <span className="mt-1 block text-[0.6rem] uppercase tracking-[0.34em] text-terra">
-        The Art of Hair Power
-      </span>
-    </span>
+    <Image
+      src="/brand/hair-power-logo.png"
+      alt="Hair Power · Friseur Münster by Katja"
+      width={232}
+      height={123}
+      priority
+      className={`w-auto transition-all duration-300 ${
+        scrolled ? "h-10" : "h-12 sm:h-14"
+      }`}
+    />
   );
 }
 

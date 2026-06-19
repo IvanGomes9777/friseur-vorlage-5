@@ -53,7 +53,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative grid min-h-[78svh] place-items-center overflow-hidden px-6 py-20 text-center text-cream">
+    <section className="relative grid min-h-svh place-items-center overflow-hidden px-6 py-16 text-center text-cream">
       {/* Hintergrund: echtes Salon-Foto + Verdunkelung */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/25 to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-4xl">
         <Reveal show={mounted}>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <span
@@ -85,20 +85,20 @@ export default function Hero() {
         </Reveal>
 
         <Reveal show={mounted} delay={120}>
-          <h1 className="mt-6 font-serif text-[clamp(2rem,1.1rem+4vw,3.6rem)] font-medium leading-[1.04] tracking-tight">
+          <h1 className="mt-5 font-serif text-[clamp(1.9rem,1.1rem+3.4vw,3.2rem)] font-medium leading-[1.04] tracking-tight">
             Dein Look. <em className="italic text-orange">Dein Moment.</em>
           </h1>
         </Reveal>
 
         <Reveal show={mounted} delay={220}>
-          <p className="mx-auto mt-4 max-w-[44ch] text-base text-cream/85 sm:text-lg">
+          <p className="mx-auto mt-3 max-w-[44ch] text-base text-cream/85 sm:text-lg">
             Friseurmeisterbetrieb im Kreuzviertel Münster – seit über 15 Jahren.
             Damen, Herren &amp; Kinder. Einfach vorbeikommen.
           </p>
         </Reveal>
 
         <Reveal show={mounted} delay={320}>
-          <div className="mt-7 flex flex-wrap justify-center gap-2.5">
+          <div className="mt-5 flex flex-wrap justify-center gap-2.5">
             {CHIPS.map((c) => (
               <a
                 key={c.label}
@@ -112,7 +112,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal show={mounted} delay={420}>
-          <div className="mt-8 flex flex-wrap justify-center gap-3.5">
+          <div className="mt-6 flex flex-wrap justify-center gap-3.5">
             <a
               href="#kontakt"
               className="inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-terra px-6 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brownDark"
