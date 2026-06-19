@@ -177,12 +177,12 @@ slideshow:{
   motion:'Bilder überblenden alle ~3,5 s mit Ken-Burns-Zoom. Segmentierte Fortschrittsanzeige zeigt das aktive Bild. Headline unten per Reveal. (reduce-motion: ein statisches Bild.)',
   vibe:'Cinematisch · „bewegt" ohne echtes Video',
   render:()=>`
-  <section class="relative grid min-h-[88%] items-end overflow-hidden text-cream">
-    <div class="slides absolute inset-0 -z-10">
-      ${[IMG.salon,IMG.chair,IMG.style,IMG.detail].map((s,i)=>`<img src="${s}" class="slide absolute inset-0 h-full w-full object-cover transition-opacity duration-1000" style="opacity:${i===0?1:0}" alt="">`).join('')}
-      <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/20"></div>
+  <section class="relative flex min-h-[clamp(440px,76vh,820px)] items-end overflow-hidden bg-ink text-cream">
+    <div class="slides absolute inset-0 z-0">
+      ${[IMG.salon,IMG.chair,IMG.style,IMG.detail].map((s,i)=>`<img src="${s}" class="slide absolute inset-0 h-full w-full object-cover transition-opacity duration-1000" style="opacity:${i===0?1:0}" alt="" draggable="false">`).join('')}
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/25"></div>
     </div>
-    <div class="relative w-full px-7 pb-12 sm:px-12">
+    <div class="relative z-10 w-full px-7 pb-12 sm:px-12">
       <div class="dots mb-6 flex gap-2"></div>
       <div class="reveal max-w-2xl">
         <p class="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-orange">Hair Power · Münster · ohne Termin</p>

@@ -92,7 +92,7 @@ cinematic:{
   motion:'Ken-Burns-Zoom des Hintergrunds (16 s). Gestaffeltes Reveal (Badge→H1→Text→Chips→CTA). Sanfter Parallax: Bild scrollt langsamer als der Inhalt. Live-Status-Punkt pulsiert.',
   vibe:'Warm-cinematisch · sicher & conversion-stark',
   render:()=>`
-  <section class="relative grid min-h-[88%] place-items-center overflow-hidden px-6 py-20 text-center text-cream">
+  <section class="relative grid min-h-[clamp(440px,72vh,820px)] place-items-center overflow-hidden px-6 py-20 text-center text-cream">
     <div class="absolute inset-0 -z-10" data-parallax>
       <img src="${IMG.salon}" class="h-[120%] w-full object-cover kenburns" alt="Salon">
       <div class="absolute inset-0 bg-ink/55"></div>
