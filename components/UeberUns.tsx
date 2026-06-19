@@ -1,124 +1,200 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/lib/useInView";
 
-/* Hair Power · Über uns / "Wer wir sind" (nach Hero).
-   Inhalt verdichtet aus dem Salon-Text. Foto: Salon-Fassade.
-   Drei Zielgruppen-Karten + USP-Badges. */
+/* ---------------------------------------------------------------------------
+   Hair Power · Über uns (Sektion 3) — Mix aus Konzept 34 + 35
+   Aufbau & Text von #34: Kennzahlen, die hochzählen (Odometer) + Werte-Marquee.
+   Effekt von #35: Cursor-Bilderspur aus echten Salon-/Team-Fotos im Hintergrund.
+   Dunkle Bühne (kohärent zu Navbar/Hero) · GPU-only · prefers-reduced-motion.
+--------------------------------------------------------------------------- */
 
-const USPS = ["Meisterbetrieb", "Ohne Termine", "Faire Preise", "Barrierefrei"];
-
-const AUDIENCES = [
-  {
-    icon: "🚲",
-    title: "Junge Leute & Studenten",
-    text: "Ohne Termin – komm einfach mit der Leeze vorbei. Coole Farben, Schnitte und persönliche Beratung zu erschwinglichen Preisen.",
-  },
-  {
-    icon: "👵",
-    title: "Seniorinnen & Senioren",
-    text: "Ebenerdiger Eingang an der Catharina-Müller-Str., kurze Wartezeiten ohne Anmeldung und Bushaltestellen direkt vor der Tür.",
-  },
-  {
-    icon: "👨‍👩‍👧",
-    title: "Für Jung & Alt",
-    text: "Die Frisur kennt keine Generationsgrenze – typgerechte Looks für die ganze Familie, fair kalkuliert.",
-  },
+const STATS: { to: number; suffix: string; dec: number; label: string }[] = [
+  { to: 15, suffix: "+", dec: 0, label: "Jahre Meisterbetrieb" },
+  { to: 254, suffix: "", dec: 0, label: "Google-Bewertungen" },
+  { to: 4.3, suffix: " ★", dec: 1, label: "Schnitt aus 254 Rezensionen" },
 ];
 
+const VALUES = [
+  "Meisterhandwerk",
+  "Ohne Termine",
+  "Faire Preise",
+  "Natürlich schön",
+  "Persönliche Beratung",
+  "Barrierefrei",
+];
+
+// Echte Bilder für die Cursor-Spur
+const TRAIL = [
+  "/salon/salon-facade.png",
+  "/team/katja.png",
+  "/team/melanie.png",
+  "/team/heike.png",
+  "/team/lars.png",
+  "/team/katja-casual.png",
+];
+
+const EO = "cubic-bezier(0.23,1,0.32,1)";
+
 export default function UeberUns() {
-  const { ref, inView } = useInView<HTMLDivElement>(0.12);
-  const reveal = (delay = 0) => ({
-    className: `transition-all duration-700 ease-out motion-reduce:transition-none ${
-      inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
-    }`,
-    style: { transitionDelay: `${delay}ms` },
-  });
+  const { ref: statsRef, inView } = useInView<HTMLDivElement>(0.4);
+  const sectionRef = useRef<HTMLElement>(null);
+  const trailRef = useRef<HTMLDivElement>(null);
+
+  // Cursor-Bilderspur (#35) – distanz-basiert, nur Maus & ohne reduce-motion
+  useEffect(() => {
+    const host = sectionRef.current;
+    const layer = trailRef.current;
+    if (!host || !layer) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    const pool = [...TRAIL, ...TRAIL].map((src) => {
+      const im = document.createElement("img");
+      im.src = src;
+      im.alt = "";
+      im.setAttribute("aria-hidden", "true");
+      im.draggable = false;
+      im.className =
+        "pointer-events-none absolute h-40 w-32 rounded-xl object-cover shadow-2xl will-change-transform";
+      im.style.opacity = "0";
+      im.style.transform = "translate(-50%,-50%) scale(.7)";
+      layer.appendChild(im);
+      return im;
+    });
+
+    let idx = 0;
+    let lx: number | null = null;
+    let ly: number | null = null;
+    const STEP = 55;
+
+    const spawn = (x: number, y: number) => {
+      const im = pool[idx % pool.length];
+      idx++;
+      im.style.left = `${x}px`;
+      im.style.top = `${y}px`;
+      im.style.transition = "none";
+      im.style.opacity = "1";
+      im.style.transform = `translate(-50%,-50%) scale(1) rotate(${(Math.random() * 12 - 6).toFixed(1)}deg)`;
+      void im.offsetWidth; // Reflow → Transition greift sicher
+      im.style.transition = `opacity .9s ${EO}, transform .9s ${EO}`;
+      im.style.opacity = "0";
+      im.style.transform = "translate(-50%,-50%) scale(.72)";
+    };
+
+    const onMove = (e: MouseEvent) => {
+      const r = host.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      if (lx === null || ly === null) {
+        lx = x;
+        ly = y;
+        spawn(x, y);
+        return;
+      }
+      const dx = x - lx;
+      const dy = y - ly;
+      const dist = Math.hypot(dx, dy);
+      if (dist >= STEP) {
+        const steps = Math.min(4, Math.floor(dist / STEP));
+        for (let i = 1; i <= steps; i++) spawn(lx + dx * (i / steps), ly + dy * (i / steps));
+        lx = x;
+        ly = y;
+      }
+    };
+
+    host.addEventListener("mousemove", onMove);
+    return () => {
+      host.removeEventListener("mousemove", onMove);
+      pool.forEach((im) => im.remove());
+    };
+  }, []);
 
   return (
-    <section id="ueber" className="scroll-mt-28 bg-cream px-6 py-9 sm:py-12 lg:px-10">
-      <div ref={ref} className="mx-auto max-w-screen-2xl">
-        <div className="grid items-center gap-7 lg:grid-cols-2">
-          {/* Foto */}
-          <div {...reveal()} className={`${reveal().className} relative`}>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]">
-              <Image
-                src="/salon/salon-facade.png"
-                alt="Hair Power Salon im York Center am Kreuzviertel, Münster"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {USPS.map((u) => (
-                <span
-                  key={u}
-                  className="rounded-full bg-cream2 px-3.5 py-1.5 text-xs font-semibold text-brownDark"
-                >
-                  {u}
-                </span>
-              ))}
-            </div>
-          </div>
+    <section
+      ref={sectionRef}
+      id="ueber"
+      className="relative scroll-mt-28 overflow-hidden bg-ink px-6 py-20 text-cream sm:py-24 lg:px-10"
+    >
+      {/* Cursor-Bilderspur-Ebene (hinter dem Inhalt) */}
+      <div ref={trailRef} aria-hidden="true" className="pointer-events-none absolute inset-0 z-0" />
 
-          {/* Text */}
-          <div>
-            <p {...reveal(60)} className={`${reveal(60).className} text-xs font-semibold uppercase tracking-[0.22em] text-terra`}>
-              Wer wir sind
-            </p>
-            <h2
-              {...reveal(120)}
-              className={`${reveal(120).className} mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight text-ink`}
-            >
-              Friseurmeisterbetrieb im Kreuzviertel – ohne Termine
-            </h2>
-            <p {...reveal(180)} className={`${reveal(180).className} mt-4 font-serif text-lg italic text-brownDark`}>
-              „Style zu Mensch, passender Look und Zufriedenheit."
-            </p>
-            <div {...reveal(240)} className={`${reveal(240).className} mt-4 space-y-3 text-inkSoft`}>
-              <p>
-                Dein Friseur Hair Power im York Center am Kreuzviertel ist
-                zentral gelegen, gemütlich und entspannend – und weit mehr als
-                ein Salon. Hier bekommst du den Kopf frei. Wir stehen für
-                Qualität, Authentizität und die fachliche Kunst des Schneidens,
-                Färbens und Verwöhnens – mit persönlicher Beratung, die deine
-                Wünsche in den Mittelpunkt stellt.
-              </p>
-              <p>
-                Als Expertinnen und Experten für Haarpflege und natürliche
-                Highlights begeistern wir uns für Schnitte für langes, dünnes und
-                lockiges Haar. Für Herren lieben wir die traditionelle,
-                geradlinige Herrenfrisur. Moderner und klassischer Stil
-                harmonieren – einfach, natürlich, frisch und elegant.
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className="relative z-10 mx-auto max-w-screen-2xl text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-orange">
+          Worauf ihr euch verlasst
+        </p>
+        <h2 className="mx-auto mt-3 max-w-[22ch] font-serif text-[clamp(1.7rem,1rem+2.6vw,2.8rem)] font-medium leading-tight">
+          Zahlen, die für sich sprechen
+        </h2>
+        <p className="mx-auto mt-4 max-w-[52ch] font-serif text-lg italic text-orange/90">
+          „Style zu Mensch, passender Look und Zufriedenheit."
+        </p>
 
-        {/* Zielgruppen-Karten */}
-        <div className="mt-7 grid gap-4 sm:grid-cols-3">
-          {AUDIENCES.map((a, i) => (
-            <article
-              key={a.title}
-              {...reveal(120 + i * 90)}
-              className={`${reveal(120 + i * 90).className} rounded-2xl border border-ink/10 bg-cream2 p-5`}
-            >
-              <span
-                aria-hidden="true"
-                className="grid h-11 w-11 place-items-center rounded-xl bg-terra/14 text-xl"
-              >
-                {a.icon}
-              </span>
-              <h3 className="mt-3 font-serif text-lg font-medium text-ink">
-                {a.title}
-              </h3>
-              <p className="mt-2 text-sm text-inkSoft">{a.text}</p>
-            </article>
+        {/* Odometer-Kennzahlen */}
+        <div ref={statsRef} className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-10 sm:grid-cols-3">
+          {STATS.map((s) => (
+            <div key={s.label}>
+              <div className="font-serif text-[clamp(2.6rem,8vw,4.4rem)] font-semibold leading-none tabular-nums text-orange">
+                <Counter to={s.to} dec={s.dec} run={inView} />
+                {s.suffix}
+              </div>
+              <p className="mt-3 text-sm text-cream/70">{s.label}</p>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Werte-Marquee */}
+      <div className="relative z-10 mt-16 overflow-hidden border-y border-white/10 py-3">
+        <div className="flex w-max animate-marquee whitespace-nowrap font-serif text-xl italic text-cream/45 motion-reduce:animate-none">
+          <ValueRun />
+          <ValueRun />
+        </div>
+      </div>
+
+      <p className="relative z-10 mt-6 text-center text-xs text-cream/40 motion-reduce:hidden">
+        ↗ Beweg die Maus über diesen Bereich
+      </p>
     </section>
   );
+}
+
+function ValueRun() {
+  return (
+    <>
+      {VALUES.map((v) => (
+        <span key={v} className="mx-6 inline-flex items-center gap-3">
+          {v}
+          <span className="text-orange/70">✦</span>
+        </span>
+      ))}
+    </>
+  );
+}
+
+function Counter({ to, dec, run }: { to: number; dec: number; run: boolean }) {
+  const [val, setVal] = useState(0);
+
+  useEffect(() => {
+    if (!run) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVal(to);
+      return;
+    }
+    let raf = 0;
+    let t0: number | null = null;
+    const step = (t: number) => {
+      if (t0 === null) t0 = t;
+      const p = Math.min((t - t0) / 1300, 1);
+      const e = 1 - Math.pow(1 - p, 4);
+      setVal(to * e);
+      if (p < 1) raf = requestAnimationFrame(step);
+      else setVal(to);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [run, to]);
+
+  return <>{val.toFixed(dec).replace(".", ",")}</>;
 }
