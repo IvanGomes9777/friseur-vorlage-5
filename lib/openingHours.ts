@@ -1,4 +1,4 @@
-/** Hair Power Öffnungszeiten:
+/** Salon Muster Öffnungszeiten:
  *  Mo Ruhetag · Di–Fr 08:30–18:00 · Sa 08:00–13:00 · So geschlossen
  *  Eine Quelle der Wahrheit für Navbar- und Hero-Live-Status. */
 

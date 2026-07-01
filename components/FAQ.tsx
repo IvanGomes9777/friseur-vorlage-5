@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FAQS } from "@/data/faq";
 import { useInView } from "@/lib/useInView";
 
-/* Hair Power · FAQ (letzte Sektion vor dem Footer).
+/* Salon Muster · FAQ (letzte Sektion vor dem Footer).
    Akkordeon (zugänglich) + FAQPage-Schema für Rich Results. */
 
 export default function FAQ() {
@@ -76,8 +76,8 @@ export default function FAQ() {
             Schreib uns
           </a>{" "}
           oder ruf an:{" "}
-          <a href="tel:+492515340748" className="font-semibold text-brownDark underline-offset-2 hover:underline">
-            0251 5340748
+          <a href="tel:+491234567890" className="font-semibold text-brownDark underline-offset-2 hover:underline">
+            01234 567890
           </a>
           .
         </p>

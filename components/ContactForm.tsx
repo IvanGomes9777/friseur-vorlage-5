@@ -42,7 +42,7 @@ export default function ContactForm() {
       setError(
         err instanceof Error
           ? err.message
-          : "Senden fehlgeschlagen. Bitte ruf uns an: 0251 5340748.",
+          : "Senden fehlgeschlagen. Bitte ruf uns an: 01234 567890.",
       );
     }
   }

@@ -9,7 +9,7 @@ import {
 import { useInView } from "@/lib/useInView";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Leistungen (Sektion 3) — Option 1 "Tabbed Preisliste"
+   Salon Muster · Leistungen (Sektion 3) — Option 1 "Tabbed Preisliste"
    Tabs Damen/Herren/Kinder · Leader-Dots · Gruppen je Tab ·
    Anlässe/Hochzeit-Block · Scroll-Reveal · datengetrieben aus data/services.ts
 --------------------------------------------------------------------------- */
@@ -57,7 +57,7 @@ export default function Leistungen() {
             Klare Preise, ehrlich kalkuliert.
           </h2>
           <p className="mt-3 max-w-[52ch] text-inkSoft">
-            Friseurmeisterbetrieb im Kreuzviertel – komm einfach ohne Termin
+            Friseurmeisterbetrieb in der Innenstadt – komm einfach ohne Termin
             vorbei.
           </p>
         </div>

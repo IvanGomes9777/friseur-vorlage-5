@@ -18,13 +18,13 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-10 sm:grid-cols-3">
         <div>
           <p className="font-serif text-xl font-semibold tracking-[0.04em]">
-            HAIR POWER
+            SALON MUSTER
           </p>
           <p className="mt-1 text-xs uppercase tracking-[0.28em] text-terra">
-            The Art of Hair Power
+            Hair &amp; Style
           </p>
           <p className="mt-4 max-w-[30ch] text-sm text-cream/70">
-            Friseurmeisterbetrieb im Kreuzviertel Münster – Damen, Herren &amp;
+            Friseurmeisterbetrieb in der Innenstadt – Damen, Herren &amp;
             Kinder, ohne Termin.
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Hair Power · Katja Schaffeld. Alle Rechte vorbehalten.</p>
+          <p>© {year} {SITE.name} · {SITE.owner}. Alle Rechte vorbehalten.</p>
           <nav aria-label="Rechtliches" className="flex gap-5">
             <Link href="/impressum" className="hover:text-cream">
               Impressum

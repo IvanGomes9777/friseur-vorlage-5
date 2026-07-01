@@ -18,48 +18,51 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const OG_IMAGE =
+  "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&h=630&q=70";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://friseur-hairpower.de"),
+  metadataBase: new URL("https://salon-muster.de"),
   title: {
-    default: "Hair Power · Friseur Münster Kreuzviertel – ohne Termin",
+    default: "Salon Muster · Friseur in der Innenstadt – ohne Termin",
     template: "%s",
   },
   description:
-    "Hair Power by Katja – Friseurmeisterbetrieb im Kreuzviertel Münster. Damen, Herren & Kinder, ohne Termin. Schnitt, Farbe, Balayage. Grevener Str. 63.",
+    "Salon Muster – Friseurmeisterbetrieb in der Innenstadt. Damen, Herren & Kinder, ohne Termin. Schnitt, Farbe, Balayage. Musterstraße 12.",
   keywords: [
-    "Friseur Münster",
-    "Friseur Kreuzviertel",
-    "Friseur ohne Termin Münster",
-    "Balayage Münster",
-    "Herrenfriseur Münster",
-    "Kinderfriseur Münster",
-    "Hair Power Münster",
+    "Friseur",
+    "Friseur Innenstadt",
+    "Friseur ohne Termin",
+    "Balayage",
+    "Herrenfriseur",
+    "Kinderfriseur",
+    "Salon Muster",
   ],
   alternates: { canonical: "/" },
   formatDetection: { telephone: true },
   openGraph: {
-    title: "Hair Power · Friseur Münster – ohne Termin",
+    title: "Salon Muster · Friseur – ohne Termin",
     description:
-      "Friseurmeisterbetrieb im Kreuzviertel. Frisuren für Dich – ehrlich, typgerecht. Einfach vorbeikommen.",
+      "Friseurmeisterbetrieb in der Innenstadt. Frisuren für Dich – ehrlich, typgerecht. Einfach vorbeikommen.",
     url: "/",
-    siteName: "Hair Power",
+    siteName: "Salon Muster",
     locale: "de_DE",
     type: "website",
     images: [
       {
-        url: "/salon/salon-facade.png",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Hair Power Friseursalon im Kreuzviertel Münster",
+        alt: "Beispielfoto: Innenansicht eines modernen Friseursalons",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hair Power · Friseur Münster – ohne Termin",
+    title: "Salon Muster · Friseur – ohne Termin",
     description:
-      "Friseurmeisterbetrieb im Kreuzviertel Münster. Frisuren für Dich – einfach vorbeikommen.",
-    images: ["/salon/salon-facade.png"],
+      "Friseurmeisterbetrieb in der Innenstadt. Frisuren für Dich – einfach vorbeikommen.",
+    images: [OG_IMAGE],
   },
 };
 

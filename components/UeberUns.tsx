@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useInView } from "@/lib/useInView";
 
-/* Hair Power · Über uns / "Wer wir sind" (nach Hero).
+/* Salon Muster · Über uns / "Wer wir sind" (nach Hero).
    Inhalt verdichtet aus dem Salon-Text. Foto: Salon-Fassade.
    Drei Zielgruppen-Karten + USP-Badges. */
 
@@ -13,12 +13,12 @@ const AUDIENCES = [
   {
     icon: "🚲",
     title: "Junge Leute & Studenten",
-    text: "Ohne Termin – komm einfach mit der Leeze vorbei. Coole Farben, Schnitte und persönliche Beratung zu erschwinglichen Preisen.",
+    text: "Ohne Termin – komm einfach mit dem Fahrrad vorbei. Coole Farben, Schnitte und persönliche Beratung zu erschwinglichen Preisen.",
   },
   {
     icon: "👵",
     title: "Seniorinnen & Senioren",
-    text: "Ebenerdiger Eingang an der Catharina-Müller-Str., kurze Wartezeiten ohne Anmeldung und Bushaltestellen direkt vor der Tür.",
+    text: "Ebenerdiger, barrierefreier Eingang, kurze Wartezeiten ohne Anmeldung und Bushaltestellen direkt vor der Tür.",
   },
   {
     icon: "👨‍👩‍👧",
@@ -44,8 +44,8 @@ export default function UeberUns() {
           <div {...reveal()} className={`${reveal().className} relative`}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_18px_50px_-22px_rgba(42,33,27,0.4)]">
               <Image
-                src="/salon/salon-facade.png"
-                alt="Hair Power Salon im York Center am Kreuzviertel, Münster"
+                src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=70"
+                alt="Beispielfoto: Innenansicht eines modernen Friseursalons"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -72,16 +72,16 @@ export default function UeberUns() {
               {...reveal(120)}
               className={`${reveal(120).className} mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight text-ink`}
             >
-              Friseurmeisterbetrieb im Kreuzviertel – ohne Termine
+              Friseurmeisterbetrieb in der Innenstadt – ohne Termine
             </h2>
             <p {...reveal(180)} className={`${reveal(180).className} mt-4 font-serif text-lg italic text-brownDark`}>
               „Style zu Mensch, passender Look und Zufriedenheit."
             </p>
             <div {...reveal(240)} className={`${reveal(240).className} mt-4 space-y-4 text-inkSoft`}>
               <p>
-                Dein Friseur Hair Power im York Center am Kreuzviertel ist
-                zentral gelegen, gemütlich und entspannend – und weit mehr als
-                ein Salon. Hier bekommst du den Kopf frei. Wir stehen für
+                Dein Salon Muster in der Innenstadt ist zentral gelegen,
+                gemütlich und entspannend – und weit mehr als ein Salon. Hier
+                bekommst du den Kopf frei. Wir stehen für
                 Qualität, Authentizität und die fachliche Kunst des Schneidens,
                 Färbens und Verwöhnens – mit persönlicher Beratung, die deine
                 Wünsche in den Mittelpunkt stellt.

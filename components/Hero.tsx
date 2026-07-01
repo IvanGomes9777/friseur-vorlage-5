@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Hero (Sektion 2) — Option 10
+   Salon Muster · Hero (Sektion 2) — Option 10
    Vollbild-Salonfoto · zentriert · Live-Öffnungsstatus · Service-Chips ·
    Doppel-CTA. Entrance-Reveal beim Mount, Slow-Zoom des Hintergrunds.
    Bild via next/image (responsive, AVIF/WebP). 100% responsiv, svh-Höhe.
@@ -54,11 +54,11 @@ export default function Hero() {
 
   return (
     <section className="relative grid min-h-[78svh] place-items-center overflow-hidden px-6 py-20 text-center text-cream">
-      {/* Hintergrund: echtes Salon-Foto + Verdunkelung */}
+      {/* Hintergrund: Beispiel-Salonfoto aus dem Web + Verdunkelung */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/salon/salon-facade.png"
-          alt="Hair Power Friseursalon – Außenansicht mit Efeu-Fassade im Kreuzviertel, Münster"
+          src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=70"
+          alt="Beispielfoto: Innenansicht eines modernen Friseursalons"
           fill
           priority
           sizes="100vw"
@@ -92,7 +92,7 @@ export default function Hero() {
 
         <Reveal show={mounted} delay={220}>
           <p className="mx-auto mt-4 max-w-[44ch] text-base text-cream/85 sm:text-lg">
-            Friseurmeisterbetrieb im Kreuzviertel Münster – seit über 15 Jahren.
+            Friseurmeisterbetrieb mitten in der Stadt – seit über 15 Jahren.
             Damen, Herren &amp; Kinder. Einfach vorbeikommen.
           </p>
         </Reveal>

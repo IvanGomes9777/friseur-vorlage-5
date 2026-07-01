@@ -5,7 +5,7 @@ import { useInView } from "@/lib/useInView";
 import MapEmbed from "@/components/MapEmbed";
 import ContactForm from "@/components/ContactForm";
 
-/* Hair Power · Kontakt (Sektion 6) — Option 5 "Big CTA"
+/* Salon Muster · Kontakt (Sektion 6) — Option 5 "Big CTA"
    Dunkler Info-Block links (Adresse + Route-Link + Öffnungszeiten + Karte),
    Formular rechts. */
 
@@ -26,7 +26,7 @@ export default function Kontakt() {
             Kontakt &amp; Anfahrt
           </p>
           <h2 className="mt-2 font-serif text-[clamp(1.7rem,1rem+2.4vw,2.6rem)] font-medium leading-tight">
-            Komm vorbei – mitten im Kreuzviertel.
+            Komm vorbei – mitten in der Stadt.
           </h2>
 
           <div className="mt-7 space-y-4">

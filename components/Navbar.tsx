@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Navbar
+   Salon Muster · Navbar
    Desktop (≥ lg): Option 1 – Utility-Bar + zentriertes Wortmark + Shrink-on-Scroll
                    + "Termin buchen"-Button
    Mobile (< lg) : Option 5 – Hamburger öffnet warmes Fullscreen-Overlay
@@ -79,12 +79,12 @@ export default function Navbar() {
             <StatusDot status={status} />
             <StatusLabel status={status} />
           </span>
-          <span className="hidden sm:inline">📍 Grevener Str. 63, Kreuzviertel</span>
+          <span className="hidden sm:inline">📍 Musterstraße 12, Innenstadt</span>
           <a
-            href="tel:+492515340748"
+            href="tel:+491234567890"
             className="font-semibold text-white hover:underline"
           >
-            0251 5340748
+            01234 567890
           </a>
           <span className="hidden md:inline">
             Friseur <b className="font-semibold text-white">ohne Termin</b>
@@ -164,10 +164,10 @@ function Wordmark({ scrolled }: { scrolled: boolean }) {
           scrolled ? "text-lg" : "text-xl sm:text-2xl"
         }`}
       >
-        HAIR POWER
+        SALON MUSTER
       </span>
       <span className="mt-1 block text-[0.6rem] uppercase tracking-[0.34em] text-terra">
-        The Art of Hair Power
+        Hair &amp; Style
       </span>
     </span>
   );
@@ -293,10 +293,10 @@ function MobileMenu({
           Termin buchen →
         </a>
         <div className="mt-10 font-sans text-sm leading-relaxed text-cream/60">
-          Grevener Str. 63 · 48149 Münster
+          Musterstraße 12 · 12345 Musterstadt
           <br />
-          <a href="tel:+492515340748" className="hover:text-cream">
-            0251 5340748
+          <a href="tel:+491234567890" className="hover:text-cream">
+            01234 567890
           </a>
         </div>
       </nav>
