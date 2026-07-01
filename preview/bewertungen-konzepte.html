@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hair Power · Bewertungen – 5 Konzepte</title>
+<title>Salon Muster · Bewertungen – 5 Konzepte</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -31,9 +31,9 @@
 <body class="text-ink">
 
 <header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
-  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Salon Muster · Relaunch</p>
   <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 06 — Bewertungen</h1>
-  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Was unsere Gäste sagen". Echte Google-Reviews · 4,3 ★ · 254.</p>
+  <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Was unsere Gäste sagen". Echte Google-Reviews · 4,9 ★ · 87.</p>
 </header>
 
 <nav class="sticky top-0 z-30 mx-auto mb-5 max-w-6xl bg-[#EBE5DC]/85 px-5 py-3 backdrop-blur-md"><div id="tabs" class="flex flex-wrap gap-2"></div></nav>
@@ -42,7 +42,7 @@
   <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
     <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
       <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
-      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">salon-muster.de</div>
     </div>
     <div id="viewport" class="viewport"></div>
   </div>
@@ -52,16 +52,16 @@
 <footer class="mx-auto max-w-6xl px-5 py-8 text-xs text-inkSoft">Echte Rezensionen (Vorname/Initial, DSGVO-konform) · Farben &amp; Fonts aus dem Projekt.</footer>
 
 <script>
-const META={rating:'4,3',count:254};
+const META={rating:'4,9',count:87};
 const REVIEWS=[
-  {t:"Top beraten und so geschnitten wie gewünscht! Bin jahrelange Kundin.",n:"Isabella",w:"vor 9 Monaten"},
-  {t:"Bin mit superschönen Strähnen und frischem Haarschnitt glücklich zur Tür hinaus.",n:"Dalli",w:"vor 8 Monaten"},
-  {t:"Katja hat mir einen wirklich tollen Haarschnitt gezaubert – rundum gut aufgehoben.",n:"Sonka Wegner",w:"vor 8 Monaten"},
-  {t:"Absolut begeistert! Das Ergebnis hat meine Erwartungen übertroffen.",n:"Karsten Luetteke",w:"vor 9 Monaten"},
-  {t:"Keine langen Wartezeiten, Frisur sitzt auch immer super.",n:"Pascal Schmale"},
-  {t:"Erster Haarschnitt unseres Sohnes – Katja war liebevoll & kindgerecht.",n:"Julia B.",w:"vor 9 Monaten"},
-  {t:"Ich habe mich sofort verstanden und professionell aufgehoben gefühlt.",n:"La Me"},
-  {t:"Man kann immer ohne Termin hinein – ich musste nie lange warten :)",n:"Isabella",w:"vor 9 Monaten"},
+  {t:"Top beraten und so geschnitten wie gewünscht! Bin jahrelange Kundin.",n:"Sarah",w:"vor 9 Monaten"},
+  {t:"Bin mit superschönen Strähnen und frischem Haarschnitt glücklich zur Tür hinaus.",n:"Nina",w:"vor 8 Monaten"},
+  {t:"Maria hat mir einen wirklich tollen Haarschnitt gezaubert – rundum gut aufgehoben.",n:"Jonas Beispiel",w:"vor 8 Monaten"},
+  {t:"Absolut begeistert! Das Ergebnis hat meine Erwartungen übertroffen.",n:"Markus Muster",w:"vor 9 Monaten"},
+  {t:"Keine langen Wartezeiten, Frisur sitzt auch immer super.",n:"Patrick Beispiel"},
+  {t:"Erster Haarschnitt unseres Sohnes – Maria war liebevoll & kindgerecht.",n:"Julia B.",w:"vor 9 Monaten"},
+  {t:"Ich habe mich sofort verstanden und professionell aufgehoben gefühlt.",n:"Lena M."},
+  {t:"Man kann immer ohne Termin hinein – ich musste nie lange warten :)",n:"Sarah",w:"vor 9 Monaten"},
 ];
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=()=>matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced();
@@ -79,7 +79,7 @@ marquee:{
   render:()=>`
   <section class="overflow-hidden bg-cream2 py-12">
     <div class="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-7 lg:px-10">
-      <div class="reveal"><p class="text-xs font-semibold uppercase tracking-[0.22em] text-terra">Was unsere Gäste sagen</p><h2 class="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium">Eure Gäste lieben Hair Power</h2></div>
+      <div class="reveal"><p class="text-xs font-semibold uppercase tracking-[0.22em] text-terra">Was unsere Gäste sagen</p><h2 class="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium">Eure Gäste lieben Salon Muster</h2></div>
       <div class="reveal flex items-center gap-5" style="transition-delay:.08s"><div class="flex items-center gap-3"><span class="font-serif text-4xl font-semibold text-brownDark">${META.rating}</span><div>${stars()}<p class="text-sm text-inkSoft">${META.count} Google-Bewertungen</p></div></div><a href="#" class="btn inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-ink px-5 text-sm font-semibold text-cream hover:bg-terra">★ Bewertung abgeben</a></div>
     </div>
     <div class="group mt-6 flex flex-col gap-4">

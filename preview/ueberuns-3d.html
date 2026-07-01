@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hair Power · Über uns – 3D-Konzepte (11–15)</title>
+<title>Salon Muster · Über uns – 3D-Konzepte (11–15)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -54,7 +54,7 @@
 <body class="text-ink">
 
 <header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
-  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch · 3D</p>
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Salon Muster · Relaunch · 3D</p>
   <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Über uns — 3D-Effekte (11–15)</h1>
   <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft"><b>Maus bewegen</b> (Tilt/Diorama), <b>ziehen</b> (Coverflow), <b>hovern/tippen</b> (Flip) und <b>scrollen</b> (Perspektive). Gebaut nach Emil-Kowalski-Craft: GPU-only, spring-artiges Lerp, reduce-motion-Fallback.</p>
 </header>
@@ -65,7 +65,7 @@
   <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
     <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
       <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
-      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">salon-muster.de</div>
     </div>
     <div id="viewport" class="viewport"></div>
   </div>
@@ -77,14 +77,14 @@
 <script>
 const IMG={
   salon:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80",
-  katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+  maria:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
   chair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1100&q=80",
   detail:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=80",
   color:"https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1000&q=80",
 };
 const QUOTE='Style zu Mensch, passender Look und Zufriedenheit.';
 const AUD=[
-  ['🚲','Junge Leute & Studenten','Komm mit der Leeze vorbei. Coole Farben, Schnitte und Beratung zu fairen Preisen — ganz ohne Termin.'],
+  ['🚲','Junge Leute & Studenten','Komm mit der Fahrrad vorbei. Coole Farben, Schnitte und Beratung zu fairen Preisen — ganz ohne Termin.'],
   ['👵','Seniorinnen & Senioren','Ebenerdiger Eingang, kurze Wartezeiten ohne Anmeldung, Bushaltestellen direkt vor der Tür.'],
   ['👨‍👩‍👧','Für Jung & Alt','Die Frisur kennt keine Generationsgrenze — typgerechte Looks für die ganze Familie, fair kalkuliert.'],
 ];
@@ -108,10 +108,10 @@ tilt:{
         <div class="absolute inset-0 rounded-3xl bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>
         <div class="glare pointer-events-none absolute inset-0 rounded-3xl"></div>
         <div class="layer absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-brownDark" style="transform:translateZ(55px)">Meisterbetrieb · seit 15+ Jahren</div>
-        <div class="layer absolute right-5 top-20 rounded-2xl bg-terra px-4 py-3 text-white shadow-xl" style="transform:translateZ(80px)"><b class="block font-serif text-2xl leading-none">4,3★</b><span class="text-[0.7rem]">254 Bewertungen</span></div>
+        <div class="layer absolute right-5 top-20 rounded-2xl bg-terra px-4 py-3 text-white shadow-xl" style="transform:translateZ(80px)"><b class="block font-serif text-2xl leading-none">4,9★</b><span class="text-[0.7rem]">87 Bewertungen</span></div>
         <div class="layer absolute inset-x-5 bottom-5 text-cream" style="transform:translateZ(45px)">
           <p class="font-serif text-2xl italic leading-snug">„${QUOTE}"</p>
-          <p class="mt-2 text-sm text-cream/70">Hair Power · Kreuzviertel Münster</p>
+          <p class="mt-2 text-sm text-cream/70">Salon Muster · Innenstadt Musterstadt</p>
         </div>
       </div>
       <p class="mt-5 text-center text-xs text-inkSoft">↗ Maus über die Karte bewegen</p>
@@ -181,7 +181,7 @@ deck:{
     <div class="pre3d mx-auto max-w-2xl space-y-6">
       ${[
         ['Meisterhandwerk','Qualität, Authentizität und die fachliche Kunst des Schneidens, Färbens und Verwöhnens.'],
-        ['Ohne Termine','Walk-In im York Center — komm einfach vorbei, ohne lange Wartezeiten.'],
+        ['Ohne Termine','Walk-In im Innenstadt — komm einfach vorbei, ohne lange Wartezeiten.'],
         ['Faire Preise','Erschwinglich für Studierende, Familien und alle dazwischen.'],
         ['Natürlich schön','Einfach, natürlich, frisch und elegant — modern und klassisch im Einklang.'],
       ].map(([t,x])=>`<div class="deck-card rounded-3xl border border-ink/10 bg-white p-7 shadow-xl"><h3 class="font-serif text-2xl font-medium">${t}</h3><p class="mt-2 text-inkSoft">${x}</p></div>`).join('')}
@@ -201,11 +201,11 @@ diorama:{
     <div class="dio pre3d relative h-full w-full max-w-3xl">
       <img src="${IMG.salon}" class="dlayer absolute inset-0 m-auto h-[78%] w-[92%] rounded-3xl object-cover opacity-80" data-z="-2" alt="">
       <div class="dlayer absolute inset-0 rounded-3xl bg-gradient-to-t from-ink via-ink/40 to-transparent" data-z="-1"></div>
-      <div class="dlayer absolute left-[6%] top-[14%] h-40 w-32 overflow-hidden rounded-2xl shadow-2xl ring-2 ring-orange/40" data-z="3"><img src="${IMG.katja}" class="h-full w-full object-cover" alt="Katja (Platzhalter)"></div>
+      <div class="dlayer absolute left-[6%] top-[14%] h-40 w-32 overflow-hidden rounded-2xl shadow-2xl ring-2 ring-orange/40" data-z="3"><img src="${IMG.maria}" class="h-full w-full object-cover" alt="Maria (Platzhalter)"></div>
       <div class="dlayer absolute right-[6%] top-[20%] rounded-2xl bg-orange px-4 py-3 text-ink shadow-xl" data-z="5"><b class="block font-serif text-2xl leading-none">15+</b><span class="text-[0.7rem]">Jahre Meister</span></div>
       <div class="dlayer absolute inset-x-[8%] bottom-[10%] text-center" data-z="2">
         <p class="font-serif text-[clamp(1.4rem,1rem+2vw,2.2rem)] italic leading-snug">„${QUOTE}"</p>
-        <p class="mt-2 text-sm text-cream/70">Hair Power · Friseurmeister · Münster</p>
+        <p class="mt-2 text-sm text-cream/70">Salon Muster · Friseurmeister · Musterstadt</p>
       </div>
     </div>
     <p class="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-cream/50">Maus bewegen für Tiefe</p>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hair Power · Über uns – 3D Premium (21–25)</title>
+<title>Salon Muster · Über uns – 3D Premium (21–25)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -33,7 +33,7 @@
 <body class="text-ink">
 
 <header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
-  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · 3D Premium</p>
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Salon Muster · 3D Premium</p>
   <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Über uns — 3D Premium (21–25)</h1>
   <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Noch fünf im Premium-Stil: Fenster-Tiefe, schwebende Polaroids, Origami-Falt, Wort-Sphäre und aufgefächertes Karten-Deck.</p>
 </header>
@@ -44,7 +44,7 @@
   <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
     <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
       <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
-      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">salon-muster.de</div>
     </div>
     <div id="viewport" class="viewport"></div>
   </div>
@@ -56,7 +56,7 @@
 <script>
 const IMG={
   salon:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80",
-  katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+  maria:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
   chair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=80",
   detail:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=80",
   color:"https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1000&q=80",
@@ -83,7 +83,7 @@ portal:{
         <div class="absolute inset-0 bg-ink/35"></div>
         <div class="player absolute left-[8%] top-[14%] h-28 w-24 overflow-hidden rounded-xl shadow-2xl ring-2 ring-white/20" data-d="2.4"><img src="${IMG.color}" class="h-full w-full object-cover" alt=""></div>
         <div class="player absolute right-[8%] top-[40%] rounded-xl bg-orange px-3 py-2 text-center text-ink shadow-xl" data-d="3.2"><b class="block font-serif text-xl leading-none">15+</b><span class="text-[0.6rem]">Jahre</span></div>
-        <div class="player absolute inset-x-[8%] bottom-[8%] text-cream" data-d="1.6"><p class="font-serif text-2xl italic leading-snug">„${QUOTE}"</p><p class="mt-1 text-xs text-cream/70">Kreuzviertel · Münster</p></div>
+        <div class="player absolute inset-x-[8%] bottom-[8%] text-cream" data-d="1.6"><p class="font-serif text-2xl italic leading-snug">„${QUOTE}"</p><p class="mt-1 text-xs text-cream/70">Innenstadt · Musterstadt</p></div>
         <div class="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_0_0_60px_20px_rgba(0,0,0,.45)]"></div>
         <div class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-transparent via-white/5 to-white/15"></div>
       </div>
@@ -107,8 +107,8 @@ polaroids:{
         [IMG.chair,'rotate-3','right-[8%] top-[6%]','4'],
         [IMG.color,'rotate-6','left-[24%] bottom-[8%]','6'],
         [IMG.detail,'-rotate-3','right-[20%] bottom-[12%]','3'],
-        [IMG.katja,'rotate-2','left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2','8'],
-      ].map(([src,rot,pos,d])=>`<figure class="pola absolute ${pos} w-40 ${rot} rounded-md bg-white p-2 pb-6 shadow-2xl" data-d="${d}"><img src="${src}" class="aspect-square w-full rounded-sm object-cover" alt=""><figcaption class="mt-1 text-center font-serif text-xs text-inkSoft">Hair Power</figcaption></figure>`).join('')}
+        [IMG.maria,'rotate-2','left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2','8'],
+      ].map(([src,rot,pos,d])=>`<figure class="pola absolute ${pos} w-40 ${rot} rounded-md bg-white p-2 pb-6 shadow-2xl" data-d="${d}"><img src="${src}" class="aspect-square w-full rounded-sm object-cover" alt=""><figcaption class="mt-1 text-center font-serif text-xs text-inkSoft">Salon Muster</figcaption></figure>`).join('')}
     </div>
     <p class="mt-4 text-xs text-inkSoft">↗ Maus bewegen · Hover hebt eine Karte</p>
   </section>${filler('light')}`,
@@ -167,7 +167,7 @@ fan:{
       <h2 class="mx-auto mt-2 mb-2 max-w-[20ch] text-center font-serif text-[clamp(1.6rem,1rem+2.4vw,2.4rem)] font-medium">Such dir eine Karte</h2>
       <div class="fan pre3d relative mx-auto mt-16 h-[300px] w-[300px]">
         ${[
-          ['🚲','Studenten','Mit der Leeze vorbei — coole Schnitte, fair.'],
+          ['🚲','Studenten','Mit der Fahrrad vorbei — coole Schnitte, fair.'],
           ['👵','Senior:innen','Ebenerdig, kurze Wartezeit, Bus vor der Tür.'],
           ['💍','Anlässe','Hochzeit, Theater, Business — dein Look.'],
           ['👨‍👩‍👧','Familie','Typgerecht für jede Generation.'],

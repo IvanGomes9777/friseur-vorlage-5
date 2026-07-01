@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hair Power · Team – 5 Konzepte</title>
+<title>Salon Muster · Team – 5 Konzepte</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -30,7 +30,7 @@
 <body class="text-ink">
 
 <header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
-  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Salon Muster · Relaunch</p>
   <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 05 — Team</h1>
   <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Unser Team". Tab wählen, im Fenster hovern/scrollen. Fotos = Unsplash-Vorschau (final eure echten Team-Bilder).</p>
 </header>
@@ -41,7 +41,7 @@
   <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
     <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
       <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
-      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">salon-muster.de</div>
     </div>
     <div id="viewport" class="viewport"></div>
   </div>
@@ -52,13 +52,13 @@
 
 <script>
 const P={
-  katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
-  melanie:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",
-  heike:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",
-  lars:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+  maria:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+  lisa:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",
+  anna:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",
+  tom:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
 };
-const LEAD={name:'Katja Schaffeld',role:'Inhaberin · Friseurmeisterin',img:P.katja,quote:'Style zu Mensch, passender Look und Zufriedenheit – darum geht es uns.'};
-const TEAM=[{name:'Melanie Köhler',role:'Hairstylistin',img:P.melanie},{name:'Heike',role:'Leiterin Service',img:P.heike},{name:'Lars Tembrink',role:'Hairstylist',img:P.lars}];
+const LEAD={name:'Maria Musterfrau',role:'Inhaberin · Friseurmeisterin',img:P.maria,quote:'Style zu Mensch, passender Look und Zufriedenheit – darum geht es uns.'};
+const TEAM=[{name:'Lisa Beispiel',role:'Hairstylistin',img:P.lisa},{name:'Anna',role:'Leiterin Service',img:P.anna},{name:'Tom Beispiel',role:'Hairstylist',img:P.tom}];
 const ALL=[{...LEAD},...TEAM];
 
 const CONCEPTS={
@@ -66,13 +66,13 @@ const CONCEPTS={
 /* 1 · FEATURED LEAD + ROW */
 featured:{
   label:'01 · Featured Inhaberin + Reihe',
-  blurb:'Katja groß mit Zitat, das übrige Team als Reihe. Persönlich, vertrauensbildend – die sichere Bank (aktuelle Variante).',
+  blurb:'Maria groß mit Zitat, das übrige Team als Reihe. Persönlich, vertrauensbildend – die sichere Bank (aktuelle Variante).',
   motion:'Reveal-Stagger. Foto-Hover: Zoom + Graustufen→Farbe + diagonaler Shine-Sweep. Rollen-Unterstrich wächst bei Hover.',
   vibe:'Persönlich · vertrauensbildend',
   render:()=>`
   <section class="bg-cream px-7 py-12 sm:px-10">
     <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unser Team</p>
-    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">„by Katja" – und das ganze Team</h2>
+    <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Deine Expertinnen & Experten</h2>
     <div class="reveal mt-6 grid gap-5 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-center" style="transition-delay:.12s">
       <div class="group relative aspect-[4/5] overflow-hidden"><img src="${LEAD.img}" class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt=""><span class="shine"></span></div>
       <div class="p-6 sm:p-7"><p class="text-xs font-semibold uppercase tracking-wide text-terra">${LEAD.role}</p><h3 class="mt-1.5 font-serif text-2xl font-medium sm:text-3xl">${LEAD.name}</h3><p class="mt-4 border-l-2 border-terra pl-4 font-serif text-lg italic text-brownDark">„${LEAD.quote}"</p></div>
@@ -93,7 +93,7 @@ grid:{
   render:()=>`
   <section class="bg-cream2 px-7 py-12 sm:px-10">
     <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Unser Team</p>
-    <h2 class="reveal mt-3 mb-7 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Die Köpfe hinter Hair Power</h2>
+    <h2 class="reveal mt-3 mb-7 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Die Köpfe hinter Salon Muster</h2>
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       ${ALL.map(m=>`<article class="reveal group overflow-hidden rounded-2xl bg-white"><div class="relative aspect-[3/4] overflow-hidden"><img src="${m.img}" class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt=""></div><div class="p-4"><h4 class="font-serif text-lg font-medium">${m.name}</h4><p class="text-sm text-terra">${m.role}</p></div></article>`).join('')}
     </div>

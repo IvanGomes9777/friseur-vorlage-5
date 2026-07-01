@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hair Power · Über uns – Cinematic (26–30)</title>
+<title>Salon Muster · Über uns – Cinematic (26–30)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -30,7 +30,7 @@
 <body class="text-ink">
 
 <header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
-  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Cinematic</p>
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Salon Muster · Cinematic</p>
   <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Über uns — Apple × Awwwards (26–30)</h1>
   <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Cinematische, scroll-getriebene Eleganz mit je einem mutigen Move. <b>Im Fenster scrollen</b> (26, 27, 29) bzw. <b>Maus bewegen</b> (28, 30).</p>
 </header>
@@ -41,7 +41,7 @@
   <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
     <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
       <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
-      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">salon-muster.de</div>
     </div>
     <div id="viewport" class="viewport"></div>
   </div>
@@ -56,7 +56,7 @@ const IMG={
   chair:"https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1300&q=80",
   color:"https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1300&q=80",
   detail:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1300&q=80",
-  katja:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1100&q=80",
+  maria:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1100&q=80",
   man:"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1300&q=80",
 };
 const QUOTE='Style zu Mensch, passender Look und Zufriedenheit.';
@@ -78,7 +78,7 @@ hscroll:{
     <div class="hs-pin sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
       <div class="px-8 pb-6 text-cream"><p class="text-xs font-semibold uppercase tracking-[0.3em] text-orange">Wer wir sind</p><h2 class="mt-2 font-serif text-[clamp(1.6rem,1rem+2.4vw,2.6rem)] font-medium">Handwerk in Bildern</h2></div>
       <div class="hs-track flex gap-6 px-8 will-change-transform">
-        ${[[IMG.salon,'01','Unser Salon','York Center · Kreuzviertel'],[IMG.color,'02','Farbe & Balayage','Natürliche Highlights, ab 135 €'],[IMG.chair,'03','Schnitt & Styling','Typgerecht, ehrlich beraten'],[IMG.man,'04','Herren','Klassisch & geradlinig'],[IMG.detail,'05','Detailliebe','Die Kunst des Schneidens']].map(([s,n,t,x])=>`
+        ${[[IMG.salon,'01','Unser Salon','Innenstadt · Zentrum'],[IMG.color,'02','Farbe & Balayage','Natürliche Highlights, ab 135 €'],[IMG.chair,'03','Schnitt & Styling','Typgerecht, ehrlich beraten'],[IMG.man,'04','Herren','Klassisch & geradlinig'],[IMG.detail,'05','Detailliebe','Die Kunst des Schneidens']].map(([s,n,t,x])=>`
         <article class="hs-card relative h-[62vh] w-[78vw] shrink-0 overflow-hidden rounded-3xl bg-ink sm:w-[58vw] md:w-[42vw]">
           <img src="${s}" class="hs-img absolute inset-[-6%] h-[112%] w-[112%] object-cover" alt="${t}">
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>
@@ -111,7 +111,7 @@ pinscale:{
           </h2>
           <div class="ps-sub mt-5 flex justify-center gap-8 text-cream/80 opacity-0">
             <div><b class="block font-serif text-3xl text-orange">15+</b>Jahre</div>
-            <div><b class="block font-serif text-3xl text-orange">4,3★</b>254 Bewertungen</div>
+            <div><b class="block font-serif text-3xl text-orange">4,9★</b>87 Bewertungen</div>
             <div><b class="block font-serif text-3xl text-orange">0€</b>Termin nötig</div>
           </div>
         </div>
@@ -132,9 +132,9 @@ kinetic:{
     <h2 class="layer pointer-events-none absolute inset-0 grid place-items-center text-center font-serif text-[clamp(4rem,18vw,16rem)] font-semibold leading-none tracking-tighter text-transparent" style="-webkit-text-stroke:1.5px rgba(244,164,96,.35)" data-d="0.5">ÜBER&nbsp;UNS</h2>
     <div class="scene relative">
       <div class="tcard relative aspect-[4/5] w-[clamp(220px,42vw,330px)] overflow-hidden rounded-3xl bg-ink shadow-[0_50px_90px_-30px_rgba(0,0,0,.8)]">
-        <img src="${IMG.katja}" class="layer absolute inset-0 h-full w-full object-cover" alt="Katja (Platzhalter)">
+        <img src="${IMG.maria}" class="layer absolute inset-0 h-full w-full object-cover" alt="Maria (Platzhalter)">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent"></div>
-        <div class="layer absolute inset-x-5 bottom-5" style="transform:translateZ(50px)"><p class="font-serif text-2xl">Katja</p><p class="text-xs uppercase tracking-[0.25em] text-orange">Friseurmeisterin</p></div>
+        <div class="layer absolute inset-x-5 bottom-5" style="transform:translateZ(50px)"><p class="font-serif text-2xl">Maria</p><p class="text-xs uppercase tracking-[0.25em] text-orange">Friseurmeisterin</p></div>
       </div>
     </div>
     <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-cream/40">↗ Maus bewegen</p>

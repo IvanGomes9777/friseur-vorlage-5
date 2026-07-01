@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hair Power · FAQ – 5 Konzepte</title>
+<title>Salon Muster · FAQ – 5 Konzepte</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,7 +27,7 @@
 <body class="text-ink">
 
 <header class="mx-auto max-w-6xl px-5 pt-8 pb-4">
-  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Hair Power · Relaunch</p>
+  <p class="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-terra">Salon Muster · Relaunch</p>
   <h1 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Sektion 09 — FAQ</h1>
   <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-inkSoft">Fünf Richtungen für „Häufige Fragen". Klick öffnet eine Antwort. (FAQPage-Schema fürs SEO bleibt im Live-Code erhalten.)</p>
 </header>
@@ -38,7 +38,7 @@
   <div class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_80px_-40px_rgba(42,33,27,0.5)]">
     <div class="flex items-center gap-2 border-b border-black/10 bg-cream2 px-4 py-2.5">
       <span class="h-3 w-3 rounded-full bg-[#E6A09B]"></span><span class="h-3 w-3 rounded-full bg-[#F4D06F]"></span><span class="h-3 w-3 rounded-full bg-[#9BE6A0]"></span>
-      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">friseur-hairpower.de</div>
+      <div class="mx-auto rounded-md bg-white/70 px-3 py-1 text-xs text-inkSoft">salon-muster.de</div>
     </div>
     <div id="viewport" class="viewport"></div>
   </div>
@@ -49,12 +49,12 @@
 
 <script>
 const FAQS=[
-  ['Brauche ich einen Termin?','Nein – Hair Power arbeitet ohne Termine. Komm einfach vorbei, ganz ohne Anmeldung. Die Wartezeiten sind in der Regel kurz.'],
+  ['Brauche ich einen Termin?','Nein – Salon Muster arbeitet ohne Termine. Komm einfach vorbei, ganz ohne Anmeldung. Die Wartezeiten sind in der Regel kurz.'],
   ['Wann habt ihr geöffnet?','Dienstag bis Freitag 08:30–18:00 Uhr und Samstag 08:00–13:00 Uhr. Montag Ruhetag, Sonntag geschlossen.'],
-  ['Wo kann ich parken – und mein Fahrrad abstellen?','Parkplätze direkt am Salon im York Center. Auch deine Leeze kannst du sicher direkt am Salon abstellen.'],
-  ['Wie komme ich mit Bus & Bahn zu euch?','Buslinien 9, 15, 16 sowie die Ringlinie halten in unmittelbarer Nähe. Eingang Catharina-Müller-Str. ist ebenerdig & barrierefrei.'],
-  ['Schneidet ihr auch Kinder?','Ja! Eigener Wartebereich mit Spielecke und altersgerechte Schnitte. Haarschnitt bis 14 Jahre ab 17,50 €.'],
-  ['Was kostet ein Haarschnitt?','Damen Waschen·Schneiden·Föhnen ab 37,50 €, Herren ab 26,50 €, Kinder bis 14 J. 17,50 €. Alle Preise unter „Leistungen“.'],
+  ['Wo kann ich parken – und mein Fahrrad abstellen?','Parkplätze direkt am Salon im Innenstadt. Auch deine Fahrrad kannst du sicher direkt am Salon abstellen.'],
+  ['Wie komme ich mit Bus & Bahn zu euch?','mehrere Bus- & Bahnlinien sowie die Ringlinie halten in unmittelbarer Nähe. Eingang Musterstraße ist ebenerdig & barrierefrei.'],
+  ['Schneidet ihr auch Kinder?','Ja! Eigener Wartebereich mit Spielecke und altersgerechte Schnitte. Haarschnitt bis 14 Jahre ab 18,00 €.'],
+  ['Was kostet ein Haarschnitt?','Damen Waschen·Schneiden·Föhnen ab 39,00 €, Herren ab 28,00 €, Kinder bis 14 J. 18,00 €. Alle Preise unter „Leistungen“.'],
   ['Macht ihr auch Farbe und Balayage?','Ja – Färben, Strähnen, Tönen, Grauhaarabdeckung und Balayage (ab 135 €). Auf Hautton & Haartyp abgestimmt, auf Wunsch ammoniakfrei.'],
   ['Wie kann ich bezahlen?','Du kannst bequem bar oder mit Karte bezahlen.'],
 ];
@@ -113,7 +113,7 @@ search:{
   </section>${filler('light')}`,
   init:(vp)=>{const inp=vp.querySelector('#fq-in'),list=vp.querySelector('#fq-list');
     const draw=q=>{const f=FAQS.map((x,i)=>[x,i]).filter(([x])=> (x[0]+' '+x[1]).toLowerCase().includes(q.toLowerCase()));
-      list.innerHTML=f.length?f.map(([x,i])=>accItem(x,i,'light')).join(''):`<p class="py-6 text-center text-inkSoft">Nichts gefunden – ruf uns an: <b>0251 5340748</b></p>`;accInit({querySelectorAll:s=>list.querySelectorAll(s)},-1,list);};
+      list.innerHTML=f.length?f.map(([x,i])=>accItem(x,i,'light')).join(''):`<p class="py-6 text-center text-inkSoft">Nichts gefunden – ruf uns an: <b>01234 567890</b></p>`;accInit({querySelectorAll:s=>list.querySelectorAll(s)},-1,list);};
     inp.addEventListener('input',()=>draw(inp.value));draw('');},
 },
 
@@ -128,7 +128,7 @@ luxe:{
     <p class="reveal text-xs font-semibold uppercase tracking-[0.3em] text-orange">Häufige Fragen</p>
     <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium" style="transition-delay:.06s">Gut zu wissen</h2>
     <div class="acc mt-6 max-w-3xl border-y border-white/10">${FAQS.map((f,i)=>accItem(f,i,'dark')).join('')}</div>
-    <p class="mt-6 text-sm text-cream/70">Noch eine Frage? <a href="#" class="font-semibold text-orange hover:underline">Schreib uns</a> oder ruf an: <a href="#" class="font-semibold text-orange hover:underline">0251 5340748</a>.</p>
+    <p class="mt-6 text-sm text-cream/70">Noch eine Frage? <a href="#" class="font-semibold text-orange hover:underline">Schreib uns</a> oder ruf an: <a href="#" class="font-semibold text-orange hover:underline">01234 567890</a>.</p>
   </section>${filler('dark')}`,
   init:(vp)=>accInit(vp,0),
 },
@@ -146,7 +146,7 @@ split:{
         <p class="reveal text-xs font-semibold uppercase tracking-[0.22em] text-terra">Häufige Fragen</p>
         <h2 class="reveal mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight" style="transition-delay:.06s">Alles, was du wissen musst.</h2>
         <p class="reveal mt-4 text-inkSoft" style="transition-delay:.12s">Und wenn nicht: komm einfach vorbei – ganz ohne Termin.</p>
-        <div class="reveal mt-5 flex flex-wrap gap-3" style="transition-delay:.18s"><a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl bg-terra px-6 font-semibold text-white hover:bg-brownDark">Vorbeikommen</a><a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl border border-ink/15 px-6 font-semibold hover:bg-ink/5">0251 5340748</a></div>
+        <div class="reveal mt-5 flex flex-wrap gap-3" style="transition-delay:.18s"><a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl bg-terra px-6 font-semibold text-white hover:bg-brownDark">Vorbeikommen</a><a href="#" class="btn inline-flex min-h-[48px] items-center rounded-xl border border-ink/15 px-6 font-semibold hover:bg-ink/5">01234 567890</a></div>
       </div>
       <div class="acc border-y border-ink/10">${FAQS.map((f,i)=>accItem(f,i,'light')).join('')}</div>
     </div>
@@ -168,7 +168,7 @@ function accInit(vp,openIdx,scope){const items=[...(scope||vp).querySelectorAll(
     const set=o=>{panel.classList.toggle('open',o);ico.style.transform=o?'rotate(45deg)':'';head.setAttribute('aria-expanded',o);};
     head.onclick=()=>set(!panel.classList.contains('open'));
     if(i===openIdx)set(true);});}
-function ctaLine(){return `<p class="mt-6 max-w-3xl text-sm text-inkSoft">Noch eine Frage? <a href="#" class="font-semibold text-brownDark underline-offset-2 hover:underline">Schreib uns</a> oder ruf an: <a href="#" class="font-semibold text-brownDark underline-offset-2 hover:underline">0251 5340748</a>.</p>`;}
+function ctaLine(){return `<p class="mt-6 max-w-3xl text-sm text-inkSoft">Noch eine Frage? <a href="#" class="font-semibold text-brownDark underline-offset-2 hover:underline">Schreib uns</a> oder ruf an: <a href="#" class="font-semibold text-brownDark underline-offset-2 hover:underline">01234 567890</a>.</p>`;}
 function filler(t){const d=t==='dark';return `<section class="${d?'bg-ink text-cream':'bg-cream2 text-ink'} px-6 py-12"><p class="text-center font-serif text-lg ${d?'text-cream/55':'text-inkSoft'}">↑ weiter scrollen</p><div class="h-[22vh]"></div></section>`;}
 let io;function wireReveal(vp){if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:vp,threshold:.08});[...vp.querySelectorAll('.reveal')].forEach((el,i)=>{if(!el.style.transitionDelay)el.style.transitionDelay=(i*0.04)+'s';io.observe(el);});}
 const vp=document.getElementById('viewport'),tabsEl=document.getElementById('tabs'),notesEl=document.getElementById('notes');
