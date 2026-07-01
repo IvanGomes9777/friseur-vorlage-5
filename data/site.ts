@@ -1,18 +1,19 @@
-/* Hair Power · zentrale Standort-/Kontaktdaten (eine Quelle der Wahrheit). */
+/* Salon Muster · zentrale Standort-/Kontaktdaten (eine Quelle der Wahrheit).
+   ⚠️ Beispieldaten (Platzhalter) – vor Livegang durch echte Angaben ersetzen. */
 
-const ADDRESS_QUERY = "Grevener Str. 63, 48149 Münster";
+const ADDRESS_QUERY = "Musterstraße 12, 12345 Musterstadt";
 
 export const SITE = {
-  name: "Hair Power",
-  owner: "Katja Schaffeld",
-  street: "Grevener Str. 63",
-  zip: "48149",
-  city: "Münster",
-  district: "York Center · Kreuzviertel",
-  phone: "0251 5340748",
-  phoneHref: "+492515340748",
-  email: "info@friseur-hairpower.de",
-  reviewUrl: "https://share.google/z6j39BpDfGPUfs6bE",
+  name: "Salon Muster",
+  owner: "Maria Musterfrau",
+  street: "Musterstraße 12",
+  zip: "12345",
+  city: "Musterstadt",
+  district: "Innenstadt · Zentrum",
+  phone: "01234 567890",
+  phoneHref: "+491234567890",
+  email: "info@salon-muster.de",
+  reviewUrl: "https://www.google.com/maps",
   /** Öffnet direkt den Google-Maps-Routenplaner zum Salon. */
   mapsDirectionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=" +

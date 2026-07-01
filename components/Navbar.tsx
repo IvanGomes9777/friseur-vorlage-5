@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Navbar — Konzept 05 "Salon Luxe Dark"
+   Salon Muster · Navbar — Konzept 05 "Salon Luxe Dark"
    Dunkle Ink-Bar mit warmem Gold/Orange-Akzent, zentrierte Serifen-Wortmarke.
    · Spotlight folgt dem Cursor (nur Maus, nur ohne reduce-motion)
    · Goldene Trennlinie wächst beim Laden auf volle Breite
@@ -126,9 +126,9 @@ export default function Navbar() {
             <StatusDot status={status} />
             <StatusLabel status={status} />
           </span>
-          <span className="hidden sm:inline">📍 Grevener Str. 63 · Kreuzviertel</span>
-          <a href="tel:+492515340748" className="font-semibold text-orange hover:underline">
-            0251 5340748
+          <span className="hidden sm:inline">📍 Musterstraße 12 · Innenstadt</span>
+          <a href="tel:+491234567890" className="font-semibold text-orange hover:underline">
+            01234 567890
           </a>
           <span className="hidden md:inline">
             Friseur <b className="font-semibold text-cream">ohne Termin</b>
@@ -160,10 +160,10 @@ export default function Navbar() {
                 scrolled ? "text-lg" : "text-xl sm:text-2xl"
               }`}
             >
-              HAIR POWER
+              SALON MUSTER
             </span>
             <span className="mt-1 block text-[0.58rem] uppercase tracking-[0.4em] text-orange">
-              Friseurmeister · Münster
+              Friseurmeister · Musterstadt
             </span>
           </a>
 
@@ -381,10 +381,10 @@ function MobileMenu({
             <StatusLabel status={status} />
           </span>
           <br />
-          Grevener Str. 63 · 48149 Münster
+          Musterstraße 12 · 12345 Musterstadt
           <br />
-          <a href="tel:+492515340748" className="text-orange hover:underline">
-            0251 5340748
+          <a href="tel:+491234567890" className="text-orange hover:underline">
+            01234 567890
           </a>
         </div>
       </nav>

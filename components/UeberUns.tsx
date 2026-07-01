@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/lib/useInView";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Über uns (Sektion 3) — Mix aus Konzept 34 + 35
+   Salon Muster · Über uns (Sektion 3) — Mix aus Konzept 34 + 35
    Aufbau & Text von #34: Kennzahlen, die hochzählen (Odometer) + Werte-Marquee.
    Effekt von #35: Cursor-Bilderspur aus echten Salon-/Team-Fotos im Hintergrund.
    Dunkle Bühne (kohärent zu Navbar/Hero) · GPU-only · prefers-reduced-motion.
@@ -25,14 +25,14 @@ const VALUES = [
   "Barrierefrei",
 ];
 
-// Echte Bilder für die Cursor-Spur
+// Beispiel-Bilder (Web-Platzhalter) für die Cursor-Spur
 const TRAIL = [
-  "/salon/salon-facade.png",
-  "/team/katja.png",
-  "/team/melanie.png",
-  "/team/heike.png",
-  "/team/lars.png",
-  "/team/katja-casual.png",
+  "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=70",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&h=750&q=70",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&h=750&q=70",
+  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&h=750&q=70",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&h=750&q=70",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&h=600&q=70",
 ];
 
 const EO = "cubic-bezier(0.23,1,0.32,1)";

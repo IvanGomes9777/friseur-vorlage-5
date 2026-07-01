@@ -1,4 +1,4 @@
-/* Hair Power · Galerie / Lookbook — zentrale Datenquelle.
+/* Salon Muster · Galerie / Lookbook — zentrale Datenquelle.
    ⚠️ Aktuell Unsplash-Platzhalter. Echte Kundenfotos brauchen vorab eine
    schriftliche Einwilligung (DSGVO). Später durch Fotos in public/galerie/
    ersetzen und die remotePatterns in next.config.mjs entfernen. */

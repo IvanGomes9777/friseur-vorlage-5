@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SITE } from "@/data/site";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Footer — Konzept 05 "Minimal zentriert"
+   Salon Muster · Footer — Konzept 05 "Minimal zentriert"
    Zentriertes Logo, Live-Öffnungsstatus, eine Nav-Zeile, Kontakt inline,
    Recht-Leiste (Impressum/Datenschutz). Ruhig & aufgeräumt.
 --------------------------------------------------------------------------- */
@@ -35,13 +34,12 @@ export default function Footer() {
     <footer className="bg-ink text-cream">
       <div className="mx-auto max-w-3xl px-6 py-14 text-center">
         {/* Logo */}
-        <Image
-          src="/brand/hair-power-logo.png"
-          alt="Hair Power · Friseur Münster by Katja"
-          width={232}
-          height={123}
-          className="mx-auto h-16 w-auto rounded-xl bg-white p-2.5"
-        />
+        <p className="font-serif text-2xl font-semibold tracking-[0.06em] text-cream">
+          SALON MUSTER
+        </p>
+        <p className="mt-1 text-[0.65rem] uppercase tracking-[0.3em] text-terra">
+          Hair &amp; Style
+        </p>
 
         {/* Live-Öffnungsstatus */}
         <div className="mt-4 flex justify-center">
@@ -64,7 +62,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-5 max-w-[40ch] mx-auto text-sm text-cream/70">
-          Friseurmeisterbetrieb im Kreuzviertel Münster – Damen, Herren &amp;
+          Friseurmeisterbetrieb im Innenstadt Musterstadt – Damen, Herren &amp;
           Kinder, ohne Termin.
         </p>
 
@@ -114,7 +112,7 @@ export default function Footer() {
       {/* Recht-Leiste */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-3xl flex-col gap-3 px-6 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Hair Power · Katja Schaffeld. Alle Rechte vorbehalten.</p>
+          <p>© {year} Salon Muster · Maria Musterfrau. Alle Rechte vorbehalten.</p>
           <nav aria-label="Rechtliches" className="flex gap-5">
             <Link href="/impressum" className="hover:text-cream">
               Impressum

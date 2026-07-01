@@ -7,12 +7,12 @@ export default function JsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "HairSalon",
-    "@id": "https://friseur-hairpower.de/#salon",
-    name: "Hair Power",
+    "@id": "https://salon-muster.de/#salon",
+    name: "Salon Muster",
     description:
-      "Friseurmeisterbetrieb im Kreuzviertel Münster – Damen, Herren & Kinder, ohne Termin. Schnitt, Farbe, Balayage.",
-    url: "https://friseur-hairpower.de",
-    image: "https://friseur-hairpower.de/salon/salon-facade.png",
+      "Friseurmeisterbetrieb im Innenstadt Musterstadt – Damen, Herren & Kinder, ohne Termin. Schnitt, Farbe, Balayage.",
+    url: "https://salon-muster.de",
+    image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=70",
     telephone: "+49" + SITE.phoneHref.replace(/^\+49/, ""),
     email: SITE.email,
     priceRange: "€€",
@@ -27,10 +27,10 @@ export default function JsonLd() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 51.974,
-      longitude: 7.625,
+      latitude: 52.52,
+      longitude: 13.405,
     },
-    areaServed: { "@type": "City", name: "Münster" },
+    areaServed: { "@type": "City", name: "Musterstadt" },
     hasMap: SITE.mapsDirectionsUrl,
     openingHoursSpecification: [
       {
@@ -48,8 +48,8 @@ export default function JsonLd() {
     ],
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.3",
-      reviewCount: "254",
+      ratingValue: "4.9",
+      reviewCount: "87",
       bestRating: "5",
     },
     sameAs: [SITE.reviewUrl],

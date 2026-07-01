@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { TEAM, TEAM_LEAD, type TeamMember } from "@/data/team";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Team (Sektion 5) — Konzept 06 "Namen-Liste + Floating-Foto"
+   Salon Muster · Team (Sektion 5) — Konzept 06 "Namen-Liste + Floating-Foto"
    Große Namensliste auf dunkler Bühne; beim Hovern schwebt das Porträt dem
    Cursor nach (Spring-Lerp). Touch/ohne Maus: Porträt-Grid als Fallback.
    GPU-only (transform/opacity) · prefers-reduced-motion- & pointer-gated.
@@ -94,7 +94,7 @@ export default function Team() {
           Unser Team
         </p>
         <h2 className="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight">
-          „by Katja" – und das ganze Team
+          „by Maria" – und das ganze Team
         </h2>
 
         {/* Interaktive Namensliste (Desktop/Maus) */}

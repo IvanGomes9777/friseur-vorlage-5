@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung · Hair Power",
+  title: "Datenschutzerklärung · Salon Muster",
   robots: { index: false },
 };
 
@@ -95,8 +95,8 @@ export default function DatenschutzPage() {
           Du hast das Recht auf Auskunft (Art. 15), Berichtigung (16), Löschung
           (17), Einschränkung (18), Datenübertragbarkeit (20) sowie Widerspruch
           (21) und Widerruf erteilter Einwilligungen. Zudem besteht ein
-          Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde (für NRW: LDI
-          NRW, Düsseldorf).
+          Beschwerderecht bei der für dich zuständigen
+          Datenschutz-Aufsichtsbehörde.
         </Section>
 
         <Section title="10. Stand & Aktualität">
