@@ -4,7 +4,7 @@ import { REVIEWS_A, REVIEWS_B, REVIEW_META, type Review } from "@/data/reviews";
 import { useInView } from "@/lib/useInView";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Bewertungen (Sektion 5) — Option 3 "Marquee-Wall"
+   Salon Muster · Bewertungen (Sektion 5) — Option 3 "Marquee-Wall"
    Zwei endlos laufende Reihen (Hover pausiert), Rating-Block + CTA-Button
    zum Bewerten (Google). Reduced-Motion: Animation aus.
 --------------------------------------------------------------------------- */
@@ -33,7 +33,7 @@ export default function Bewertungen() {
             Was unsere Gäste sagen
           </p>
           <h2 className="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight text-ink">
-            Eure Gäste lieben Hair Power
+            Eure Gäste lieben Salon Muster
           </h2>
         </div>
 

@@ -5,7 +5,7 @@ import { FAQS } from "@/data/faq";
 import { useInView } from "@/lib/useInView";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · FAQ (Sektion 9) — Konzept 05 "Split mit Intro/CTA"
+   Salon Muster · FAQ (Sektion 9) — Konzept 05 "Split mit Intro/CTA"
    Links bleibt eine Einladung + Walk-In-CTA stehen (sticky), rechts das
    zugängliche Accordion. FAQPage-Schema für Rich Results bleibt erhalten.
 --------------------------------------------------------------------------- */
@@ -48,10 +48,10 @@ export default function FAQ() {
               Vorbeikommen
             </a>
             <a
-              href="tel:+492515340748"
+              href="tel:+491234567890"
               className="inline-flex min-h-[48px] items-center rounded-xl border border-ink/15 px-6 font-semibold text-ink transition-colors duration-200 hover:bg-ink/5"
             >
-              0251 5340748
+              01234 567890
             </a>
           </div>
         </div>

@@ -6,7 +6,7 @@ import MapEmbed from "@/components/MapEmbed";
 import ContactForm from "@/components/ContactForm";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Kontakt (Sektion 8) — Konzept 02 "Karte + Floating-Card"
+   Salon Muster · Kontakt (Sektion 8) — Konzept 02 "Karte + Floating-Card"
    Große Consent-gated Karte als Bühne, darüber eine schwebende Kontakt-Card
    (Adresse · Route · Telefon · Zeiten · „ohne Termin"). Formular darunter.
 --------------------------------------------------------------------------- */

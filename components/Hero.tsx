@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { computeStatus, type OpenStatus } from "@/lib/openingHours";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Hero (Sektion 2) — Konzept 08 "Scroll-Scrub Reveal"
+   Salon Muster · Hero (Sektion 2) — Konzept 08 "Scroll-Scrub Reveal"
    Gepinnte Bühne: beim Scrollen skaliert das echte Salonfoto langsam auf
    (scale 1.22 → 1), der Verdunkler weicht und der Inhalt parallaxt sanft.
    Alles an die Scroll-Position gekoppelt (kein Autoplay).
@@ -106,8 +106,8 @@ export default function Hero() {
             style={{ transform: "scale(1.22)" }}
           >
             <Image
-              src="/salon/salon-facade.png"
-              alt="Hair Power Friseursalon – Außenansicht mit Efeu-Fassade im Kreuzviertel, Münster"
+              src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=70"
+              alt="Beispielfoto: Innenansicht eines modernen Friseursalons"
               fill
               priority
               sizes="100vw"
@@ -144,7 +144,7 @@ export default function Hero() {
 
           <Reveal show={mounted} delay={220}>
             <p className="mx-auto mt-3 max-w-[44ch] text-base text-cream/85 sm:text-lg">
-              Friseurmeisterbetrieb im Kreuzviertel Münster – seit über 15 Jahren.
+              Friseurmeisterbetrieb im Innenstadt Musterstadt – seit über 15 Jahren.
               Damen, Herren &amp; Kinder. Einfach vorbeikommen.
             </p>
           </Reveal>

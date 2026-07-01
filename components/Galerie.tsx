@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { GALLERY, GALLERY_FILTERS, type GalleryItem } from "@/data/gallery";
 import { useInView } from "@/lib/useInView";
 
-/* Hair Power · Galerie (Sektion 7) — Option 2 "Filterbare Galerie"
+/* Salon Muster · Galerie (Sektion 7) — Option 2 "Filterbare Galerie"
    Filter-Tabs (inkl. Kinder) · Hover-Zoom · Klick öffnet Lightbox. */
 
 export default function Galerie() {

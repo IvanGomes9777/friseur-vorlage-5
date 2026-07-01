@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------
-   Hair Power · Leistungen & Preise — zentrale Datenquelle
-   Preise wörtlich aus den Listen des Salons (Grevener Str. / York Center).
-   Änderungen NUR hier pflegen – Komponenten lesen automatisch daraus.
+   Salon Muster · Leistungen & Preise — zentrale Datenquelle
+   ⚠️ Beispielpreise (Platzhalter) – vor Livegang durch die echte Preisliste
+   ersetzen. Änderungen NUR hier pflegen – Komponenten lesen automatisch daraus.
 --------------------------------------------------------------------------- */
 
 export type PriceItem = { name: string; price: string; note?: string };
@@ -42,13 +42,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       {
         title: "Schnitt & Styling",
         items: [
-          { name: "Waschen · Schneiden · Föhnen / Legen", price: "37,50 €" },
-          { name: "Waschen · Schneiden / selber Föhnen", price: "32,50 €" },
-          { name: "Anfeuchten · Schneiden", price: "26,50 €" },
-          { name: "Waschen · Föhnen / Legen", price: "ab 24,50 €" },
-          { name: "Pony schneiden", price: "7,00 €" },
-          { name: "Permanent Styling", price: "ab 37,50 €", note: "bis Haarlänge 10 cm" },
-          { name: "Dauerwelle", price: "ab 49,50 €" },
+          { name: "Waschen · Schneiden · Föhnen / Legen", price: "39,00 €" },
+          { name: "Waschen · Schneiden / selber Föhnen", price: "33,00 €" },
+          { name: "Anfeuchten · Schneiden", price: "27,00 €" },
+          { name: "Waschen · Föhnen / Legen", price: "ab 25,00 €" },
+          { name: "Pony schneiden", price: "8,00 €" },
+          { name: "Permanent Styling", price: "ab 39,00 €", note: "bis Haarlänge 10 cm" },
+          { name: "Dauerwelle", price: "ab 49,00 €" },
           { name: "Hochsteckfrisur", price: "ab 45,00 €", note: "nach Aufwand" },
           { name: "Haarpflege · Kur (Intensiv)", price: "9,00 €" },
           { name: "Glätten", price: "ab 15,00 €", note: "extra" },
@@ -57,9 +57,9 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       {
         title: "Farbe & Tönung",
         items: [
-          { name: "Haarfärbung (Neu)", price: "ab 39,50 €" },
-          { name: "Haarfärbung (Ansatz)", price: "ab 35,50 €", note: "bis 2 cm" },
-          { name: "Tönung (Normal / Intensiv)", price: "ab 26,50 €" },
+          { name: "Haarfärbung (Neu)", price: "ab 39,00 €" },
+          { name: "Haarfärbung (Ansatz)", price: "ab 35,00 €", note: "bis 2 cm" },
+          { name: "Tönung (Normal / Intensiv)", price: "ab 27,00 €" },
           { name: "Balayage", price: "ab 135,00 €", note: "unsere Spezialität" },
           { name: "Pastelltoncoloration", price: "ab 25,00 €" },
         ],
@@ -67,8 +67,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       {
         title: "Strähnen",
         items: [
-          { name: "Foliensträhnen (Oberkopf)", price: "ab 45,50 €" },
-          { name: "Foliensträhnen (Ganzer Kopf)", price: "ab 55,50 €" },
+          { name: "Foliensträhnen (Oberkopf)", price: "ab 45,00 €" },
+          { name: "Foliensträhnen (Ganzer Kopf)", price: "ab 55,00 €" },
           { name: "Foliensträhnen lang", price: "ab 61,00 €" },
         ],
       },
@@ -86,9 +86,9 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     id: "herren",
     label: "Herren",
     intro:
-      "Typgerechte, pflegeleichte Business-Frisuren für die City – Schnitt, Pflege, Strähnen, Tönen und Grauhaarabdeckung.",
+      "Typgerechte, pflegeleichte Business-Frisuren – Schnitt, Pflege, Strähnen, Tönen und Grauhaarabdeckung.",
     infoBox: {
-      title: "Dein Gentleman-Barbier im Kreuzviertel",
+      title: "Dein Gentleman-Barbier",
       items: [
         {
           heading: "Individuell für den Herrn",
@@ -104,8 +104,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       {
         title: "Schnitt & Bart",
         items: [
-          { name: "Anfeuchten · Schneiden", price: "19,50 €" },
-          { name: "Waschen · Schneiden · Föhnen", price: "26,50 €" },
+          { name: "Anfeuchten · Schneiden", price: "20,00 €" },
+          { name: "Waschen · Schneiden · Föhnen", price: "27,00 €" },
           { name: "Kompletter Maschinenschnitt", price: "16,00 €" },
           { name: "Konturenschnitt", price: "15,00 €" },
           { name: "Bart schneiden", price: "8,00 €" },
@@ -114,9 +114,9 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       {
         title: "Farbe & Strähnen",
         items: [
-          { name: "Haarfärbung", price: "ab 35,50 €" },
+          { name: "Haarfärbung", price: "ab 35,00 €" },
           { name: "Strähnen (Lichtreflexe / Spitzen / Hauben)", price: "ab 21,00 €" },
-          { name: "Foliensträhnen", price: "ab 45,50 €" },
+          { name: "Foliensträhnen", price: "ab 45,00 €" },
         ],
       },
     ],
@@ -131,7 +131,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       items: [
         {
           heading: "Eigener Wartebereich mit Spielecke",
-          text: "Bei uns wird der Friseurbesuch entspannt: eigene Spielecke und die neuesten Trends – damit die Kleinen chic und cool aus dem York Center gehen.",
+          text: "Bei uns wird der Friseurbesuch entspannt: eigene Spielecke und die neuesten Trends – damit die Kleinen chic und cool nach Hause gehen.",
         },
         {
           heading: "Beratung & Pflege",
@@ -142,8 +142,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     groups: [
       {
         items: [
-          { name: "Haarschnitt bis 14 Jahre", price: "17,50 €" },
-          { name: "Waschen · Schneiden · Föhnen", price: "ab 24,50 €" },
+          { name: "Haarschnitt bis 14 Jahre", price: "18,00 €" },
+          { name: "Waschen · Schneiden · Föhnen", price: "ab 25,00 €" },
         ],
       },
     ],
