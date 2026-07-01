@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/impressum", "/datenschutz"],
     },
-    sitemap: "https://friseur-hairpower.de/sitemap.xml",
+    sitemap: "https://salon-muster.de/sitemap.xml",
   };
 }

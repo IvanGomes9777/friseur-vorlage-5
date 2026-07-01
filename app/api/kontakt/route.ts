@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
      (sonst sicherer Dev-Fallback: Anfrage wird nur geloggt).
    Env (in Vercel → Settings → Environment Variables):
      RESEND_API_KEY   – API-Key von resend.com
-     CONTACT_TO       – Empfänger (Default: info@friseur-hairpower.de)
+     CONTACT_TO       – Empfänger (Default: info@salon-muster.de)
      CONTACT_FROM     – verifizierter Absender (Default unten)            */
 
 type Payload = {
@@ -44,8 +44,8 @@ export async function POST(req: Request) {
     );
   }
 
-  const to = process.env.CONTACT_TO || "info@friseur-hairpower.de";
-  const from = process.env.CONTACT_FROM || "Hair Power <kontakt@friseur-hairpower.de>";
+  const to = process.env.CONTACT_TO || "info@salon-muster.de";
+  const from = process.env.CONTACT_FROM || "Salon Muster <kontakt@salon-muster.de>";
   const apiKey = process.env.RESEND_API_KEY;
 
   const subject = `Neue Kontaktanfrage von ${name}`;
@@ -78,7 +78,7 @@ export async function POST(req: Request) {
     if (!res.ok) {
       console.error("[Kontakt] Resend-Fehler:", res.status, await res.text());
       return NextResponse.json(
-        { ok: false, error: "Senden fehlgeschlagen. Bitte ruf uns an: 0251 5340748." },
+        { ok: false, error: "Senden fehlgeschlagen. Bitte ruf uns an: 01234 567890." },
         { status: 502 },
       );
     }
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error("[Kontakt] Netzwerkfehler:", err);
     return NextResponse.json(
-      { ok: false, error: "Senden fehlgeschlagen. Bitte ruf uns an: 0251 5340748." },
+      { ok: false, error: "Senden fehlgeschlagen. Bitte ruf uns an: 01234 567890." },
       { status: 502 },
     );
   }

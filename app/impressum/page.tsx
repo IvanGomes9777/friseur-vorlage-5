@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Impressum · Hair Power",
+  title: "Impressum · Salon Muster",
   robots: { index: false },
 };
 
@@ -41,8 +41,7 @@ export default function ImpressumPage() {
         <Section title="Berufsbezeichnung &amp; berufsrechtliche Regelungen">
           Berufsbezeichnung: Friseurmeisterin (verliehen in Deutschland)
           <br />
-          Zuständige Kammer: Handwerkskammer Münster, Bismarckallee 1, 48151
-          Münster
+          Zuständige Kammer: [zuständige Handwerkskammer – Anschrift eintragen]
           <br />
           Es gelten die berufsrechtlichen Regelungen der Handwerksordnung (HwO),
           einsehbar unter{" "}

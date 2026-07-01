@@ -5,8 +5,8 @@ import { TEAM, TEAM_LEAD } from "@/data/team";
 import { useInView } from "@/lib/useInView";
 
 /* ---------------------------------------------------------------------------
-   Hair Power · Team (Sektion 4) — Option 2 "Featured Inhaberin + Team"
-   Katja groß mit Zitat, restliches Team als Reihe.
+   Salon Muster · Team (Sektion 4) — Option 2 "Featured Inhaberin + Team"
+   Inhaberin groß mit Zitat, restliches Team als Reihe.
    Hover-Effekt: Foto-Zoom + Graustufen→Farbe + diagonaler Shine-Sweep.
 --------------------------------------------------------------------------- */
 
@@ -35,11 +35,11 @@ export default function Team() {
             Unser Team
           </p>
           <h2 className="mt-3 font-serif text-[clamp(1.7rem,1rem+2.6vw,2.6rem)] font-medium leading-tight text-ink">
-            „by Katja" – und das ganze Team
+            Deine Expertinnen &amp; Experten
           </h2>
         </div>
 
-        {/* Featured: Katja */}
+        {/* Featured: Inhaberin */}
         <div
           {...reveal(80)}
           className={`${reveal(80).className} mt-8 grid gap-6 overflow-hidden rounded-2xl border border-ink/10 bg-cream2 sm:grid-cols-[0.8fr_1.2fr] sm:items-stretch`}

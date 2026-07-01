@@ -13,7 +13,7 @@ export default function MapEmbed() {
     <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/15">
       {loaded ? (
         <iframe
-          title="Karte: Hair Power, Grevener Str. 63, Münster"
+          title="Karte: Salon Muster, Musterstraße 12, Musterstadt"
           src={SITE.mapsEmbedUrl}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

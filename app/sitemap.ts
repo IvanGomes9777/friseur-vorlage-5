@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = "https://friseur-hairpower.de";
+const BASE = "https://salon-muster.de";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Impressum/Datenschutz sind bewusst noindex → nicht in der Sitemap.
